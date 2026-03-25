@@ -20,6 +20,7 @@ export default function Navbar() {
             <li><NavLink to="/" end>{t('nav.about')}</NavLink></li>
             <li><NavLink to="/resume">{t('nav.resume')}</NavLink></li>
             <li><NavLink to="/projects">{t('nav.projects')}</NavLink></li>
+            <li><NavLink to="/contact">{t('nav.contact')}</NavLink></li>
           </ul>
           <button
             className="lang-toggle"

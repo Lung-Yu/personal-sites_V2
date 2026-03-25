@@ -2,7 +2,8 @@
   "nav": {
     "about": "關於我",
     "resume": "履歷",
-    "projects": "專案"
+    "projects": "專案",
+    "contact": "聯絡我"
   },
   "home": {
     "status": "積極尋求機會 · 台灣，台北",
@@ -26,6 +27,13 @@
     "subtitle": "開源工具、AI 實驗與資安研究。",
     "featured": "精選",
     "more": "更多專案"
+  },
+  "contact": {
+    "title": "聯絡我",
+    "subtitle": "歡迎洽詢顧問合作、演講邀約與技術合作。",
+    "servicesTitle": "顧問服務",
+    "getInTouch": "聯絡方式",
+    "available": "有興趣合作？歡迎透過 Email 聯絡或在 LinkedIn 上連結。"
   },
   "footer": {
     "credit": "以 React + Vite 打造"

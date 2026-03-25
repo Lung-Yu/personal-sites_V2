@@ -2,7 +2,8 @@
   "nav": {
     "about": "About",
     "resume": "Resume",
-    "projects": "Projects"
+    "projects": "Projects",
+    "contact": "Contact"
   },
   "home": {
     "status": "Open to opportunities · Taipei, Taiwan",
@@ -26,6 +27,13 @@
     "subtitle": "Open-source tools, AI experiments, and security research.",
     "featured": "Featured",
     "more": "More Projects"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Available for consulting engagements, speaking invitations, and collaborations.",
+    "servicesTitle": "Consulting Services",
+    "getInTouch": "Get in Touch",
+    "available": "Interested in working together? Reach out via email or connect on LinkedIn."
   },
   "footer": {
     "credit": "Built with React + Vite"

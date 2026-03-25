@@ -1,0 +1,128 @@
+.contact-page {
+  padding: 48px 0 96px;
+}
+
+/* ── Header ── */
+.contact-header {
+  margin-bottom: 40px;
+  padding: 32px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #f0f7ff 100%);
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius);
+}
+
+.contact-header h1 {
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+/* ── Section ── */
+.contact-section {
+  margin-bottom: 48px;
+}
+
+.contact-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Consulting grid ── */
+.consulting-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 560px) {
+  .consulting-grid { grid-template-columns: 1fr; }
+}
+
+.consulting-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.consulting-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.consulting-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.consulting-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.consulting-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.consulting-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+}
+
+.consulting-items li {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.consulting-items li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── Get in Touch ── */
+.contact-reach {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-available {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.contact-email-btn {
+  font-size: 14px;
+}
+
+.contact-social {
+  display: flex;
+  gap: 8px;
+}
