@@ -1,0 +1,164 @@
+.blog-page {
+  padding: 48px 0 96px;
+}
+
+/* ── Header ── */
+.blog-header {
+  margin-bottom: 40px;
+  padding: 32px;
+  background: linear-gradient(135deg, #faf5ff 0%, #f0f7ff 100%);
+  border: 1px solid #e9d5ff;
+  border-radius: var(--radius);
+}
+
+.blog-header h1 {
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+/* ── Section ── */
+.blog-section {
+  margin-bottom: 48px;
+}
+
+.blog-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Card link wrapper ── */
+.writing-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 12px;
+}
+
+.writing-card-link--no-url {
+  cursor: default;
+}
+
+.writings-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Card ── */
+.writing-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.writing-card-link:not(.writing-card-link--no-url):hover .writing-card {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.writing-card--featured {
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(to right, var(--accent-light), var(--bg));
+  margin-bottom: 12px;
+}
+
+/* ── Card top row ── */
+.writing-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.writing-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.writing-type {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.writing-type--article  { background: #eff6ff; color: #1d4ed8; }
+.writing-type--talk     { background: #faf5ff; color: #7c3aed; }
+.writing-type--course   { background: #f0fdf4; color: #15803d; }
+.writing-type--thread   { background: #fff7ed; color: #c2410c; }
+
+[data-theme="dark"] .writing-type--article { background: #1f3a5f; color: #93c5fd; }
+[data-theme="dark"] .writing-type--talk    { background: #2e1a4f; color: #c4b5fd; }
+[data-theme="dark"] .writing-type--course  { background: #14532d; color: #86efac; }
+[data-theme="dark"] .writing-type--thread  { background: #431407; color: #fdba74; }
+
+.writing-platform {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.writing-lang-flag {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.writing-date {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+
+/* ── Content ── */
+.writing-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.writing-teaser {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* ── Footer ── */
+.writing-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.writing-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.writing-read {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}

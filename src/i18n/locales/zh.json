@@ -31,6 +31,16 @@
     "featured": "精選",
     "more": "更多專案"
   },
+  "blog": {
+    "title": "文章",
+    "subtitle": "技術文章、研討會心得與課程筆記，主題涵蓋 DevSecOps、AI 與資安。",
+    "featured": "精選",
+    "readMore": "閱讀 →",
+    "typeArticle": "文章",
+    "typeTalk": "演講心得",
+    "typeCourse": "課程筆記",
+    "typeThread": "討論串"
+  },
   "contact": {
     "title": "聯絡我",
     "subtitle": "歡迎洽詢顧問合作、演講邀約與技術合作。",

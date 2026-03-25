@@ -31,6 +31,16 @@
     "featured": "Featured",
     "more": "More Projects"
   },
+  "blog": {
+    "title": "Writing",
+    "subtitle": "Articles, conference talk write-ups, and course notes on DevSecOps, AI, and security.",
+    "featured": "Featured",
+    "readMore": "Read →",
+    "typeArticle": "Article",
+    "typeTalk": "Talk Write-up",
+    "typeCourse": "Course Notes",
+    "typeThread": "Thread"
+  },
   "contact": {
     "title": "Contact",
     "subtitle": "Available for consulting engagements, speaking invitations, and collaborations.",
