@@ -52,11 +52,11 @@ export default function Resume() {
                 </div>
                 <div className="timeline-org">
                   <span>{job.company}</span>
-                  {job.companyZh !== job.company && (
-                    <span className="org-badge">{job.companyZh}</span>
-                  )}
                   <span>· {l(job.location)}</span>
                 </div>
+                {job.companyNote && (
+                  <p className="company-note">{l(job.companyNote)}</p>
+                )}
                 <ul>
                   {l(job.highlights).map((h, i) => <li key={i}>{h}</li>)}
                 </ul>

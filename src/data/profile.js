@@ -150,8 +150,12 @@ export const chipColors = {
 
 export const experience = [
   {
-    company: 'Cloudforce Co., Ltd.',
+    company: 'Cloudforce Co., Ltd. (雲力橘子)',
     companyZh: '雲力橘子數位股份有限公司',
+    companyNote: {
+      en: 'Gamania subsidiary · formerly 果核數位 (Digicentre)',
+      zh: '遊戲橘子子公司 · 前身為果核數位',
+    },
     title: { en: 'Technical Manager', zh: '技術經理' },
     period: { en: 'Apr 2025 — Present', zh: '2025年4月 — 至今' },
     location: { en: 'New Taipei City, Taiwan', zh: '台灣，新北市' },
@@ -170,8 +174,8 @@ export const experience = [
   },
   {
     company: 'AINetwork',
-    companyZh: 'AINetwork',
-    title: { en: 'Instructor (Part-time)', zh: '課程講師（兼職）' },
+    companyZh: 'AINetwork（全智網）',
+    title: { en: 'Consulting Instructor', zh: '配合講師顧問' },
     period: { en: 'Apr 2025 — Present', zh: '2025年4月 — 至今' },
     location: { en: 'Taiwan', zh: '台灣' },
     highlights: {
@@ -186,8 +190,29 @@ export const experience = [
     },
   },
   {
-    company: 'Digicentre Co., Ltd.',
-    companyZh: '数位新知',
+    company: 'BigData Intelligence Education',
+    companyZh: '大數智能',
+    title: { en: 'Instructor (Part-time)', zh: '課程講師（兼職）' },
+    period: { en: 'Nov 2025 — Present', zh: '2025年11月 — 至今' },
+    location: { en: 'Taiwan', zh: '台灣' },
+    highlights: {
+      en: [
+        'Deliver AI application and intelligent education course modules.',
+        'Develop special-topic course materials on AI integration in software development.',
+      ],
+      zh: [
+        '講授 AI 應用與智能教育相關課程模組。',
+        '開發以 AI 融入軟體開發為主題的專題課程教材。',
+      ],
+    },
+  },
+  {
+    company: 'Digicentre Co., Ltd. (果核數位)',
+    companyZh: '果核數位',
+    companyNote: {
+      en: 'now Cloudforce / 雲力橘子 · Gamania subsidiary',
+      zh: '現更名為雲力橘子，遊戲橘子子公司',
+    },
     title: { en: 'Deputy Manager, Tech Development II', zh: '副理，技術開發二部' },
     period: { en: 'Aug 2024 — Mar 2025', zh: '2024年8月 — 2025年3月' },
     location: { en: 'Taiwan', zh: '台灣' },
@@ -205,8 +230,12 @@ export const experience = [
     },
   },
   {
-    company: 'Digicentre Co., Ltd.',
-    companyZh: '数位新知',
+    company: 'Digicentre Co., Ltd. (果核數位)',
+    companyZh: '果核數位',
+    companyNote: {
+      en: 'now Cloudforce / 雲力橘子 · Gamania subsidiary',
+      zh: '現更名為雲力橘子，遊戲橘子子公司',
+    },
     title: { en: 'Deputy Manager, Software Development Security', zh: '副理，軟體開發安全' },
     period: { en: 'Sep 2021 — Jul 2024', zh: '2021年9月 — 2024年7月' },
     location: { en: 'Taiwan', zh: '台灣' },
