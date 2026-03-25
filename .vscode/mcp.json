@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--caps=vision",
+        "--viewport-size=1280x720",
+        "--browser=chromium"
+      ]
+    }
+  }
+}
