@@ -93,6 +93,7 @@ h1, h2, h3, h4 {
   text-decoration: none;
 }
 .skip-link:focus-visible { top: 16px; outline: none; }
+[data-theme="dark"] .skip-link { color: var(--bg); }
 
 /* ── Shared badge ── */
 .badge {

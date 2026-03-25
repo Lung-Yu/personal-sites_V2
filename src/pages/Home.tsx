@@ -98,7 +98,7 @@ export default function Home() {
           </div>
 
           <FadeSection className="home-section">
-            <p className="section-label">{t('home.sectionSkills')}</p>
+            <h2 className="section-label">{t('home.sectionSkills')}</h2>
             <div className="skill-chips">
               {skillChips.map((chip) => {
                 const c = chipColors[chip.cat]
@@ -116,7 +116,7 @@ export default function Home() {
           </FadeSection>
 
           <FadeSection className="home-section">
-            <p className="section-label">{t('home.sectionTalks')}</p>
+            <h2 className="section-label">{t('home.sectionTalks')}</h2>
             <div className="talks-preview">
               {talks.map((talk, i) => (
                 <div key={i} className="talk-preview-item">
@@ -141,7 +141,7 @@ export default function Home() {
           </FadeSection>
 
           <FadeSection className="home-section">
-            <p className="section-label">{t('home.sectionProjects')}</p>
+            <h2 className="section-label">{t('home.sectionProjects')}</h2>
             <div className="home-projects-grid">
               {projects.filter((p) => p.highlight).slice(0, 3).map((p) => (
                 <a
@@ -176,7 +176,7 @@ export default function Home() {
           </FadeSection>
 
           <FadeSection className="home-section">
-            <p className="section-label">{t('home.sectionAchievements')}</p>
+            <h2 className="section-label">{t('home.sectionAchievements')}</h2>
             <div className="achievements-row">
               {achievements.map((a) => (
                 <div key={a.icon} className="achievement-badge">
