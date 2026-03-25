@@ -335,11 +335,46 @@
 /* ── Print ── */
 @media print {
   .resume { padding: 0; }
+
   .resume-hero {
-    background: none;
+    background: none !important;
     border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 24px;
   }
-  .btn, .resume-actions { display: none; }
-  .timeline-entry { break-inside: avoid; }
+  .resume-hero h1 { font-size: 20px; }
+  .resume-hero .subtitle { font-size: 13px; }
+  .resume-meta { font-size: 12px; }
+
+  .btn, .resume-actions { display: none !important; }
+
+  /* Typography */
+  body { font-size: 11px; line-height: 1.5; }
+  .timeline-header h3 { font-size: 14px; }
+  .timeline-entry ul li { font-size: 12px; }
+  .timeline-org { font-size: 12px; }
+  .company-note { font-size: 11px; }
+
+  /* Prevent entries from splitting across pages */
+  .timeline-entry { break-inside: avoid; page-break-inside: avoid; }
+  .cert-card       { break-inside: avoid; page-break-inside: avoid; }
+  .talk-entry      { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Force page-break before Education section */
+  .resume-section:nth-of-type(2) { break-before: page; page-break-before: always; }
+
+  /* Grids stay 2-col on paper */
   .certs-grid, .skills-matrix { grid-template-columns: 1fr 1fr; }
+
+  /* Remove decorative backgrounds */
+  .skill-group  { background: none !important; border: 1px solid #ddd; }
+  .cert-card    { background: none !important; box-shadow: none; border: 1px solid #ddd; }
+  .talk-entry   { background: none !important; box-shadow: none; border-left: 2px solid #555; border-top: none; border-right: none; border-bottom: none; }
+
+  /* Timeline line colour */
+  .timeline::before { background: #bbb; }
+  .timeline-entry::before { border-color: #555; background: white; }
+
+  /* Period badge */
+  .timeline-header .period { background: none; border: 1px solid #ccc; }
 }
