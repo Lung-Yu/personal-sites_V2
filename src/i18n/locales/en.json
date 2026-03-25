@@ -12,7 +12,9 @@
     "sectionAchievements": "GitHub Achievements",
     "statsYears": "Years Experience",
     "statsCerts": "Certifications",
-    "statsTalks": "Conference Talks"
+    "statsTalks": "Conference Talks",
+    "sectionProjects": "Featured Projects",
+    "viewAllProjects": "View all projects"
   },
   "resume": {
     "sectionExp": "Work Experience",

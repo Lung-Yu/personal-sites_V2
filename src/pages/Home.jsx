@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { profile, skillChips, chipColors, achievements, talks } from '../data/profile'
+import { profile, skillChips, chipColors, achievements, talks, projects, languageColors } from '../data/profile'
 import '../styles/Home.css'
+import '../styles/Projects.css'
 
 // Resolve a { en, zh } bilingual object to current language string
 function useL() {
@@ -100,6 +102,41 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="home-section">
+            <p className="section-label">{t('home.sectionProjects')}</p>
+            <div className="home-projects-grid">
+              {projects.filter((p) => p.highlight).slice(0, 3).map((p) => (
+                <a
+                  key={p.name}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="home-project-card"
+                >
+                  <div className="home-project-name">{p.name}</div>
+                  <p className="home-project-desc">{l(p.description)}</p>
+                  <div className="home-project-footer">
+                    <span className="home-project-lang">
+                      <span
+                        className="lang-dot"
+                        style={{ background: languageColors[p.language] || '#aaa' }}
+                      />
+                      {p.language}
+                    </span>
+                    <div className="home-project-tags">
+                      {p.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="project-tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <Link to="/projects" className="view-all-link">
+              {t('home.viewAllProjects')} →
+            </Link>
           </div>
 
           <div className="home-section">

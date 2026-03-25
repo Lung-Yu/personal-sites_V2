@@ -12,7 +12,9 @@
     "sectionAchievements": "GitHub 成就",
     "statsYears": "年資",
     "statsCerts": "國際認證",
-    "statsTalks": "演講場次"
+    "statsTalks": "演講場次",
+    "sectionProjects": "精選專案",
+    "viewAllProjects": "查看所有專案"
   },
   "resume": {
     "sectionExp": "工作經歷",
