@@ -1,6 +1,16 @@
 import { useTranslation } from 'react-i18next'
 import { profile, experience, education, certifications, skills, talks } from '../data/profile'
+import { useInView } from '../hooks/useInView'
 import '../styles/Resume.css'
+
+function FadeSection({ children, className }) {
+  const [ref, inView] = useInView()
+  return (
+    <div ref={ref} className={`fade-up${inView ? ' visible' : ''}${className ? ` ${className}` : ''}`}>
+      {children}
+    </div>
+  )
+}
 
 function useL() {
   const { i18n } = useTranslation()
@@ -41,7 +51,7 @@ export default function Resume() {
         </div>
 
         {/* Experience */}
-        <section className="resume-section">
+        <FadeSection className="resume-section">
           <p className="resume-section-title">{t('resume.sectionExp')}</p>
           <div className="timeline">
             {experience.map((job, idx) => (
@@ -63,10 +73,10 @@ export default function Resume() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeSection>
 
         {/* Education */}
-        <section className="resume-section">
+        <FadeSection className="resume-section">
           <p className="resume-section-title">{t('resume.sectionEdu')}</p>
           <div className="timeline">
             {education.map((edu, idx) => (
@@ -85,10 +95,10 @@ export default function Resume() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeSection>
 
         {/* Certifications */}
-        <section className="resume-section">
+        <FadeSection className="resume-section">
           <p className="resume-section-title">{t('resume.sectionCerts')}</p>
           <div className="certs-grid">
             {certifications.map((cert) => (
@@ -101,10 +111,10 @@ export default function Resume() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeSection>
 
         {/* Speaking */}
-        <section className="resume-section">
+        <FadeSection className="resume-section">
           <p className="resume-section-title">{t('resume.sectionTalks')}</p>
           <div className="talks-list">
             {talks.map((talk, idx) => (
@@ -127,10 +137,10 @@ export default function Resume() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeSection>
 
         {/* Skills */}
-        <section className="resume-section">
+        <FadeSection className="resume-section">
           <p className="resume-section-title">{t('resume.sectionSkills')}</p>
           <div className="skills-matrix">
             {skills.map((group) => (
@@ -145,7 +155,7 @@ export default function Resume() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeSection>
 
       </div>
     </div>

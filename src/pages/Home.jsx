@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { profile, skillChips, chipColors, achievements, talks, projects, languageColors } from '../data/profile'
+import { useInView } from '../hooks/useInView'
 import '../styles/Home.css'
 import '../styles/Projects.css'
 
@@ -12,6 +13,15 @@ function useL() {
     const lang = i18n.language.startsWith('zh') ? 'zh' : 'en'
     return obj[lang] ?? obj.en
   }
+}
+
+function FadeSection({ children, className }) {
+  const [ref, inView] = useInView()
+  return (
+    <div ref={ref} className={`fade-up${inView ? ' visible' : ''}${className ? ` ${className}` : ''}`}>
+      {children}
+    </div>
+  )
 }
 
 export default function Home() {
@@ -73,7 +83,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="home-section">
+          <FadeSection className="home-section">
             <p className="section-label">{t('home.sectionSkills')}</p>
             <div className="skill-chips">
               {skillChips.map((chip) => {
@@ -89,9 +99,9 @@ export default function Home() {
                 )
               })}
             </div>
-          </div>
+          </FadeSection>
 
-          <div className="home-section">
+          <FadeSection className="home-section">
             <p className="section-label">{t('home.sectionTalks')}</p>
             <div className="talks-preview">
               {talks.map((talk, i) => (
@@ -114,9 +124,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </FadeSection>
 
-          <div className="home-section">
+          <FadeSection className="home-section">
             <p className="section-label">{t('home.sectionProjects')}</p>
             <div className="home-projects-grid">
               {projects.filter((p) => p.highlight).slice(0, 3).map((p) => (
@@ -149,9 +159,9 @@ export default function Home() {
             <Link to="/projects" className="view-all-link">
               {t('home.viewAllProjects')} →
             </Link>
-          </div>
+          </FadeSection>
 
-          <div className="home-section">
+          <FadeSection className="home-section">
             <p className="section-label">{t('home.sectionAchievements')}</p>
             <div className="achievements-row">
               {achievements.map((a) => (
@@ -161,7 +171,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </FadeSection>
         </div>
       </div>
     </>
