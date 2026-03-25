@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../i18n/useTheme'
@@ -8,36 +9,54 @@ export default function Navbar() {
   const { t, i18n } = useTranslation()
   const isZh = i18n.language.startsWith('zh')
   const { theme, toggle: toggleTheme } = useTheme()
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const close = () => setMenuOpen(false)
 
   return (
     <nav>
       <div className="nav-inner">
-        <NavLink to="/" className="nav-brand">
+        <NavLink to="/" className="nav-brand" onClick={close}>
           <span className="dot">T</span>
           <span className="zh">{profile.name.zh}</span>
           <span className="alias">· {profile.name.alias}</span>
         </NavLink>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ul className="nav-links">
-            <li><NavLink to="/" end>{t('nav.about')}</NavLink></li>
-            <li><NavLink to="/resume">{t('nav.resume')}</NavLink></li>
-            <li><NavLink to="/projects">{t('nav.projects')}</NavLink></li>
-            <li><NavLink to="/contact">{t('nav.contact')}</NavLink></li>
+
+        <div className="nav-right">
+          {/* Desktop + mobile-open links */}
+          <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
+            <li><NavLink to="/" end onClick={close}>{t('nav.about')}</NavLink></li>
+            <li><NavLink to="/resume" onClick={close}>{t('nav.resume')}</NavLink></li>
+            <li><NavLink to="/projects" onClick={close}>{t('nav.projects')}</NavLink></li>
+            <li><NavLink to="/contact" onClick={close}>{t('nav.contact')}</NavLink></li>
+            <li><NavLink to="/blog" onClick={close}>{t('nav.blog')}</NavLink></li>
           </ul>
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle dark mode"
-          >
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-          </button>
-          <button
-            className="lang-toggle"
-            onClick={() => i18n.changeLanguage(isZh ? 'en' : 'zh-TW')}
-            aria-label="Switch language"
-          >
-            {isZh ? 'EN' : '中'}
-          </button>
+
+          {/* Controls: theme + lang + hamburger */}
+          <div className="nav-controls">
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            </button>
+            <button
+              className="lang-toggle"
+              onClick={() => i18n.changeLanguage(isZh ? 'en' : 'zh-TW')}
+              aria-label="Switch language"
+            >
+              {isZh ? 'EN' : '中'}
+            </button>
+            <button
+              className="hamburger"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
+            </button>
+          </div>
         </div>
       </div>
     </nav>
@@ -57,6 +76,25 @@ function MoonIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+  )
+}
+
+function HamburgerIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="18" x2="20" y2="18" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <line x1="5" y1="5" x2="19" y2="19" />
+      <line x1="19" y1="5" x2="5" y2="19" />
     </svg>
   )
 }
