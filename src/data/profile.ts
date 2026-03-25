@@ -432,6 +432,7 @@ export const certifications: Certification[] = [
   { name: 'RHCVA',      issuer: 'Red Hat',      year: '2018', desc: { en: 'Red Hat Certified Virtualization Administrator', zh: 'Red Hat 認證虛擬化管理員' } },
   { name: 'MCSD',       issuer: 'Microsoft',    year: '2017', desc: { en: 'Microsoft Certified Solutions Developer — Web Applications', zh: 'Microsoft 認證解決方案開發人員 — Web 應用程式' } },
   { name: 'OCPJWCD',   issuer: 'Oracle',       year: '2015', desc: { en: 'Oracle Certified Professional Java Web Component Developer', zh: 'Oracle 認證 Java Web 元件開發專業人員' } },
+  { name: 'OCJP',       issuer: 'Oracle',       year: '2015', desc: { en: 'Oracle Certified Java Programmer', zh: 'Oracle 認證 Java 程式設計師' } },
 ]
 
 export const consulting: ConsultingService[] = [
@@ -725,6 +726,19 @@ export const projects: Project[] = [
     url: 'https://github.com/Lung-Yu/auto-tools',
     tags: ['Automation', 'Python', 'Web Scraping', 'macOS'],
     year: '2026',
+    highlight: false,
+  },
+  {
+    name: 'File Monitor System',
+    description: {
+      en: 'System directory monitoring tool that detects unauthorised file modifications in real time. Suitable for monitoring live systems for hacker intrusions or malicious changes.',
+      zh: '即時偵測系統目錄中未授權檔案異動的監控工具，適用於監控線上系統的駭客入侵或惡意竄改行為。',
+    },
+    language: 'Python',
+    stars: 0,
+    url: 'https://github.com/Lung-Yu/File-Monitor',
+    tags: ['Security', 'Python', 'System Protection', 'File Integrity'],
+    year: '2020',
     highlight: false,
   },
 ]
