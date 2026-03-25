@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "about": "關於我",
+    "resume": "履歷",
+    "projects": "專案"
+  },
+  "home": {
+    "status": "積極尋求機會 · 台灣，台北",
+    "sectionSkills": "技術技能",
+    "sectionTalks": "演講紀錄",
+    "sectionAchievements": "GitHub 成就",
+    "statsYears": "年資",
+    "statsCerts": "國際認證",
+    "statsTalks": "演講場次"
+  },
+  "resume": {
+    "sectionExp": "工作經歷",
+    "sectionEdu": "學歷",
+    "sectionCerts": "認證",
+    "sectionTalks": "演講紀錄",
+    "sectionSkills": "技能",
+    "printBtn": "列印 / 儲存 PDF"
+  },
+  "projects": {
+    "title": "專案作品",
+    "subtitle": "開源工具、AI 實驗與資安研究。",
+    "featured": "精選",
+    "more": "更多專案"
+  },
+  "footer": {
+    "credit": "以 React + Vite 打造"
+  }
+}

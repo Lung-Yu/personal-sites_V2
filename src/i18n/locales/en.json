@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "about": "About",
+    "resume": "Resume",
+    "projects": "Projects"
+  },
+  "home": {
+    "status": "Open to opportunities · Taipei, Taiwan",
+    "sectionSkills": "Technical Skills",
+    "sectionTalks": "Conference Talks",
+    "sectionAchievements": "GitHub Achievements",
+    "statsYears": "Years Experience",
+    "statsCerts": "Certifications",
+    "statsTalks": "Conference Talks"
+  },
+  "resume": {
+    "sectionExp": "Work Experience",
+    "sectionEdu": "Education",
+    "sectionCerts": "Certifications",
+    "sectionTalks": "Conference Talks",
+    "sectionSkills": "Skills",
+    "printBtn": "Print / Save PDF"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Open-source tools, AI experiments, and security research.",
+    "featured": "Featured",
+    "more": "More Projects"
+  },
+  "footer": {
+    "credit": "Built with React + Vite"
+  }
+}
