@@ -17,10 +17,10 @@ export const profile = {
   bio: {
     en: `Cybersecurity expert and full-stack developer with 10+ years of experience in information security and software development. Specialises in integrating security into the development process to create safer, more stable software systems.
 
-Conference speaker at DevOpsDays Taipei, CyberRes, and CISA. Holds CISSP, CSSLP, OSCP, ISO 27001 Lead Auditor, and CEH certifications. Currently Technical Manager at Cloudforce and part-time instructor teaching DevSecOps.`,
+Conference speaker at DevOpsDays Taipei, CyberRes, and CISA. Holds CISSP, CSSLP, ISO 27001 Lead Auditor, and CEH certifications. Currently Technical Manager at Cloudforce and part-time instructor teaching DevSecOps.`,
     zh: `擁有 10 年以上資訊安全與軟體開發經驗的資安專家與全端開發者，專注於將安全性融入開發流程，打造更安全穩定的軟體系統。
 
-曾於 DevOpsDays Taipei、CyberRes 及 CISA 等研討會演講。持有 CISSP、CSSLP、OSCP、ISO 27001 主導稽核員及 CEH 等國際認證。目前擔任 Cloudforce 技術經理，並兼任 DevSecOps 課程講師。`,
+曾於 DevOpsDays Taipei、CyberRes 及 CISA 等研討會演講。持有 CISSP、CSSLP、ISO 27001 主導稽核員及 CEH 等國際認證。目前擔任 Cloudforce 技術經理，並兼任 DevSecOps 課程講師。`,
   },
   links: {
     github: 'https://github.com/Lung-Yu',
@@ -35,7 +35,7 @@ export const skills = [
     items: {
       en: [
         'Security Architecture & Governance',
-        'Penetration Testing (OSCP / CEH)',
+        'Penetration Testing (CEH)',
         'Vulnerability Assessment',
         'Incident Response & Risk Management',
         'ISO 27001 Lead Auditor',
@@ -44,7 +44,7 @@ export const skills = [
       ],
       zh: [
         '資安架構與治理',
-        '滲透測試（OSCP / CEH）',
+        '滲透測試（CEH）',
         '弱點評估',
         '事件應變與風險管理',
         'ISO 27001 主導稽核員',
@@ -133,7 +133,6 @@ export const skillChips = [
   { label: 'Cybersecurity', cat: 'sec' },
   { label: 'CISSP', cat: 'sec' },
   { label: 'CSSLP', cat: 'sec' },
-  { label: 'OSCP', cat: 'sec' },
   { label: 'ISO 27001', cat: 'sec' },
   { label: 'Docker', cat: 'infra' },
   { label: 'DevSecOps', cat: 'infra' },
@@ -321,13 +320,87 @@ export const education = [
 export const certifications = [
   { name: 'CISSP',      issuer: 'ISC2',               year: '2022', desc: { en: 'Certified Information Systems Security Professional', zh: '國際資訊系統安全認證師' } },
   { name: 'CSSLP',      issuer: 'ISC2',               year: '2024', desc: { en: 'Certified Secure Software Lifecycle Professional', zh: '認證安全軟體生命週期專業人員' } },
-  { name: 'OSCP',       issuer: 'Offensive Security', year: '',     desc: { en: 'Offensive Security Certified Professional', zh: '進攻性安全認證專業人員' } },
   { name: 'ISO 27001',  issuer: 'BSI',                year: '2023', desc: { en: 'ISO 27001:2022 Lead Auditor', zh: 'ISO 27001:2022 主導稽核員' } },
   { name: 'CEH',        issuer: 'EC-Council',         year: '2020', desc: { en: 'Certified Ethical Hacker', zh: '認證道德駭客' } },
   { name: 'Google CCS', issuer: 'Google',             year: '2023', desc: { en: 'Google Cybersecurity Certification', zh: 'Google 網路安全認證' } },
   { name: 'RHCVA',      issuer: 'Red Hat',            year: '2018', desc: { en: 'Red Hat Certified Virtualization Administrator', zh: 'Red Hat 認證虛擬化管理員' } },
   { name: 'MCSD',       issuer: 'Microsoft',          year: '2017', desc: { en: 'Microsoft Certified Solutions Developer — Web Applications', zh: 'Microsoft 認證解決方案開發人員 — Web 應用程式' } },
   { name: 'OCPJWCD',    issuer: 'Oracle',             year: '2015', desc: { en: 'Oracle Certified Professional Java Web Component Developer', zh: 'Oracle 認證 Java Web 元件開發專業人員' } },
+]
+
+export const consulting = [
+  {
+    icon: '🔐',
+    title: { en: 'Secure Development Process Planning', zh: '安全開發流程規劃' },
+    desc: {
+      en: 'Design and implement DevSecOps practices tailored for your team — integrating security gates into CI/CD, SAST/DAST tooling, and secure coding guidelines.',
+      zh: '為您的開發團隊量身規劃 DevSecOps 實踐，整合 CI/CD 安全關卡、SAST/DAST 工具及安全編碼規範。',
+    },
+    items: {
+      en: ['DevSecOps pipeline design', 'SAST/DAST integration', 'Security policy drafting', 'Developer security awareness'],
+      zh: ['DevSecOps 流水線設計', 'SAST/DAST 工具整合', '資安政策制定', '開發人員資安意識培訓'],
+    },
+  },
+  {
+    icon: '🤖',
+    title: { en: 'AI Coding Consulting', zh: 'AI Coding 顧問' },
+    desc: {
+      en: 'Hands-on guidance for building AI-powered applications — RAG pipelines, LLM integration, prompt engineering, and AI-assisted development workflows.',
+      zh: '協助打造 AI 應用程式的實戰顧問——RAG 流水線建置、LLM 整合、Prompt 工程及 AI 輔助開發流程。',
+    },
+    items: {
+      en: ['RAG system design', 'LLM selection & configuration', 'AI workflow automation', 'AI security considerations'],
+      zh: ['RAG 系統設計', 'LLM 選型與設定', 'AI 工作流程自動化', 'AI 安全性考量'],
+    },
+  },
+  {
+    icon: '🏫',
+    title: { en: 'Corporate Training & Workshops', zh: '企業內訓 / 工作坊' },
+    desc: {
+      en: 'Custom training programmes on DevSecOps, cybersecurity, and AI integration — delivered as workshops, lectures, or multi-session courses for engineering teams.',
+      zh: '針對工程團隊量身設計 DevSecOps、資安及 AI 整合訓練課程，可依需求提供工作坊、演講或多堂系列課程。',
+    },
+    items: {
+      en: ['DevSecOps fundamentals', 'Secure coding practices', 'AI in SDLC', 'Security awareness training'],
+      zh: ['DevSecOps 基礎', '安全編碼實務', 'AI 融入 SDLC', '資安意識培訓'],
+    },
+  },
+  {
+    icon: '🔍',
+    title: { en: 'Security-Focused Code Review', zh: 'Code Review（資安導向）' },
+    desc: {
+      en: 'In-depth code review identifying security vulnerabilities, injection risks, authentication flaws, and insecure dependencies — with actionable remediation recommendations.',
+      zh: '深入檢視程式碼中的安全漏洞、注入風險、認證缺陷及不安全的相依套件，提供具體修補建議。',
+    },
+    items: {
+      en: ['OWASP Top 10 review', 'Dependency audit', 'Authentication & authorisation checks', 'Written findings report'],
+      zh: ['OWASP Top 10 檢查', '相依套件稽核', '認證與授權檢查', '書面發現報告'],
+    },
+  },
+  {
+    icon: '🩺',
+    title: { en: 'Security Health Check', zh: '資安健診' },
+    desc: {
+      en: 'A lightweight security assessment for startups and SMBs — reviewing architecture, access controls, and key risks to give you a clear security posture snapshot.',
+      zh: '適合新創與中小企業的輕量資安評估——審視架構、存取控管與主要風險，快速掌握資安現況。',
+    },
+    items: {
+      en: ['Architecture review', 'Access control audit', 'Risk prioritisation', 'Remediation roadmap'],
+      zh: ['架構審視', '存取控管稽核', '風險優先排序', '修補路線圖'],
+    },
+  },
+  {
+    icon: '🎤',
+    title: { en: 'Tech Talks & Keynotes', zh: '技術演講 / 主題演說' },
+    desc: {
+      en: 'Available for conference keynotes, meetup talks, and panel discussions on DevSecOps, AI security, and secure software development.',
+      zh: '歡迎邀約研討會主題演說、技術社群分享及座談，主題涵蓋 DevSecOps、AI 資安及安全軟體開發。',
+    },
+    items: {
+      en: ['DevSecOps & Agile', 'AI × Security', 'Secure SDLC', 'Panel discussions'],
+      zh: ['DevSecOps 與敏捷', 'AI × 資安', '安全 SDLC', '座談討論'],
+    },
+  },
 ]
 
 export const talks = [
@@ -338,6 +411,8 @@ export const talks = [
     },
     event: 'CyberRes 2025',
     date: { en: 'April 2025', zh: '2025年4月' },
+    slides: '',
+    video: '',
   },
   {
     title: {
@@ -346,6 +421,8 @@ export const talks = [
     },
     event: 'CISA Conference',
     date: { en: 'August 2024', zh: '2024年8月' },
+    slides: '',
+    video: '',
   },
   {
     title: {
@@ -354,6 +431,8 @@ export const talks = [
     },
     event: 'DevOpsDays Taipei',
     date: { en: 'July 2024', zh: '2024年7月' },
+    slides: 'https://speakerdeck.com/lungyu',
+    video: '',
   },
   {
     title: {
@@ -362,6 +441,8 @@ export const talks = [
     },
     event: 'CyberRes 2023',
     date: { en: 'May 2023', zh: '2023年5月' },
+    slides: '',
+    video: '',
   },
 ]
 
