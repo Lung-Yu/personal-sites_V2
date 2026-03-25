@@ -245,6 +245,21 @@
   white-space: nowrap;
 }
 
+.talk-preview-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.talk-link-sm {
+  font-size: 13px;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity var(--transition);
+}
+
+.talk-link-sm:hover { opacity: 1; text-decoration: none; }
+
 @media (max-width: 560px) {
   .talk-preview-item {
     grid-template-columns: 1fr;

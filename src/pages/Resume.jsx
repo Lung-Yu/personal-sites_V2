@@ -113,6 +113,16 @@ export default function Resume() {
                 <div className="talk-meta">
                   <span className="talk-event">{talk.event}</span>
                   <span className="talk-date">{l(talk.date)}</span>
+                  {talk.slides && (
+                    <a href={talk.slides} target="_blank" rel="noopener noreferrer" className="talk-link">
+                      📊 Slides
+                    </a>
+                  )}
+                  {talk.video && (
+                    <a href={talk.video} target="_blank" rel="noopener noreferrer" className="talk-link">
+                      ▶ Video
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

@@ -98,7 +98,19 @@ export default function Home() {
                 <div key={i} className="talk-preview-item">
                   <span className="talk-preview-event">{talk.event}</span>
                   <span className="talk-preview-title">{l(talk.title)}</span>
-                  <span className="talk-preview-date">{l(talk.date)}</span>
+                  <div className="talk-preview-right">
+                    <span className="talk-preview-date">{l(talk.date)}</span>
+                    {talk.slides && (
+                      <a href={talk.slides} target="_blank" rel="noopener noreferrer" className="talk-link-sm">
+                        📊
+                      </a>
+                    )}
+                    {talk.video && (
+                      <a href={talk.video} target="_blank" rel="noopener noreferrer" className="talk-link-sm">
+                        ▶
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
