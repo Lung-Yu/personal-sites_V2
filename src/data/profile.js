@@ -173,8 +173,8 @@ export const experience = [
   },
   {
     company: 'AINetwork',
-    companyZh: 'AINetwork（全智網）',
-    title: { en: 'Consulting Instructor', zh: '配合講師顧問' },
+    companyZh: 'AI全智網',
+    title: { en: 'SSDLC Instructor', zh: '講師' },
     period: { en: 'Apr 2025 — Present', zh: '2025年4月 — 至今' },
     location: { en: 'Taiwan', zh: '台灣' },
     highlights: {
@@ -189,8 +189,8 @@ export const experience = [
     },
   },
   {
-    company: 'BigData Intelligence Education',
-    companyZh: '大數智能',
+    company: 'Gtalent Co., Ltd.',
+    companyZh: '大數智能教育',
     title: { en: 'Instructor', zh: '講師' },
     period: { en: 'Nov 2025 — Present', zh: '2025年11月 — 至今' },
     location: { en: 'Taiwan', zh: '台灣' },
