@@ -192,7 +192,7 @@ export const experience = [
   {
     company: 'BigData Intelligence Education',
     companyZh: '大數智能',
-    title: { en: 'Instructor (Part-time)', zh: '課程講師（兼職）' },
+    title: { en: 'Instructor', zh: '講師' },
     period: { en: 'Nov 2025 — Present', zh: '2025年11月 — 至今' },
     location: { en: 'Taiwan', zh: '台灣' },
     highlights: {
