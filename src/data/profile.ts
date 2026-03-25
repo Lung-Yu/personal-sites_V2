@@ -53,6 +53,8 @@ export interface Certification {
   name: string
   issuer: string
   year: string
+  expiryYear?: string
+  credentialUrl?: string
   desc: BL
 }
 
@@ -422,8 +424,8 @@ export const education: EducationEntry[] = [
 ]
 
 export const certifications: Certification[] = [
-  { name: 'CISSP',      issuer: 'ISC2',         year: '2022', desc: { en: 'Certified Information Systems Security Professional', zh: '國際資訊系統安全認證師' } },
-  { name: 'CSSLP',      issuer: 'ISC2',         year: '2024', desc: { en: 'Certified Secure Software Lifecycle Professional', zh: '認證安全軟體生命週期專業人員' } },
+  { name: 'CISSP',  issuer: 'ISC2', year: '2022', expiryYear: '2028', credentialUrl: 'https://www.credly.com/badges/37b36bbe-cf5b-47fe-b697-71cca23bba6c', desc: { en: 'Certified Information Systems Security Professional', zh: '國際資訊系統安全認證師' } },
+  { name: 'CSSLP',  issuer: 'ISC2', year: '2024', expiryYear: '2027', credentialUrl: 'https://www.credly.com/badges/4eab1fd1-b3ed-4989-b6e6-5189e00822ab', desc: { en: 'Certified Secure Software Lifecycle Professional', zh: '認證安全軟體生命週期專業人員' } },
   { name: 'ISO 27001',  issuer: 'BSI',          year: '2023', desc: { en: 'ISO 27001:2022 Lead Auditor', zh: 'ISO 27001:2022 主導稽核員' } },
   { name: 'CEH',        issuer: 'EC-Council',   year: '2020', desc: { en: 'Certified Ethical Hacker', zh: '認證道德駭客' } },
   { name: 'Google CCS', issuer: 'Google',       year: '2023', desc: { en: 'Google Cybersecurity Certification', zh: 'Google 網路安全認證' } },
