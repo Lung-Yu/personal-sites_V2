@@ -18,16 +18,17 @@ Git: every meaningful change gets its own commit. See existing history for messa
 
 Single-page React app (Vite + HashRouter) deployed to GitHub Pages via `.github/workflows/deploy.yml` (`gh-pages` branch). `vite.config.js` sets `base: '/personal-sites_V2/'`.
 
-### Content layer — `src/data/profile.js`
+### Content layer — `src/data/profile.ts`
 **All personal content lives here.** Every string that appears on the site is either in this file or in the i18n locale files. Fields that differ between languages use `{ en: '...', zh: '...' }` objects. Edit this file to update bio, experience, education, certifications, talks, projects, and skills.
 
 ### i18n — `src/i18n/`
-- `index.js` — initialises i18next with `i18next-browser-languagedetector`; default language `zh-TW`, persisted to `localStorage`
+- `index.ts` — initialises i18next with `i18next-browser-languagedetector`; default language `zh-TW`, persisted to `localStorage`
 - `locales/en.json` / `locales/zh.json` — UI chrome strings only (nav labels, section titles, buttons)
-- Dynamic content (experience bullets, project descriptions, etc.) stays in `profile.js` as `{ en, zh }` objects
+- `useTheme.ts` — dark/light theme hook; reads OS preference, persists to `localStorage`, applies via `data-theme` attribute on `<html>`
+- Dynamic content (experience bullets, project descriptions, etc.) stays in `profile.ts` as `{ en, zh }` objects
 
 In every page/component, bilingual profile data is resolved with a `useL()` hook:
-```js
+```ts
 function useL() {
   const { i18n } = useTranslation()
   return (obj) => {
@@ -39,10 +40,15 @@ function useL() {
 ```
 
 ### Pages & routing — `src/pages/`
-Three routes via `HashRouter` (avoids GitHub Pages 404s):
-- `/` → `Home.jsx` — hero, stats, skill chips, talks preview, achievements
-- `/resume` → `Resume.jsx` — timeline experience/education, certs grid, talks, skills matrix; `window.print()` for PDF
-- `/projects` → `Projects.jsx` — featured cards + secondary grid from `profile.js`
+Five routes via `HashRouter` (avoids GitHub Pages 404s):
+- `/` → `Home.tsx` — hero, stats, skill chips, talks preview, achievements
+- `/resume` → `Resume.tsx` — timeline experience/education, certs grid, talks, skills matrix; `window.print()` for PDF
+- `/projects` → `Projects.tsx` — featured cards + secondary grid from `profile.ts`
+- `/contact` → `Contact.tsx`
+- `/blog` → `Blog.tsx`
+
+### Hooks — `src/hooks/`
+- `useInView.ts` — `IntersectionObserver` hook for scroll-triggered animations; fires once and disconnects
 
 ### Styles — `src/styles/`
 Plain CSS with custom properties defined in `global.css`. No CSS framework. Each page/component has its own `.css` file imported directly in the JSX.
