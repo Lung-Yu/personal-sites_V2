@@ -55,6 +55,7 @@ export interface Certification {
   year: string
   expiryYear?: string
   credentialUrl?: string
+  certificateUrl?: string
   desc: BL
 }
 
@@ -424,15 +425,16 @@ export const education: EducationEntry[] = [
 ]
 
 export const certifications: Certification[] = [
-  { name: 'CISSP',  issuer: 'ISC2', year: '2022', expiryYear: '2028', credentialUrl: 'https://www.credly.com/badges/37b36bbe-cf5b-47fe-b697-71cca23bba6c', desc: { en: 'Certified Information Systems Security Professional', zh: '國際資訊系統安全認證師' } },
-  { name: 'CSSLP',  issuer: 'ISC2', year: '2024', expiryYear: '2027', credentialUrl: 'https://www.credly.com/badges/4eab1fd1-b3ed-4989-b6e6-5189e00822ab', desc: { en: 'Certified Secure Software Lifecycle Professional', zh: '認證安全軟體生命週期專業人員' } },
-  { name: 'ISO 27001',  issuer: 'BSI',          year: '2023', desc: { en: 'ISO 27001:2022 Lead Auditor', zh: 'ISO 27001:2022 主導稽核員' } },
-  { name: 'CEH',        issuer: 'EC-Council',   year: '2020', desc: { en: 'Certified Ethical Hacker', zh: '認證道德駭客' } },
-  { name: 'Google CCS', issuer: 'Google',       year: '2023', desc: { en: 'Google Cybersecurity Certification', zh: 'Google 網路安全認證' } },
-  { name: 'RHCVA',      issuer: 'Red Hat',      year: '2018', desc: { en: 'Red Hat Certified Virtualization Administrator', zh: 'Red Hat 認證虛擬化管理員' } },
-  { name: 'MCSD',       issuer: 'Microsoft',    year: '2017', desc: { en: 'Microsoft Certified Solutions Developer — Web Applications', zh: 'Microsoft 認證解決方案開發人員 — Web 應用程式' } },
-  { name: 'OCPJWCD',   issuer: 'Oracle',       year: '2015', desc: { en: 'Oracle Certified Professional Java Web Component Developer', zh: 'Oracle 認證 Java Web 元件開發專業人員' } },
-  { name: 'OCJP',       issuer: 'Oracle',       year: '2015', desc: { en: 'Oracle Certified Java Programmer', zh: 'Oracle 認證 Java 程式設計師' } },
+  { name: 'CISSP',     issuer: 'ISC2',       year: '2022', expiryYear: '2028', credentialUrl: 'https://www.credly.com/badges/37b36bbe-cf5b-47fe-b697-71cca23bba6c', certificateUrl: '/personal-sites_V2/certificates/isc2/isc_cissp.pdf',          desc: { en: 'Certified Information Systems Security Professional', zh: '國際資訊系統安全認證師' } },
+  { name: 'CSSLP',     issuer: 'ISC2',       year: '2024', expiryYear: '2027', credentialUrl: 'https://www.credly.com/badges/4eab1fd1-b3ed-4989-b6e6-5189e00822ab', certificateUrl: '/personal-sites_V2/certificates/isc2/isc_csslp.pdf',          desc: { en: 'Certified Secure Software Lifecycle Professional', zh: '認證安全軟體生命週期專業人員' } },
+  { name: 'ISO 27001', issuer: 'BSI',        year: '2023', certificateUrl: '/personal-sites_V2/certificates/iso/ISO_27001_2022_LA.pdf',                                                                                                         desc: { en: 'ISO 27001:2022 Lead Auditor', zh: 'ISO 27001:2022 主導稽核員' } },
+  { name: 'CEH',       issuer: 'EC-Council', year: '2020', certificateUrl: '/personal-sites_V2/certificates/ec-council/ceh.pdf',                                                                                                                  desc: { en: 'Certified Ethical Hacker', zh: '認證道德駭客' } },
+  { name: 'iPAS',      issuer: 'iPAS',       year: '2021', certificateUrl: '/personal-sites_V2/certificates/ipas/ipas_engineer.pdf',                                                                                                               desc: { en: 'iPAS Cybersecurity Engineer — Junior', zh: 'iPAS 資安工程師-初級' } },
+  { name: 'Google CCS', issuer: 'Google',    year: '2023',                                                                                                                                                                                           desc: { en: 'Google Cybersecurity Certification', zh: 'Google 網路安全認證' } },
+  { name: 'RHCVA',     issuer: 'Red Hat',    year: '2018', certificateUrl: '/personal-sites_V2/certificates/red-hat/rhcva.pdf',                                                                                                                   desc: { en: 'Red Hat Certified Virtualization Administrator', zh: 'Red Hat 認證虛擬化管理員' } },
+  { name: 'MCSD',      issuer: 'Microsoft',  year: '2017', certificateUrl: '/personal-sites_V2/certificates/microsoft/mcsd-web-applications.pdf',                                                                                               desc: { en: 'Microsoft Certified Solutions Developer — Web Applications', zh: 'Microsoft 認證解決方案開發人員 — Web 應用程式' } },
+  { name: 'OCPJWCD',   issuer: 'Oracle',     year: '2015', certificateUrl: '/personal-sites_V2/certificates/oracle/ocpjwcd.pdf',                                                                                                               desc: { en: 'Oracle Certified Professional Java Web Component Developer', zh: 'Oracle 認證 Java Web 元件開發專業人員' } },
+  { name: 'OCJP',      issuer: 'Oracle',     year: '2015',                                                                                                                                                                                           desc: { en: 'Oracle Certified Java Programmer', zh: 'Oracle 認證 Java 程式設計師' } },
 ]
 
 export const consulting: ConsultingService[] = [
@@ -563,7 +565,7 @@ export const talks: Talk[] = [
     event: 'DevOpsDays Taipei 2024',
     date: { en: 'July 2024', zh: '2024年7月' },
     location: 'Bottle Cap Factory',
-    slides: 'https://speakerdeck.com/lungyu',
+    slides: 'https://devopsdays.tw/2024/session-page/3022',
     video: '',
   },
   {
