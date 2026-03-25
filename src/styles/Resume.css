@@ -1,0 +1,324 @@
+.resume {
+  padding: 48px 0 96px;
+}
+
+/* ── Header ── */
+.resume-hero {
+  margin-bottom: 40px;
+  padding: 32px;
+  background: linear-gradient(135deg, #f0f7ff 0%, #f5f0ff 100%);
+  border: 1px solid #dbeafe;
+  border-radius: var(--radius);
+}
+
+.resume-hero h1 {
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.resume-hero .subtitle {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.resume-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.resume-meta a {
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.resume-meta a:hover { color: var(--accent); }
+
+.resume-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Section ── */
+.resume-section {
+  margin-bottom: 44px;
+}
+
+.resume-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Timeline entry ── */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.timeline-entry {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: white;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.timeline-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.timeline-header .period {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.timeline-org {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-org .org-badge {
+  font-size: 11px;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.timeline-entry ul {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.timeline-entry ul li {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.edu-focus {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+/* ── Certs ── */
+.certs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 520px) {
+  .certs-grid { grid-template-columns: 1fr; }
+}
+
+.cert-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.cert-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.cert-card .cert-abbr {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent);
+  font-family: var(--mono);
+  margin-bottom: 2px;
+}
+
+.cert-card .cert-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.cert-card .cert-meta {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+  font-family: var(--mono);
+}
+
+/* ── Skills matrix ── */
+.skills-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 520px) {
+  .skills-matrix { grid-template-columns: 1fr; }
+}
+
+.skill-group {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.skill-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.skill-group-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skill-group h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.skill-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skill-group ul li {
+  font-size: 13px;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-group ul li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Talks ── */
+.talks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.talk-entry {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  border-left: 3px solid var(--accent);
+}
+
+.talk-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.45;
+}
+
+.talk-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.talk-event {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--accent-light);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.talk-date {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+/* ── Print ── */
+@media print {
+  .resume { padding: 0; }
+  .resume-hero {
+    background: none;
+    border: 1px solid #ccc;
+  }
+  .btn, .resume-actions { display: none; }
+  .timeline-entry { break-inside: avoid; }
+  .certs-grid, .skills-matrix { grid-template-columns: 1fr 1fr; }
+}
