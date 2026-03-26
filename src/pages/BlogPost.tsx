@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom'
-import { type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import { writings, type BL } from '../data/profile'
+import { getPost } from '../lib/posts'
+import { writings } from '../data/profile'
+import type { BL } from '../data/profile'
 import '../styles/BlogPost.css'
 import '../styles/Projects.css'
 
@@ -18,66 +19,17 @@ function useL() {
   return l
 }
 
-function renderInline(text: string): ReactNode {
-  const segs: ReactNode[] = []
-  const rx = /(\*\*[^*]+\*\*|`[^`]+`)/g
-  let last = 0
-  let m: RegExpExecArray | null
-  while ((m = rx.exec(text)) !== null) {
-    if (m.index > last) segs.push(text.slice(last, m.index))
-    const tok = m[0]
-    if (tok.startsWith('**')) {
-      segs.push(<strong key={m.index}>{tok.slice(2, -2)}</strong>)
-    } else {
-      segs.push(<code className="inline-code" key={m.index}>{tok.slice(1, -1)}</code>)
-    }
-    last = m.index + tok.length
-  }
-  if (last < text.length) segs.push(text.slice(last))
-  if (segs.length === 0) return text
-  if (segs.length === 1) return segs[0]
-  return <>{segs}</>
-}
-
-function renderContent(raw: string): ReactNode[] {
-  return raw
-    .split(/\n\n+/)
-    .filter(Boolean)
-    .map((block, i) => {
-      if (block.startsWith('## ')) {
-        return <h2 key={i}>{renderInline(block.slice(3))}</h2>
-      }
-      const lines = block.split('\n').filter(Boolean)
-      if (lines.length >= 1 && lines.every((l) => /^\s*[-*]\s/.test(l))) {
-        return (
-          <ul key={i}>
-            {lines.map((line, j) => (
-              <li key={j}>{renderInline(line.replace(/^\s*[-*]\s+/, ''))}</li>
-            ))}
-          </ul>
-        )
-      }
-      if (lines.length >= 2 && lines.every((l) => /^\d+\.\s/.test(l))) {
-        return (
-          <ol key={i}>
-            {lines.map((line, j) => (
-              <li key={j}>{renderInline(line.replace(/^\d+\.\s+/, ''))}</li>
-            ))}
-          </ol>
-        )
-      }
-      return <p key={i}>{renderInline(block)}</p>
-    })
-}
-
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const l = useL()
+  const lang: 'en' | 'zh' = i18n.language.startsWith('zh') ? 'zh' : 'en'
 
-  const writing = writings.find((w) => w.slug === slug)
+  // Try Markdown post first, fall back to profile.ts writing with inline content
+  const post = slug ? getPost(slug) : undefined
+  const legacyWriting = !post ? writings.find((w) => w.slug === slug) : undefined
 
-  if (!writing) {
+  if (!post && !legacyWriting) {
     return (
       <div className="blog-post-page">
         <div className="container">
@@ -91,7 +43,12 @@ export default function BlogPost() {
     )
   }
 
-  const content = writing.content ? l(writing.content as BL) : null
+  const title    = post ? l(post.title)  : l((legacyWriting!.title  as BL))
+  const teaser   = post ? l(post.teaser) : l((legacyWriting!.teaser as BL))
+  const date     = post ? l(post.date)   : l((legacyWriting!.date   as BL))
+  const tags     = post ? post.tags      : legacyWriting!.tags
+  const platform = post ? post.platform  : legacyWriting!.platform
+  const html     = post?.html[lang]
 
   return (
     <div className="blog-post-page">
@@ -100,17 +57,15 @@ export default function BlogPost() {
 
         <header className="blog-post-header">
           <div className="blog-post-badges">
-            <span className="blog-post-type">{writing.type}</span>
-            <span className="blog-post-platform">{writing.platform}</span>
-            <span className="blog-post-date">{l(writing.date)}</span>
+            <span className="blog-post-type">{(post?.type ?? legacyWriting?.type) ?? 'article'}</span>
+            <span className="blog-post-platform">{platform}</span>
+            <span className="blog-post-date">{date}</span>
           </div>
-          <h1 className="blog-post-title">{l(writing.title)}</h1>
-          {writing.teaser && (
-            <p className="blog-post-teaser">{l(writing.teaser)}</p>
-          )}
-          {writing.tags.length > 0 && (
+          <h1 className="blog-post-title">{title}</h1>
+          {teaser && <p className="blog-post-teaser">{teaser}</p>}
+          {tags.length > 0 && (
             <div className="blog-post-tags">
-              {writing.tags.map((tag) => (
+              {tags.map((tag) => (
                 <span key={tag} className="project-tag">{tag}</span>
               ))}
             </div>
@@ -119,13 +74,14 @@ export default function BlogPost() {
 
         <hr className="blog-post-divider" />
 
-        {content ? (
-          <article className="blog-post-content">
-            {renderContent(content)}
-          </article>
-        ) : writing.url ? (
-          <p style={{ color: 'var(--text2)' }}>
-            <a href={writing.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+        {html ? (
+          <article
+            className="blog-post-content"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        ) : legacyWriting?.url ? (
+          <p>
+            <a href={legacyWriting.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               {t('blog.readMore')} ↗
             </a>
           </p>

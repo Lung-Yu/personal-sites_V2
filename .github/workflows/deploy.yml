@@ -30,7 +30,7 @@ jobs:
 
       - run: npm run build
         env:
-          VITE_FORMSPREE_ID: ${{ secrets.VITE_FORMSPREE_ID }}
+          VITE_CONTACT_ENDPOINT: ${{ secrets.VITE_CONTACT_ENDPOINT }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { writings, type BL, type WritingType } from '../data/profile'
+import { posts, type Post } from '../lib/posts'
 import '../styles/Blog.css'
 import '../styles/Projects.css'
 
@@ -17,12 +18,34 @@ function useL() {
   return l
 }
 
+// Normalise a Post into the same shape WritingCard expects
+function postToWriting(p: Post) {
+  return {
+    type: p.type,
+    title: p.title,
+    teaser: p.teaser,
+    platform: p.platform,
+    url: '',
+    date: p.date,
+    lang: 'zh',
+    tags: p.tags,
+    featured: p.featured,
+    slug: p.slug,
+  }
+}
+
 export default function Blog() {
   const { t } = useTranslation()
   const l = useL()
 
-  const featured = writings.filter((w) => w.featured)
-  const rest = writings.filter((w) => !w.featured)
+  // Merge: posts (Markdown) take priority; exclude profile writings that have a
+  // slug already covered by a Markdown post to avoid duplicates.
+  const postSlugs = new Set(posts.map((p) => p.slug))
+  const writingsFiltered = writings.filter((w) => !w.slug || !postSlugs.has(w.slug))
+  const allItems = [...posts.map(postToWriting), ...writingsFiltered]
+
+  const featured = allItems.filter((w) => w.featured)
+  const rest = allItems.filter((w) => !w.featured)
 
   const typeLabel = (type: string): string => {
     const map: Record<string, string> = {
@@ -69,7 +92,7 @@ export default function Blog() {
 }
 
 interface WritingCardProps {
-  w: (typeof writings)[number]
+  w: ReturnType<typeof postToWriting> | (typeof writings)[number]
   l: (obj: BL) => string
   typeLabel: (type: string) => string
   t: (key: string) => string
@@ -95,7 +118,7 @@ function WritingCard({ w, l, typeLabel, t, featured }: WritingCardProps) {
             <span key={tag} className="project-tag">{tag}</span>
           ))}
         </div>
-        {w.url && (
+        {(w.slug || w.url) && (
           <span className="writing-read">{t('blog.readMore')}</span>
         )}
       </div>
