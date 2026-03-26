@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>蔡龍佑 · tygrus</title>
+    <script>
+      // SPA redirect for GitHub Pages with sub-path base (/personal-sites_V2)
+      // Encodes the path/query/hash after the base into a query string so index.html
+      // can restore it with history.replaceState.
+      var base = '/personal-sites_V2';
+      var l = window.location;
+      var path = l.pathname.slice(base.length) || '/';
+      var redirect = base + '/?p=' + encodeURIComponent(path + l.search) + (l.hash ? '&h=' + encodeURIComponent(l.hash) : '');
+      l.replace(redirect);
+    </script>
+  </head>
+  <body></body>
+</html>

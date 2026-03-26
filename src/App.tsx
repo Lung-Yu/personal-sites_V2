@@ -1,5 +1,5 @@
 import './i18n/index'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
@@ -22,7 +22,7 @@ function LangSync(): null {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter basename="/personal-sites_V2">
       {/* Phase 4: skip-to-content link for keyboard / screen-reader users */}
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <LangSync />
@@ -38,6 +38,6 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   )
 }
