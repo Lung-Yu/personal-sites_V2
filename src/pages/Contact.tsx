@@ -29,7 +29,7 @@ export default function Contact() {
     const form = e.currentTarget
     const data = Object.fromEntries(new FormData(form))
     try {
-      const res = await fetch('https://formspree.io/f/xzzboazb', {
+      const res = await fetch(`https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(data),

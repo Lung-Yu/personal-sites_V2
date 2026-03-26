@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { writings, type BL } from '../data/profile'
 import '../styles/BlogPost.css'
@@ -17,15 +18,55 @@ function useL() {
   return l
 }
 
-function renderContent(raw: string) {
+function renderInline(text: string): ReactNode {
+  const segs: ReactNode[] = []
+  const rx = /(\*\*[^*]+\*\*|`[^`]+`)/g
+  let last = 0
+  let m: RegExpExecArray | null
+  while ((m = rx.exec(text)) !== null) {
+    if (m.index > last) segs.push(text.slice(last, m.index))
+    const tok = m[0]
+    if (tok.startsWith('**')) {
+      segs.push(<strong key={m.index}>{tok.slice(2, -2)}</strong>)
+    } else {
+      segs.push(<code className="inline-code" key={m.index}>{tok.slice(1, -1)}</code>)
+    }
+    last = m.index + tok.length
+  }
+  if (last < text.length) segs.push(text.slice(last))
+  if (segs.length === 0) return text
+  if (segs.length === 1) return segs[0]
+  return <>{segs}</>
+}
+
+function renderContent(raw: string): ReactNode[] {
   return raw
     .split(/\n\n+/)
     .filter(Boolean)
     .map((block, i) => {
       if (block.startsWith('## ')) {
-        return <h2 key={i}>{block.slice(3)}</h2>
+        return <h2 key={i}>{renderInline(block.slice(3))}</h2>
       }
-      return <p key={i}>{block}</p>
+      const lines = block.split('\n').filter(Boolean)
+      if (lines.length >= 1 && lines.every((l) => /^\s*[-*]\s/.test(l))) {
+        return (
+          <ul key={i}>
+            {lines.map((line, j) => (
+              <li key={j}>{renderInline(line.replace(/^\s*[-*]\s+/, ''))}</li>
+            ))}
+          </ul>
+        )
+      }
+      if (lines.length >= 2 && lines.every((l) => /^\d+\.\s/.test(l))) {
+        return (
+          <ol key={i}>
+            {lines.map((line, j) => (
+              <li key={j}>{renderInline(line.replace(/^\d+\.\s+/, ''))}</li>
+            ))}
+          </ol>
+        )
+      }
+      return <p key={i}>{renderInline(block)}</p>
     })
 }
 
