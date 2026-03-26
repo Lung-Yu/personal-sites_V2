@@ -21,9 +21,43 @@
  *   teaser_zh   - Chinese teaser
  */
 
-import matter from 'gray-matter'
 import { marked } from 'marked'
 import type { WritingType } from '../data/profile'
+
+/** Minimal browser-safe frontmatter parser (no Node.js Buffer needed). */
+function parseFrontmatter(raw: string): { data: Record<string, unknown>; content: string } {
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/m)
+  if (!match) return { data: {}, content: raw }
+  const yamlBlock = match[1]
+  const content = match[2]
+  const data: Record<string, unknown> = {}
+
+  for (const line of yamlBlock.split('\n')) {
+    const kv = line.match(/^(\w+)\s*:\s*(.+)$/)
+    if (!kv) continue
+    const key = kv[1]
+    let val: string = kv[2].trim()
+
+    // Array: [a, b, c]
+    if (val.startsWith('[') && val.endsWith(']')) {
+      data[key] = val
+        .slice(1, -1)
+        .split(',')
+        .map((s) => s.trim())
+      continue
+    }
+    // Boolean
+    if (val === 'true') { data[key] = true; continue }
+    if (val === 'false') { data[key] = false; continue }
+    // Strip surrounding quotes
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1)
+    }
+    data[key] = val
+  }
+
+  return { data, content }
+}
 
 export interface Post {
   slug: string
@@ -49,7 +83,7 @@ const rawFiles = import.meta.glob<string>('/src/posts/*.md', {
 
 export const posts: Post[] = Object.values(rawFiles)
   .map((raw) => {
-    const { data, content } = matter(raw)
+    const { data, content } = parseFrontmatter(raw)
     const [enBody, zhBody = ''] = content.split(/<!--\s*zh\s*-->/)
     return {
       slug: data.slug as string,
