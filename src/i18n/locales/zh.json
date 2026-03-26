@@ -25,7 +25,8 @@
     "sectionCerts": "認證",
     "sectionTalks": "演講紀錄",
     "sectionSkills": "技能",
-    "printBtn": "列印 / 儲存 PDF"
+    "printBtn": "列印 / 儲存 PDF",
+    "talksCta": "邀請演講 →"
   },
   "projects": {
     "title": "專案作品",

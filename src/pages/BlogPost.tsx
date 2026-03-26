@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getPost } from '../lib/posts'
@@ -29,6 +30,22 @@ export default function BlogPost() {
   const post = slug ? getPost(slug) : undefined
   const legacyWriting = !post ? writings.find((w) => w.slug === slug) : undefined
 
+  const resolvedTitle  = post ? l(post.title)  : legacyWriting ? l(legacyWriting.title  as BL) : undefined
+  const resolvedTeaser = post ? l(post.teaser) : legacyWriting ? l(legacyWriting.teaser as BL) : undefined
+
+  useEffect(() => {
+    if (!resolvedTitle) return
+    const prev = document.title
+    document.title = `${resolvedTitle} · 蔡龍佑`
+    const metaDesc = document.querySelector('meta[name="description"]')
+    const prevDesc = metaDesc?.getAttribute('content') ?? ''
+    if (metaDesc && resolvedTeaser) metaDesc.setAttribute('content', resolvedTeaser)
+    return () => {
+      document.title = prev
+      if (metaDesc) metaDesc.setAttribute('content', prevDesc)
+    }
+  }, [resolvedTitle, resolvedTeaser])
+
   if (!post && !legacyWriting) {
     return (
       <div className="blog-post-page">
@@ -43,8 +60,8 @@ export default function BlogPost() {
     )
   }
 
-  const title    = post ? l(post.title)  : l((legacyWriting!.title  as BL))
-  const teaser   = post ? l(post.teaser) : l((legacyWriting!.teaser as BL))
+  const title  = resolvedTitle!
+  const teaser = resolvedTeaser
   const date     = post ? l(post.date)   : l((legacyWriting!.date   as BL))
   const tags     = post ? post.tags      : legacyWriting!.tags
   const platform = post ? post.platform  : legacyWriting!.platform

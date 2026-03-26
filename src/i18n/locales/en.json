@@ -25,7 +25,8 @@
     "sectionCerts": "Certifications",
     "sectionTalks": "Conference Talks",
     "sectionSkills": "Skills",
-    "printBtn": "Print / Save PDF"
+    "printBtn": "Print / Save PDF",
+    "talksCta": "Invite me to speak →"
   },
   "projects": {
     "title": "Projects",

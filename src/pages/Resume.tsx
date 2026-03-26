@@ -165,6 +165,7 @@ export default function Resume() {
               </div>
             ))}
           </div>
+          <Link to="/contact" className="talks-invite-cta">{t('resume.talksCta')}</Link>
         </FadeSection>
 
         {/* Skills */}

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { type ReactNode } from 'react'
 import {
   profile, skillChips, chipColors, achievements, talks, projects, languageColors,
+  certifications,
   type BL, type BLArr,
 } from '../data/profile'
 import { useInView } from '../hooks/useInView'
@@ -88,11 +89,11 @@ export default function Home() {
               <div className="stat-label">{t('home.statsYears')}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">9+</div>
+              <div className="stat-number">{certifications.length}</div>
               <div className="stat-label">{t('home.statsCerts')}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">10+</div>
+              <div className="stat-number">{talks.length}</div>
               <div className="stat-label">{t('home.statsTalks')}</div>
             </div>
           </div>
