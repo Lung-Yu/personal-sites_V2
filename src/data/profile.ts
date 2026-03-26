@@ -515,7 +515,7 @@ export const talks: Talk[] = [
       en: 'AI Era Team Management Challenges and Strategies',
       zh: 'AI 時代團隊管理的挑戰與策略',
     },
-    event: 'HWDC 2025',
+    event: 'Hello World Dev Conference 2025',
     date: { en: 'October 2025', zh: '2025年10月' },
     location: 'Taipei',
     slides: 'https://hwdc.ithome.com.tw/2025/session-page/4017',
