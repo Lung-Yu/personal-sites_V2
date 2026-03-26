@@ -47,36 +47,48 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="container hero-content">
-          <div className="hero-eyebrow">
-            <span className="status-dot" />
-            <span>{t('home.status')}</span>
-          </div>
+          <div className="hero-layout">
+            <div className="hero-text">
+              <div className="hero-eyebrow">
+                <span className="status-dot" />
+                <span>{t('home.status')}</span>
+              </div>
 
-          <h1>
-            <span className="gradient">{profile.name.zh}</span>
-          </h1>
-          <p className="en-name">{profile.name.en} · {profile.name.alias}</p>
+              <h1>
+                <span className="gradient">{profile.name.zh}</span>
+              </h1>
+              <p className="en-name">{profile.name.en} · {profile.name.alias}</p>
 
-          <div className="title-row">
-            <span className="job-title">{l(profile.title)}</span>
-            <span className="title-sep">·</span>
-            <span className="location">
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C2.3 4.339 2 5.764 2 7c0 1.452.415 2.808 1.052 4.096C4.368 13.48 6.045 15.165 7 16c.417-.368.875-.768 1.329-1.183A17.47 17.47 0 0 0 9.895 13c.641-.937 1.14-1.929 1.521-2.904.38-.974.584-1.95.584-2.596 0-2.647-1.78-4.79-4-4.79C8.35.214 8.174.21 8 .21V0Zm0 6a2 2 0 1 1 0 4A2 2 0 0 1 8 6Z"/>
-              </svg>
-              {profile.location}
-            </span>
-          </div>
+              <div className="title-row">
+                <span className="job-title">{l(profile.title)}</span>
+                <span className="title-sep">·</span>
+                <span className="location">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C2.3 4.339 2 5.764 2 7c0 1.452.415 2.808 1.052 4.096C4.368 13.48 6.045 15.165 7 16c.417-.368.875-.768 1.329-1.183A17.47 17.47 0 0 0 9.895 13c.641-.937 1.14-1.929 1.521-2.904.38-.974.584-1.95.584-2.596 0-2.647-1.78-4.79-4-4.79C8.35.214 8.174.21 8 .21V0Zm0 6a2 2 0 1 1 0 4A2 2 0 0 1 8 6Z"/>
+                  </svg>
+                  {profile.location}
+                </span>
+              </div>
 
-          <p className="bio">{l(profile.bio)}</p>
+              <p className="bio">{l(profile.bio)}</p>
 
-          <div className="hero-links">
-            <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-label="GitHub profile">
-              <GitHubIcon /> GitHub
-            </a>
-            <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" aria-label="LinkedIn profile">
-              <LinkedInIcon /> LinkedIn
-            </a>
+              <div className="hero-links">
+                <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-label="GitHub profile">
+                  <GitHubIcon /> GitHub
+                </a>
+                <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" aria-label="LinkedIn profile">
+                  <LinkedInIcon /> LinkedIn
+                </a>
+              </div>
+            </div>
+
+            <div className="hero-avatar-wrap">
+              <img
+                src={`${import.meta.env.BASE_URL}images/avatar.png`}
+                alt="蔡龍佑 Lung-Yu Tsai — profile photo"
+                className="hero-avatar"
+              />
+            </div>
           </div>
         </div>
       </section>

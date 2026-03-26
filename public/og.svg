@@ -8,15 +8,18 @@
       <stop offset="0%" style="stop-color:#2563eb"/>
       <stop offset="100%" style="stop-color:#7c3aed"/>
     </linearGradient>
+    <clipPath id="avatarClip">
+      <circle cx="940" cy="315" r="190"/>
+    </clipPath>
   </defs>
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#bg)"/>
   <!-- Subtle radial glow -->
   <ellipse cx="900" cy="200" rx="400" ry="300" fill="rgba(37,99,235,0.08)"/>
   <ellipse cx="200" cy="500" rx="300" ry="200" fill="rgba(124,58,237,0.07)"/>
-  <!-- Avatar box -->
-  <rect x="80" y="200" width="64" height="64" rx="16" fill="url(#accent)"/>
-  <text x="112" y="243" font-family="system-ui,sans-serif" font-size="32" font-weight="800" fill="white" text-anchor="middle">T</text>
+  <!-- Avatar circle (right side) — image injected by generate-og.js -->
+  <circle cx="940" cy="315" r="195" fill="url(#accent)"/>
+  <image x="750" y="125" width="380" height="380" clip-path="url(#avatarClip)" preserveAspectRatio="xMidYMin slice" href="AVATAR_PLACEHOLDER"/>
   <!-- Name -->
   <text x="80" y="320" font-family="system-ui,sans-serif" font-size="72" font-weight="800" fill="#e6edf3" letter-spacing="-2">蔡龍佑</text>
   <text x="80" y="395" font-family="system-ui,sans-serif" font-size="48" font-weight="700" fill="#e6edf3" letter-spacing="-1">Lung-Yu Tsai</text>
