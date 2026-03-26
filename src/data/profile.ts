@@ -57,6 +57,7 @@ export interface Certification {
   credentialUrl?: string
   certificateUrl?: string
   desc: BL
+  resume?: boolean
 }
 
 export interface ConsultingService {
@@ -73,6 +74,7 @@ export interface Talk {
   location?: string
   slides: string
   video: string
+  resume?: boolean
 }
 
 export interface Project {
@@ -146,7 +148,6 @@ export const skills: SkillGroup[] = [
         'Vulnerability Assessment',
         'Incident Response & Risk Management',
         'ISO 27001 Lead Auditor',
-        'Suricata IDS / Threat Detection',
         'Compliance Auditing',
       ],
       zh: [
@@ -155,7 +156,6 @@ export const skills: SkillGroup[] = [
         '弱點評估',
         '事件應變與風險管理',
         'ISO 27001 主導稽核員',
-        'Suricata IDS / 威脅偵測',
         '合規稽核',
       ],
     },
@@ -188,19 +188,17 @@ export const skills: SkillGroup[] = [
     items: {
       en: [
         'Python · TypeScript · C# · Java · C++',
-        'React · Node.js · FastAPI',
+        'React',
         'RESTful API Design',
         'Docker · Kubernetes · Nginx',
         'CI/CD Pipeline Implementation',
-        'Blockchain / Smart Contracts',
       ],
       zh: [
         'Python · TypeScript · C# · Java · C++',
-        'React · Node.js · FastAPI',
+        'React',
         'RESTful API 設計',
         'Docker · Kubernetes · Nginx',
         'CI/CD 流水線建置',
-        '區塊鏈 / 智能合約',
       ],
     },
   },
@@ -243,7 +241,6 @@ export const skillChips: SkillChip[] = [
   { label: 'ISO 27001', cat: 'sec' },
   { label: 'Docker', cat: 'infra' },
   { label: 'DevSecOps', cat: 'infra' },
-  { label: 'FastAPI', cat: 'infra' },
   { label: 'React', cat: 'infra' },
 ]
 
@@ -425,10 +422,10 @@ export const education: EducationEntry[] = [
 ]
 
 export const certifications: Certification[] = [
-  { name: 'CISSP',     issuer: 'ISC2',       year: '2022', expiryYear: '2028', credentialUrl: 'https://www.credly.com/badges/37b36bbe-cf5b-47fe-b697-71cca23bba6c', certificateUrl: '/personal-sites_V2/certificates/isc2/isc_cissp.pdf',          desc: { en: 'Certified Information Systems Security Professional', zh: '國際資訊系統安全認證師' } },
-  { name: 'CSSLP',     issuer: 'ISC2',       year: '2024', expiryYear: '2027', credentialUrl: 'https://www.credly.com/badges/4eab1fd1-b3ed-4989-b6e6-5189e00822ab', certificateUrl: '/personal-sites_V2/certificates/isc2/isc_csslp.pdf',          desc: { en: 'Certified Secure Software Lifecycle Professional', zh: '認證安全軟體生命週期專業人員' } },
-  { name: 'ISO 27001', issuer: 'BSI',        year: '2023', certificateUrl: '/personal-sites_V2/certificates/iso/ISO_27001_2022_LA.pdf',                                                                                                         desc: { en: 'ISO 27001:2022 Lead Auditor', zh: 'ISO 27001:2022 主導稽核員' } },
-  { name: 'CEH',       issuer: 'EC-Council', year: '2020', certificateUrl: '/personal-sites_V2/certificates/ec-council/ceh.pdf',                                                                                                                  desc: { en: 'Certified Ethical Hacker', zh: '認證道德駭客' } },
+  { name: 'CISSP',     issuer: 'ISC2',       year: '2022', expiryYear: '2028', credentialUrl: 'https://www.credly.com/badges/37b36bbe-cf5b-47fe-b697-71cca23bba6c', certificateUrl: '/personal-sites_V2/certificates/isc2/isc_cissp.pdf',          desc: { en: 'Certified Information Systems Security Professional', zh: '國際資訊系統安全認證師' }, resume: true },
+  { name: 'CSSLP',     issuer: 'ISC2',       year: '2024', expiryYear: '2027', credentialUrl: 'https://www.credly.com/badges/4eab1fd1-b3ed-4989-b6e6-5189e00822ab', certificateUrl: '/personal-sites_V2/certificates/isc2/isc_csslp.pdf',          desc: { en: 'Certified Secure Software Lifecycle Professional', zh: '認證安全軟體生命週期專業人員' }, resume: true },
+  { name: 'ISO 27001', issuer: 'BSI',        year: '2023', certificateUrl: '/personal-sites_V2/certificates/iso/ISO_27001_2022_LA.pdf',                                                                                                         desc: { en: 'ISO 27001:2022 Lead Auditor', zh: 'ISO 27001:2022 主導稽核員' }, resume: true },
+  { name: 'CEH',       issuer: 'EC-Council', year: '2020', certificateUrl: '/personal-sites_V2/certificates/ec-council/ceh.pdf',                                                                                                                  desc: { en: 'Certified Ethical Hacker', zh: '認證道德駭客' }, resume: true },
   { name: 'iPAS',      issuer: 'iPAS',       year: '2021', certificateUrl: '/personal-sites_V2/certificates/ipas/ipas_engineer.pdf',                                                                                                               desc: { en: 'iPAS Cybersecurity Engineer — Junior', zh: 'iPAS 資安工程師-初級' } },
   { name: 'Google CCS', issuer: 'Google',    year: '2023',                                                                                                                                                                                           desc: { en: 'Google Cybersecurity Certification', zh: 'Google 網路安全認證' } },
   { name: 'RHCVA',     issuer: 'Red Hat',    year: '2018', certificateUrl: '/personal-sites_V2/certificates/red-hat/rhcva.pdf',                                                                                                                   desc: { en: 'Red Hat Certified Virtualization Administrator', zh: 'Red Hat 認證虛擬化管理員' } },
@@ -523,6 +520,7 @@ export const talks: Talk[] = [
     location: 'Taipei',
     slides: 'https://hwdc.ithome.com.tw/2025/session-page/4017',
     video: '',
+    resume: true,
   },
   {
     title: {
@@ -534,6 +532,7 @@ export const talks: Talk[] = [
     location: 'Nangang Exhibition Center',
     slides: 'https://cybersec.ithome.com.tw/2025/session-page/3607',
     video: '',
+    resume: true,
   },
   {
     title: {
@@ -567,6 +566,7 @@ export const talks: Talk[] = [
     location: 'Bottle Cap Factory',
     slides: 'https://devopsdays.tw/2024/session-page/3022',
     video: '',
+    resume: true,
   },
   {
     title: {
@@ -666,19 +666,6 @@ export const projects: Project[] = [
     highlight: true,
   },
   {
-    name: 'Network Traffic Analyser',
-    description: {
-      en: 'Web platform for analysing PCAP network capture files. Automated threat detection via Suricata deep-packet inspection, AbuseIPDB threat intelligence integration, and interactive visualisation.',
-      zh: '用於分析 PCAP 網路封包擷取檔案的網頁平台。透過 Suricata 深度封包檢測自動偵測威脅，整合 AbuseIPDB 威脅情資，並提供互動式視覺化呈現。',
-    },
-    language: 'JavaScript',
-    stars: 0,
-    url: 'https://github.com/Lung-Yu/network-analysis',
-    tags: ['Security', 'Suricata', 'React', 'FastAPI', 'Docker'],
-    year: '2025',
-    highlight: false,
-  },
-  {
     name: 'Security Incident Response Platform',
     description: {
       en: 'Integrated platform for event tracking and threat analysis. Correlates security events from multiple sources, automates triage workflows, and provides dashboard visibility for incident response teams.',
@@ -702,19 +689,6 @@ export const projects: Project[] = [
     url: 'https://github.com/Lung-Yu/NYUST_MIPL_ImageToolBox',
     tags: ['Image Processing', 'Computer Vision', 'Research'],
     year: '2016–2019',
-    highlight: false,
-  },
-  {
-    name: 'Blockchain Voting System',
-    description: {
-      en: 'Decentralised voting platform built on Ethereum with smart contracts to ensure transparent, tamper-proof elections.',
-      zh: '基於以太坊智能合約的去中心化投票平台，確保選舉過程透明且不可竄改。',
-    },
-    language: 'JavaScript',
-    stars: 0,
-    url: 'https://github.com/Lung-Yu',
-    tags: ['Blockchain', 'Ethereum', 'Smart Contracts', 'Web3'],
-    year: '2022',
     highlight: false,
   },
   {
@@ -761,23 +735,6 @@ export const writings: Writing[] = [
   {
     type: 'talk',
     title: {
-      en: 'DevSecOps & AI: Opportunities and Challenges of a Double-Edged Sword',
-      zh: 'DevSecOps & AI：雙面刃的機遇與挑戰',
-    },
-    teaser: {
-      en: 'How AI is reshaping both attack surfaces and defence tooling in modern DevSecOps pipelines.',
-      zh: 'AI 如何同時重塑現代 DevSecOps 流水線中的攻擊面與防禦工具。',
-    },
-    platform: 'CISA Conference',
-    url: '',
-    date: { en: 'Aug 2024', zh: '2024年8月' },
-    lang: 'zh',
-    tags: ['DevSecOps', 'AI', 'Security'],
-    featured: true,
-  },
-  {
-    type: 'talk',
-    title: {
       en: 'DevOps + Sec: Strong Support or Troublemakers?',
       zh: 'DevOps + Sec：強力後盾還是麻煩製造者？',
     },
@@ -810,23 +767,6 @@ export const writings: Writing[] = [
     featured: false,
   },
   {
-    type: 'article',
-    title: {
-      en: 'OWASP Top 10 for Developers — A Code Review Perspective',
-      zh: 'OWASP Top 10 開發者視角 — Code Review 實戰',
-    },
-    teaser: {
-      en: 'Common patterns that slip through code review and how to catch injection, broken auth, and SSRF before they ship.',
-      zh: '常見在 Code Review 中漏網的安全漏洞模式，以及如何在上線前抓出注入、認證缺陷與 SSRF。',
-    },
-    platform: 'Medium',
-    url: '',
-    date: { en: 'Nov 2024', zh: '2024年11月' },
-    lang: 'zh',
-    tags: ['Security', 'Code Review', 'OWASP'],
-    featured: false,
-  },
-  {
     type: 'course',
     title: {
       en: 'Designing a DevSecOps Curriculum from Scratch',
@@ -842,23 +782,6 @@ export const writings: Writing[] = [
     lang: 'zh',
     tags: ['DevSecOps', 'Training', 'Education'],
     featured: false,
-  },
-  {
-    type: 'article',
-    title: {
-      en: 'DevSecOps Turning Points: 3 Lessons from Integrating Security into Agile Teams',
-      zh: 'DevSecOps 轉捩點：安全融入敏捷團隊的 3 個關鍵教訓',
-    },
-    teaser: {
-      en: "Security doesn't fail because of tools. It fails because of timing and framing. Three hard-won lessons from building DevSecOps at scale.",
-      zh: '安全機制失敗不是因為工具不好，而是時機與框架的問題。從實戰中總結的三個關鍵轉捩點。',
-    },
-    platform: 'Personal',
-    url: '',
-    date: { en: 'Mar 2026', zh: '2026年3月' },
-    lang: 'zh',
-    tags: ['DevSecOps', 'Security', 'Agile'],
-    featured: true,
   },
 ]
 

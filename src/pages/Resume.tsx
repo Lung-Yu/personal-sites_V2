@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { profile, experience, education, certifications, skills, talks, type BL, type BLArr } from '../data/profile'
 import { useInView } from '../hooks/useInView'
 import '../styles/Resume.css'
@@ -38,8 +38,12 @@ export default function Resume() {
   const { t } = useTranslation()
   const l = useL()
 
+  const [resumeMode, setResumeMode] = useState(false)
+  const displayCerts = resumeMode ? certifications.filter(c => c.resume) : certifications
+  const displayTalks = resumeMode ? talks.filter(t => t.resume) : talks
+
   return (
-    <div className="resume">
+    <div className={`resume${resumeMode ? ' resume-mode' : ''}`}>
       <div className="container">
 
         {/* Header */}
@@ -57,6 +61,16 @@ export default function Resume() {
             </a>
           </div>
           <div className="resume-actions">
+            <div className="mode-toggle">
+              <button
+                className={`mode-toggle-btn${!resumeMode ? ' active' : ''}`}
+                onClick={() => setResumeMode(false)}
+              >{t('resume.modeCV')}</button>
+              <button
+                className={`mode-toggle-btn${resumeMode ? ' active' : ''}`}
+                onClick={() => setResumeMode(true)}
+              >{t('resume.modeResume')}</button>
+            </div>
             <button className="btn btn-secondary" onClick={() => window.print()}>
               <PrintIcon /> {t('resume.printBtn')}
             </button>
@@ -77,7 +91,7 @@ export default function Resume() {
                   <span>{job.company}</span>
                   <span>· {l(job.location)}</span>
                 </div>
-                {job.companyNote && (
+                {job.companyNote && !resumeMode && (
                   <p className="company-note">{l(job.companyNote)}</p>
                 )}
                 <ul>
@@ -101,10 +115,14 @@ export default function Resume() {
                 <div className="timeline-org">
                   <span className="org-badge">{l(edu.degree)}</span>
                 </div>
-                <p className="edu-focus">{l(edu.focus)}</p>
-                <ul>
-                  {l(edu.projects).map((p, i) => <li key={i}>{p}</li>)}
-                </ul>
+                {!resumeMode && (
+                  <>
+                    <p className="edu-focus">{l(edu.focus)}</p>
+                    <ul>
+                      {l(edu.projects).map((p, i) => <li key={i}>{p}</li>)}
+                    </ul>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -114,7 +132,7 @@ export default function Resume() {
         <FadeSection className="resume-section">
           <p className="resume-section-title">{t('resume.sectionCerts')}</p>
           <div className="certs-grid">
-            {certifications.map((cert) => (
+            {displayCerts.map((cert) => (
               <div key={cert.name} className="cert-card">
                 <div className="cert-abbr">{cert.name}</div>
                 <div className="cert-desc">{l(cert.desc)}</div>
@@ -145,7 +163,7 @@ export default function Resume() {
         <FadeSection className="resume-section">
           <p className="resume-section-title">{t('resume.sectionTalks')}</p>
           <div className="talks-list">
-            {talks.map((talk, idx) => (
+            {displayTalks.map((talk, idx) => (
               <div key={idx} className="talk-entry">
                 <div className="talk-title">{l(talk.title)}</div>
                 <div className="talk-meta">
