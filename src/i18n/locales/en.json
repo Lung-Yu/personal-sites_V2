@@ -15,7 +15,9 @@
     "statsCerts": "Certifications",
     "statsTalks": "Conference Talks",
     "sectionProjects": "Featured Projects",
-    "viewAllProjects": "View all projects"
+    "viewAllProjects": "View all projects",
+    "ctaText": "Interested in working together or having me speak at your event?",
+    "ctaBtn": "Get in touch →"
   },
   "resume": {
     "sectionExp": "Work Experience",
@@ -46,7 +48,25 @@
     "subtitle": "Available for consulting engagements, speaking invitations, and collaborations.",
     "servicesTitle": "Consulting Services",
     "getInTouch": "Get in Touch",
-    "available": "Interested in working together? Reach out via email or connect on LinkedIn."
+    "available": "Interested in working together? Fill in the form below or reach out directly via email.",
+    "formName": "Name",
+    "formNamePlaceholder": "Your name",
+    "formEmail": "Email",
+    "formEmailPlaceholder": "your@email.com",
+    "formSubject": "Topic",
+    "formSubjectPlaceholder": "Select a topic",
+    "formSubjectOpts": {
+      "consulting": "DevSecOps / Security Consulting",
+      "speaking": "Speaking Invitation",
+      "training": "Corporate Training",
+      "collab": "Collaboration / Other"
+    },
+    "formMessage": "Message",
+    "formMessagePlaceholder": "Tell me a bit about your project or request...",
+    "formSend": "Send Message",
+    "formSending": "Sending…",
+    "formSuccess": "Message sent! I'll get back to you soon.",
+    "formError": "Something went wrong. Please email me directly."
   },
   "footer": {
     "credit": "Built with React + Vite"

@@ -15,7 +15,9 @@
     "statsCerts": "國際認證",
     "statsTalks": "演講場次",
     "sectionProjects": "精選專案",
-    "viewAllProjects": "查看所有專案"
+    "viewAllProjects": "查看所有專案",
+    "ctaText": "有興趣合作或邀請演講？",
+    "ctaBtn": "聯絡我 →"
   },
   "resume": {
     "sectionExp": "工作經歷",
@@ -46,7 +48,25 @@
     "subtitle": "歡迎洽詢顧問合作、演講邀約與技術合作。",
     "servicesTitle": "顧問服務",
     "getInTouch": "聯絡方式",
-    "available": "有興趣合作？歡迎透過 Email 聯絡或在 LinkedIn 上連結。"
+    "available": "有興趣合作？填寫以下表單，或直接透過 Email 聯絡我。",
+    "formName": "姓名",
+    "formNamePlaceholder": "您的姓名",
+    "formEmail": "電子郵件",
+    "formEmailPlaceholder": "your@email.com",
+    "formSubject": "合作主題",
+    "formSubjectPlaceholder": "請選擇主題",
+    "formSubjectOpts": {
+      "consulting": "DevSecOps／資安顧問",
+      "speaking": "演講邀約",
+      "training": "企業內訓",
+      "collab": "其他合作"
+    },
+    "formMessage": "訊息內容",
+    "formMessagePlaceholder": "請簡單說明您的專案或需求…",
+    "formSend": "送出訊息",
+    "formSending": "送出中…",
+    "formSuccess": "訊息已送出！我會盡快回覆您。",
+    "formError": "發送失敗，請直接寄信給我。"
   },
   "footer": {
     "credit": "以 React + Vite 打造"

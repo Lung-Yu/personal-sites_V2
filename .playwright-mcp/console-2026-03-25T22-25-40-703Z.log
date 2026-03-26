@@ -1,0 +1,9 @@
+[ 6558787ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/personal-sites_V2/src/App.tsx?t=1774484099390:0
+[ 6558789ms] [ERROR] [hmr] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5173/personal-sites_V2/@vite/client:175
+[ 6559033ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/personal-sites_V2/src/App.tsx?t=1774484099549:0
+[ 6569799ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/personal-sites_V2/src/App.tsx?t=1774484110301:0
+[ 6576429ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/personal-sites_V2/src/App.tsx?t=1774484116958:0
+[ 6590144ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/personal-sites_V2/src/App.tsx?t=1774484130637:0
+[ 6613166ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/personal-sites_V2/src/App.tsx?t=1774484153588:0
+[ 6630979ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/personal-sites_V2/src/App.tsx?t=1774484171521:0
+[ 6644704ms] The requested module '/personal-sites_V2/src/pages/BlogPost.tsx' does not provide an export named 'default'

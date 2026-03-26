@@ -96,6 +96,10 @@ export interface Writing {
   lang: string
   tags: string[]
   featured: boolean
+  /** Internal slug — if present, article is rendered inline at /blog/:slug */
+  slug?: string
+  /** Full article body. Paragraphs separated by \n\n; headings start with ## */
+  content?: BL
 }
 
 export interface Achievement {
@@ -842,6 +846,28 @@ export const writings: Writing[] = [
     lang: 'zh',
     tags: ['DevSecOps', 'Training', 'Education'],
     featured: false,
+  },
+  {
+    type: 'article',
+    slug: 'devsecops-turning-points',
+    title: {
+      en: 'DevSecOps Turning Points: 3 Lessons from Integrating Security into Agile Teams',
+      zh: 'DevSecOps 轉捩點：安全融入敏捷團隊的 3 個關鍵教訓',
+    },
+    teaser: {
+      en: "Security doesn't fail because of tools. It fails because of timing and framing. Three hard-won lessons from building DevSecOps at scale.",
+      zh: '安全機制失敗不是因為工具不好，而是時機與框架的問題。從實戰中總結的三個關鍵轉捩點。',
+    },
+    platform: 'Personal',
+    url: '',
+    date: { en: 'Mar 2026', zh: '2026年3月' },
+    lang: 'zh',
+    tags: ['DevSecOps', 'Security', 'Agile'],
+    featured: true,
+    content: {
+      en: `After three years of building DevSecOps processes at a Gamania subsidiary, I've come to one conclusion: security doesn't fail because of tools. It fails because of timing and framing.\n\nHere are three turning points that changed how I approach secure software development.\n\n## 1. Security gates that block are security gates that get bypassed\n\nThe first CI/CD security pipeline I built was technically correct. SAST scanner runs on every PR, findings block the merge. Within two months, the team had learned to suppress false positives by category, disable rules for "expediency", and route around the gate entirely with a manager override flag.\n\nThe problem wasn't the scanner. The problem was that developers experienced security as an adversary — something that stopped their work. The fix wasn't softer rules. It was changing the feedback loop: move findings to warnings first, educate on why each category matters, let teams own their risk decisions. Blocked pipelines teach avoidance. Visible risk teaches judgment.\n\n## 2. The hardest sell isn't to developers — it's to product owners\n\nI spent the first year convincing developers. The second year I realised the real audience was product owners and tech leads. A developer who understands an injection risk will still merge vulnerable code if the sprint deadline hits and no one above them has explicitly said "this risk is not acceptable."\n\nDevSecOps requires security to be a product concern, not a delivery blocker. That meant producing two-page risk summaries instead of CVSS score spreadsheets, and framing conversations as "this is a business continuity question" rather than "this violates our policy." Security literacy at the business level is the actual force multiplier.\n\n## 3. AI accelerates both attack surface and defence — and you need to be ready for both\n\nSince 2024, every team I work with has GitHub Copilot or similar. AI code generation is orders of magnitude faster than human typing. It's also orders of magnitude faster at producing insecure patterns — hardcoded secrets, trusting user input, missing auth checks — because the training data contains a lot of old, vulnerable code.\n\nThe answer isn't to ban AI tooling. The answer is to run SAST rules specifically tuned to AI-generated pattern antipatterns, to build prompt libraries that include security requirements, and to treat AI output with the same review standards as junior developer output: thorough, not assumed correct.\n\nThe DevSecOps stack hasn't changed fundamentally. What's changed is the rate of production — and that means framing, tooling, and education all need to operate at the same velocity.`,
+      zh: `在 Gamania 子公司建立 DevSecOps 流程三年後，我得出一個結論：安全機制失敗，不是因為工具不好，而是因為時機與框架的問題。\n\n以下是三個改變我對安全軟體開發看法的轉捩點。\n\n## 1. 阻擋開發的安全關卡，最終會被繞過\n\n我第一條 CI/CD 安全流水線技術上是正確的：每個 PR 執行 SAST 掃描，有發現就阻擋合併。不到兩個月，團隊學會了批次壓制誤報、以「加速開發」為由停用規則，最後乾脆透過主管覆蓋旗標繞過整個關卡。\n\n問題不在掃描器，而在開發者把安全當成對手——一個阻礙他們工作的東西。解法不是放寬規則，而是改變回饋循環：先把發現改為警告，說明每個類別的重要性，讓團隊自己決定要承擔哪些風險。被阻擋的流水線教會的是「如何繞過」，而可見的風險教會的是「如何判斷」。\n\n## 2. 最難說服的不是開發者，是產品負責人\n\n第一年我花在說服開發者上。第二年我發現真正的對象是產品負責人和技術主管。一個懂注入風險的開發者，在 Sprint 截止日快到、上面沒人明確說「這個風險不可接受」的情況下，還是會把有漏洞的程式碼合進去。\n\nDevSecOps 需要安全成為產品關注事項，而不是交付的阻礙。這代表要產出兩頁的風險摘要，而不是 CVSS 分數試算表；要把對話框架成「這是業務持續性問題」，而不是「這違反了我們的政策」。提升業務層面的資安素養，才是真正的槓桿點。\n\n## 3. AI 同時加速攻擊面與防禦能力——你需要兩者都準備好\n\n2024 年以來，我接觸的每個團隊都在用 GitHub Copilot 或類似工具。AI 生成程式碼的速度比人打字快好幾個數量級，但它生產不安全模式的速度也一樣快——硬編碼密鑰、信任使用者輸入、缺少驗證——因為訓練資料裡有大量舊的、有漏洞的程式碼。\n\n答案不是禁用 AI 工具，而是跑針對 AI 生成反模式調校過的 SAST 規則、建立包含安全需求的 Prompt 文庫，並用對待初級開發者產出同等的審查標準來看待 AI 輸出：徹底審查，而非假設正確。\n\nDevSecOps 工具鏈本質上沒有改變，改變的是生產速度——這代表框架、工具和教育都需要以同樣的速度運作。`,
+    },
   },
 ]
 

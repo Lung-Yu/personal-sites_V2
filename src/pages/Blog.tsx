@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { writings, type BL, type WritingType } from '../data/profile'
 import '../styles/Blog.css'
 import '../styles/Projects.css'
@@ -101,6 +102,13 @@ function WritingCard({ w, l, typeLabel, t, featured }: WritingCardProps) {
     </div>
   )
 
+  if (w.slug) {
+    return (
+      <Link to={`/blog/${w.slug}`} className="writing-card-link">
+        {inner}
+      </Link>
+    )
+  }
   if (w.url) {
     return (
       <a href={w.url} target="_blank" rel="noopener noreferrer" className="writing-card-link">

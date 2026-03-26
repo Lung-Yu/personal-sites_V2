@@ -388,3 +388,34 @@
 .view-all-link:hover {
   text-decoration: underline;
 }
+
+/* ── CTA Strip ── */
+.cta-strip {
+  margin: 48px 0 0;
+  padding: 24px 28px;
+  background: var(--accent-light);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-strip > span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.cta-strip-btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .cta-strip {
+    flex-direction: column;
+    text-align: center;
+  }
+}

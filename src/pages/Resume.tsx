@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { type ReactNode } from 'react'
 import { profile, experience, education, certifications, skills, talks, type BL, type BLArr } from '../data/profile'
 import { useInView } from '../hooks/useInView'
@@ -119,7 +120,22 @@ export default function Resume() {
                 <div className="cert-desc">{l(cert.desc)}</div>
                 <div className="cert-meta">
                   {cert.issuer}{cert.year ? ` · ${cert.year}` : ''}
+                  {cert.expiryYear ? ` — ${cert.expiryYear}` : ''}
                 </div>
+                {(cert.credentialUrl || cert.certificateUrl) && (
+                  <div className="cert-links">
+                    {cert.credentialUrl && (
+                      <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="cert-link-badge" title="Verify on Credly">
+                        🏅 Credly
+                      </a>
+                    )}
+                    {cert.certificateUrl && (
+                      <a href={cert.certificateUrl} target="_blank" rel="noopener noreferrer" className="cert-link-badge" title="View certificate PDF">
+                        📄 PDF
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -168,6 +184,11 @@ export default function Resume() {
             ))}
           </div>
         </FadeSection>
+
+        <div className="cta-strip">
+          <span>{t('home.ctaText')}</span>
+          <Link to="/contact" className="btn btn-primary cta-strip-btn">{t('home.ctaBtn')}</Link>
+        </div>
 
       </div>
     </div>

@@ -9,6 +9,7 @@ import Resume from './pages/Resume'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 
 // Phase 5: sync document.documentElement.lang with i18n language on every change
 function LangSync(): null {
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </main>
       <Footer />

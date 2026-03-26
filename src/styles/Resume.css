@@ -211,6 +211,64 @@
   font-family: var(--mono);
 }
 
+.cert-links {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.cert-link-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--muted);
+  background: var(--bg2);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.cert-link-badge:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+/* ── CTA Strip (also used via Home.css) ── */
+.cta-strip {
+  margin: 48px 0 0;
+  padding: 24px 28px;
+  background: var(--accent-light);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-strip > span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.cta-strip-btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .cta-strip {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 /* ── Skills matrix ── */
 .skills-matrix {
   display: grid;

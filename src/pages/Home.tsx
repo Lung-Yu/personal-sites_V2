@@ -92,7 +92,7 @@ export default function Home() {
               <div className="stat-label">{t('home.statsCerts')}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">4+</div>
+              <div className="stat-number">10+</div>
               <div className="stat-label">{t('home.statsTalks')}</div>
             </div>
           </div>
@@ -186,6 +186,11 @@ export default function Home() {
               ))}
             </div>
           </FadeSection>
+
+          <div className="cta-strip">
+            <span>{t('home.ctaText')}</span>
+            <Link to="/contact" className="btn btn-primary cta-strip-btn">{t('home.ctaBtn')}</Link>
+          </div>
         </div>
       </div>
     </>
