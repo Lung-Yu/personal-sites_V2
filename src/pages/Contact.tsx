@@ -29,17 +29,15 @@ export default function Contact() {
     const form = e.currentTarget
     const data = Object.fromEntries(new FormData(form))
     try {
-      const res = await fetch(import.meta.env.VITE_CONTACT_ENDPOINT, {
+      // text/plain avoids CORS preflight; Apps Script still receives JSON via e.postData.contents
+      await fetch(import.meta.env.VITE_CONTACT_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(data),
+        mode: 'no-cors',
       })
-      if (res.ok) {
-        setStatus('success')
-        form.reset()
-      } else {
-        setStatus('error')
-      }
+      setStatus('success')
+      form.reset()
     } catch {
       setStatus('error')
     }
