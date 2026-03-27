@@ -11,6 +11,11 @@
   border-radius: var(--radius);
 }
 
+[data-theme="dark"] .contact-header {
+  background: linear-gradient(135deg, #0a1f14 0%, #0f1d33 100%);
+  border-color: var(--border);
+}
+
 .contact-header h1 {
   font-size: 26px;
   letter-spacing: -0.02em;
@@ -206,6 +211,12 @@
   padding: 16px 20px;
 }
 
+[data-theme="dark"] .form-success {
+  color: #86efac;
+  background: #14532d33;
+  border-color: #166534;
+}
+
 .form-error {
   font-size: 13px;
   color: #dc2626;
@@ -213,6 +224,12 @@
   border: 1px solid #fecaca;
   border-radius: var(--radius-sm);
   padding: 10px 14px;
+}
+
+[data-theme="dark"] .form-error {
+  color: #fca5a5;
+  background: #7f1d1d33;
+  border-color: #991b1b;
 }
 
 .contact-divider {

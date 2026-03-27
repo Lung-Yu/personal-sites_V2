@@ -11,6 +11,11 @@
   border-radius: var(--radius);
 }
 
+[data-theme="dark"] .blog-header {
+  background: linear-gradient(135deg, #1a1033 0%, #0f1d33 100%);
+  border-color: var(--border);
+}
+
 .blog-header h1 {
   font-size: 26px;
   letter-spacing: -0.02em;

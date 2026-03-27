@@ -79,6 +79,12 @@
   border-radius: 20px;
 }
 
+[data-theme="dark"] .highlight-badge {
+  background: linear-gradient(135deg, #1f3a5f, #2e1a4f);
+  color: #c4b5fd;
+  border-color: #4c1d95;
+}
+
 .project-featured-desc {
   font-size: 14px;
   color: var(--text2);

@@ -11,6 +11,11 @@
   border-radius: var(--radius);
 }
 
+[data-theme="dark"] .resume-hero {
+  background: linear-gradient(135deg, #0f1d33 0%, #1a1033 100%);
+  border-color: var(--border);
+}
+
 .resume-hero h1 {
   font-size: 26px;
   letter-spacing: -0.02em;
