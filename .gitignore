@@ -6,3 +6,5 @@ public/og.png
 
 # Local reference repos
 _ref/
+
+.venv/
