@@ -266,11 +266,15 @@ export const experience: ExperienceEntry[] = [
       en: [
         'Lead product ownership and set secure development standards across engineering teams.',
         'Conduct architecture security assessments and drive technical leadership for product development.',
+        'Migrated Polisana vulnerability management platform to GCP with IaC (Terraform), improving deployment reliability and scalability.',
+        'Led Japan API integration project to successful v1.0.0 production launch, enforcing architecture review and security code review standards.',
         'Built an AI-powered security consultant using RAG pipelines and LLM integration, enabling automated security Q&A and knowledge retrieval.',
       ],
       zh: [
         '主導產品規劃，制定跨工程團隊的安全開發標準。',
         '執行架構安全評估，推動產品開發的技術領導。',
+        '將 Polisana 弱點管理平台遷移至 GCP，採用 IaC（Terraform），提升部署可靠性與可擴展性。',
+        '主導日本 API 串接專案順利完成 1.0.0 上線，建立架構審查與安全碼審標準。',
         '以 RAG 流水線與 LLM 整合，獨力打造 AI 驅動資安顧問系統，實現自動化資安問答與知識檢索。',
       ],
     },
@@ -323,11 +327,15 @@ export const experience: ExperienceEntry[] = [
       en: [
         'Oversaw product management and DevSecOps optimisation across product lines.',
         'Integrated security tooling into CI/CD pipelines to automate vulnerability scanning and compliance checks.',
+        'Negotiated with vendors to eliminate an estimated NT$2.8M in potential costs through technical clarification and alternative solutions.',
+        'Completed CSSLP certification and mentored interns, building a structured technical knowledge transfer process.',
         'Recipient of the 2023 Gama Star Award for project excellence.',
       ],
       zh: [
         '監管各產品線的產品管理與 DevSecOps 優化。',
         '將安全工具整合至 CI/CD 流水線，自動化弱點掃描與合規檢查。',
+        '透過技術澄清與替代方案與廠商協調，節省約 280 萬元潛在費用。',
+        '取得 CSSLP 認證，指導實習生並建立結構化的技術傳承機制。',
         '榮獲 2023 年 Gama Star 專案卓越獎。',
       ],
     },
@@ -345,12 +353,14 @@ export const experience: ExperienceEntry[] = [
     highlights: {
       en: [
         'Designed enterprise-level DevSecOps processes, integrating security throughout the entire SDLC.',
-        'Led security automation initiatives and infrastructure security optimisation.',
+        'Developed automation tools reducing team vulnerability-handling volume by 51% (45,158 → 22,228/month); implemented an application security testing platform that eliminated 80% of repetitive manual operations.',
+        'Streamlined white-box security consulting SOP to achieve ~2× throughput improvement (130 → 257 cases/person-day); supported DevSecOps adoption for 7 enterprise clients including 台新銀行, 農業金庫, and 長榮航空.',
         'Established security architecture planning frameworks used across multiple product lines.',
       ],
       zh: [
         '設計企業級 DevSecOps 流程，將安全性整合至完整 SDLC 中。',
-        '主導安全自動化計畫與基礎設施安全優化。',
+        '開發自動化工具，將團隊弱點處理量降低 51%（45,158 → 22,228 件/月）；導入應用程式安全檢測平台，消除 80% 的重複性人工作業。',
+        '優化白箱安全顧問 SOP，效率提升約 2 倍（130 → 257 件/人天）；協助台新銀行、農業金庫、長榮航空等 7 家企業客戶導入 DevSecOps。',
         '建立跨多產品線使用的資安架構規劃框架。',
       ],
     },
@@ -510,6 +520,17 @@ export const consulting: ConsultingService[] = [
 ]
 
 export const talks: Talk[] = [
+  {
+    title: {
+      en: 'SSDLC in the AI Era',
+      zh: 'AI 時代的 SSDLC',
+    },
+    event: 'Cloud Alliance Battleship (雲端聯合戰艦)',
+    date: { en: 'November 2025', zh: '2025年11月' },
+    location: 'Taiwan',
+    slides: '',
+    video: '',
+  },
   {
     title: {
       en: 'AI Era Team Management Challenges and Strategies',
