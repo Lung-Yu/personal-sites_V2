@@ -331,14 +331,14 @@ export const experience: ExperienceEntry[] = [
       en: [
         'Oversaw product management and DevSecOps optimisation across product lines.',
         'Integrated security tooling into CI/CD pipelines to automate vulnerability scanning and compliance checks.',
-        'Negotiated with vendors to eliminate an estimated NT$2.8M in potential costs through technical clarification and alternative solutions.',
+        'Resolved a long-standing vendor dispute through technical clarification and compromise, saving millions in potential costs.',
         'Completed CSSLP certification and mentored interns, building a structured technical knowledge transfer process.',
         'Recipient of the 2023 Gama Star Award for project excellence.',
       ],
       zh: [
         '監管各產品線的產品管理與 DevSecOps 優化。',
         '將安全工具整合至 CI/CD 流水線，自動化弱點掃描與合規檢查。',
-        '透過技術澄清與替代方案與廠商協調，節省約 280 萬元潛在費用。',
+        '以技術澄清與折衷方案解決長期懸而未決的廠商爭議，節省數百萬元潛在費用。',
         '取得 CSSLP 認證，指導實習生並建立結構化的技術傳承機制。',
         '榮獲 2023 年 Gama Star 專案卓越獎。',
       ],
