@@ -33,8 +33,12 @@ export const experience: ExperienceEntry[] = [
     },
   },
   {
-    company: 'AINetwork',
-    companyZh: 'AI全智網',
+    company: 'AI Network (全智網科技)',
+    companyZh: '全智網科技',
+    companyNote: {
+      en: 'Cybersecurity & AI course training institution',
+      zh: '資安暨 AI 課程訓練機構',
+    },
     title: { en: 'SSDLC Instructor', zh: '講師' },
     period: { en: 'Apr 2025 — Present', zh: '2025年4月 — 至今' },
     location: { en: 'Taiwan', zh: '台灣' },
@@ -50,8 +54,12 @@ export const experience: ExperienceEntry[] = [
     },
   },
   {
-    company: 'Gtalent Co., Ltd.',
+    company: 'Gtalent Co., Ltd. (大數智能教育)',
     companyZh: '大數智能教育',
+    companyNote: {
+      en: 'Digital talent training & placement platform',
+      zh: '數位人才培訓與媒合平台',
+    },
     title: { en: 'Instructor', zh: '講師' },
     period: { en: 'Nov 2025 — Present', zh: '2025年11月 — 至今' },
     location: { en: 'Taiwan', zh: '台灣' },
