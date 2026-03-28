@@ -44,7 +44,12 @@
     "typeArticle": "文章",
     "typeTalk": "演講心得",
     "typeCourse": "課程筆記",
-    "typeThread": "討論串"
+    "typeThread": "討論串",
+    "comingSoonBadge": "即將上線",
+    "comingSoonTitle": "文章撰寫中",
+    "comingSoonDesc": "目前正在整理過去幾年在 DevSecOps 導入、AI 工具實戰與資安顧問領域的實務心得，預計陸續發布於 LinkedIn 與本站。",
+    "comingSoonTopicsLabel": "預計主題",
+    "comingSoonTopics": ["DevSecOps 落地的阻力與突破", "用 Gemini 打造 RAG 資安顧問的完整過程", "企業白箱顧問服務的規模化設計", "AI 時代的團隊管理與工程文化"]
   },
   "contact": {
     "title": "聯絡我",

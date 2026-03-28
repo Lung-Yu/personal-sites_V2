@@ -44,7 +44,12 @@
     "typeArticle": "Article",
     "typeTalk": "Talk Write-up",
     "typeCourse": "Course Notes",
-    "typeThread": "Thread"
+    "typeThread": "Thread",
+    "comingSoonBadge": "Coming Soon",
+    "comingSoonTitle": "Articles in Progress",
+    "comingSoonDesc": "I'm currently writing up practical insights from years of DevSecOps adoption, AI tooling in production, and security consulting. Articles will be published on LinkedIn and here.",
+    "comingSoonTopicsLabel": "Planned Topics",
+    "comingSoonTopics": ["Friction and breakthroughs in real-world DevSecOps adoption", "Building a RAG-powered security consultant with Gemini end-to-end", "Scaling white-box security consulting as a service", "Team management and engineering culture in the AI era"]
   },
   "contact": {
     "title": "Contact",
