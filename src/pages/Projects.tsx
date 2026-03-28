@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { projects, languageColors, type BL } from '../data/profile'
+import { projects, languageColors, type BL, type ProjectLink } from '../data/profile'
 import '../styles/Projects.css'
 
 function useL() {
@@ -13,6 +13,15 @@ function useL() {
     return obj[lang] ?? obj.en
   }
   return l
+}
+
+const LINK_META: Record<string, { icon: string; defaultLabel: BL }> = {
+  github:  { icon: '⌥', defaultLabel: { en: 'GitHub',  zh: 'GitHub'  } },
+  demo:    { icon: '▶', defaultLabel: { en: 'Demo',    zh: 'Demo'    } },
+  video:   { icon: '🎬', defaultLabel: { en: 'Video',   zh: '影片'    } },
+  article: { icon: '📄', defaultLabel: { en: 'Article', zh: '文章'    } },
+  slides:  { icon: '📊', defaultLabel: { en: 'Slides',  zh: '簡報'    } },
+  site:    { icon: '🌐', defaultLabel: { en: 'Site',    zh: '網站'    } },
 }
 
 const featured = projects.filter((p) => p.highlight)
@@ -34,13 +43,7 @@ export default function Projects() {
         <p className="section-label">{t('projects.featured')}</p>
         <div className="projects-featured">
           {featured.map((p) => (
-            <a
-              key={p.name}
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-featured-card"
-            >
+            <div key={p.name} className="project-featured-card">
               <div className="project-featured-top">
                 <div className="project-featured-name">
                   <RepoIcon />
@@ -57,8 +60,9 @@ export default function Projects() {
               <div className="project-footer">
                 <LangIndicator lang={p.language} />
                 {p.stars > 0 && <Stars count={p.stars} />}
+                <ProjectLinks links={buildLinks(p.url, p.links)} l={l} />
               </div>
-            </a>
+            </div>
           ))}
         </div>
 
@@ -67,13 +71,7 @@ export default function Projects() {
           <h2>{t('projects.more')}</h2>
           <div className="projects-grid">
             {others.map((p) => (
-              <a
-                key={p.name}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-card"
-              >
+              <div key={p.name} className="project-card">
                 <div className="project-card-name">
                   <RepoIcon />
                   {p.name}
@@ -87,12 +85,51 @@ export default function Projects() {
                 <div className="project-footer">
                   <LangIndicator lang={p.language} />
                   {p.stars > 0 && <Stars count={p.stars} />}
+                  <ProjectLinks links={buildLinks(p.url, p.links)} l={l} />
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+/** Merge legacy url (GitHub) with explicit links[], dedup empties */
+function buildLinks(url: string, links?: ProjectLink[]): ProjectLink[] {
+  const result: ProjectLink[] = []
+  if (url) {
+    result.push({ type: 'github', label: { en: 'GitHub', zh: 'GitHub' }, url })
+  }
+  if (links) result.push(...links.filter((l) => l.url))
+  return result
+}
+
+interface ProjectLinksProps {
+  links: ProjectLink[]
+  l: (obj: BL) => string
+}
+function ProjectLinks({ links, l }: ProjectLinksProps) {
+  if (links.length === 0) return null
+  return (
+    <div className="project-links">
+      {links.map((lk) => {
+        const meta = LINK_META[lk.type] ?? LINK_META.site
+        return (
+          <a
+            key={lk.type + lk.url}
+            href={lk.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link-btn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="project-link-icon">{meta.icon}</span>
+            {l(lk.label)}
+          </a>
+        )
+      })}
     </div>
   )
 }

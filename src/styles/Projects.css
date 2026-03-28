@@ -173,6 +173,41 @@
   flex-wrap: wrap;
 }
 
+/* ── Project links ── */
+.project-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.project-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--muted);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.project-link-btn:hover {
+  background: var(--bg-alt, #f1f5f9);
+  border-color: #93c5fd;
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.project-link-icon {
+  font-size: 11px;
+}
+
 .lang-indicator {
   display: flex;
   align-items: center;

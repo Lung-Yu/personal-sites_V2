@@ -1,0 +1,147 @@
+import type { Project } from './types'
+
+export const projects: Project[] = [
+  {
+    name: 'Gemini RAG Chat',
+    description: {
+      en: 'Full-stack RAG chat application powered by Google Gemini 2.5 Flash. Upload documents (.txt, .pdf, .docx), ask questions, get grounded answers. FastAPI backend + React frontend, fully containerised with Docker Compose.',
+      zh: '以 Google Gemini 2.5 Flash 驅動的全端 RAG 聊天應用程式。上傳文件（.txt、.pdf、.docx）後即可提問並獲得基於文件的精確回答。FastAPI 後端 + React 前端，以 Docker Compose 完整容器化。',
+    },
+    language: 'TypeScript',
+    stars: 0,
+    url: 'https://github.com/Lung-Yu/gemini-rag',
+    tags: ['AI', 'RAG', 'Gemini', 'FastAPI', 'React', 'Docker'],
+    year: '2025–2026',
+    highlight: true,
+  },
+  {
+    name: 'AI Tab Organizer',
+    description: {
+      en: 'Published Chrome extension (v1.4.0) that uses AI to intelligently categorise, deduplicate, and organise browser tabs. Supports OpenAI, Anthropic Claude, and Google Gemini. Local-first, BYOK, Traditional Chinese & English.',
+      zh: '已上架的 Chrome 擴充功能（v1.4.0），利用 AI 智慧分類、去重複及整理瀏覽器分頁。支援 OpenAI、Anthropic Claude 及 Google Gemini。本地優先、自帶金鑰，支援繁體中文與英文。',
+    },
+    language: 'JavaScript',
+    stars: 0,
+    url: 'https://github.com/Lung-Yu/ai-tab-organizer-docs',
+    tags: ['Chrome Extension', 'OpenAI', 'Claude', 'Gemini', 'Privacy'],
+    year: '2026',
+    highlight: true,
+  },
+  {
+    name: 'Engineer Aptitude Assessment',
+    description: {
+      en: 'Professional skill evaluation platform for software engineers. 30 questions across 6 dimensions (Algorithm, Full-Stack, System Design, Performance, Security, DevOps). Radar chart output and seniority scoring from Entry to Staff level.',
+      zh: '軟體工程師專業技能評估平台。30 題涵蓋 6 大維度（演算法、全端開發、系統設計、效能、資安、DevOps）。輸出雷達圖並評定職級（Entry 至 Staff）。',
+    },
+    language: 'TypeScript',
+    stars: 0,
+    url: 'https://github.com/Lung-Yu/Aptitude-Test',
+    tags: ['React', 'Vite', 'Tailwind', 'Recharts', 'Google Sheets'],
+    year: '2025',
+    highlight: true,
+  },
+  {
+    name: 'Enterprise Vulnerability Management Platform',
+    description: {
+      en: 'Product Owner and lead developer of an enterprise vulnerability management platform that consolidates SAST, SBOM, and host scan results into a unified risk workflow — replacing fragmented enterprise toolchains. Serves CISOs, security managers, and development leads with role-based dashboards, automated Fortify report parsing, GitLab CI integration, and an AI-powered security consultant built on Google Vertex AI RAG. Deployed on GCP Cloud Run with Terraform IaC.',
+      zh: '以 Product Owner 兼主力開發者角色，主導建構企業弱點管理平台，整合 SAST、SBOM 與主機弱點掃描結果於統一風險處理工作流程，取代分散的工具鏈。服務對象涵蓋資安長（CISO）、資安經理與開發主管，提供角色型儀表板、Fortify 報告自動解析、GitLab CI 整合，以及基於 Google Vertex AI RAG 的 AI 資安顧問。部署於 GCP Cloud Run，以 Terraform IaC 管理。',
+    },
+    language: 'Python',
+    stars: 0,
+    url: '',
+    tags: ['GCP', 'Microservices', 'Terraform', 'RAG', 'DevSecOps', 'Python'],
+    year: '2023–2025',
+    highlight: true,
+  },
+  {
+    name: 'Application Security Testing Portal',
+    description: {
+      en: 'SaaS-model source code security scanning portal that provides a self-service web interface, eliminating 80% of repetitive manual operations and lowering adoption barriers compared to high-cost enterprise tools. Containerised with Docker, integrated with enterprise CI/CD pipelines, and deployed to production for multiple enterprise clients.',
+      zh: '以 SaaS 模式提供自助式原碼安全檢測的入口網站，降低 80% 重複性人工操作，以 Web 操作介面取代高授權成本的企業工具，降低導入門檻。以 Docker 容器化，整合企業 CI/CD 流水線，已正式供多家企業客戶上線使用。',
+    },
+    language: 'Python',
+    stars: 0,
+    url: '',
+    tags: ['Docker', 'SAST', 'GCP', 'CI/CD', 'DevSecOps'],
+    year: '2023–2025',
+    highlight: false,
+  },
+  {
+    name: 'Third-Party Component Security Scanner',
+    description: {
+      en: 'R&D SCA (Software Composition Analysis) tool built on microservices and gRPC for high-throughput processing. Supports CycloneDX and SPDX SBOM formats for open-source dependency risk assessment, with periodic vulnerability database updates and automated CVE alerting for tracked packages.',
+      zh: '以微服務架構與 gRPC 開發的 SCA（軟體組成分析）工具，支援 CycloneDX 與 SPDX 兩種 SBOM 格式，用於開源相依套件風險評估。提供弱點資料庫定期更新機制，並在追蹤套件出現新 CVE 時主動告警。',
+    },
+    language: 'Python',
+    stars: 0,
+    url: '',
+    tags: ['SCA', 'SBOM', 'gRPC', 'Microservices', 'Security'],
+    year: '2024',
+    highlight: false,
+  },
+  {
+    name: 'Security Incident Response Platform',
+    description: {
+      en: 'Integrated platform for event tracking and threat analysis. Correlates security events from multiple sources, automates triage workflows, and provides dashboard visibility for incident response teams.',
+      zh: '整合式事件追蹤與威脅分析平台。跨來源關聯資安事件、自動化分流工作流程，並為事件應變團隊提供儀表板可視性。',
+    },
+    language: 'Python',
+    stars: 0,
+    url: 'https://github.com/Lung-Yu',
+    tags: ['Security', 'Incident Response', 'SIEM', 'Analytics'],
+    year: '2023–2024',
+    highlight: false,
+  },
+  {
+    name: 'NYUST Image ToolBox',
+    description: {
+      en: 'Comprehensive image processing toolkit from graduate research at NYUST Media Intelligence and Processing Lab. Implements classical computer vision algorithms including filtering, edge detection, and segmentation.',
+      zh: '源自雲科大媒體智慧與處理實驗室研究計畫的影像處理工具套件，實作多種經典電腦視覺演算法，包含濾波、邊緣偵測與影像分割。',
+    },
+    language: 'C#',
+    stars: 7,
+    url: 'https://github.com/Lung-Yu/NYUST_MIPL_ImageToolBox',
+    tags: ['Image Processing', 'Computer Vision', 'Research'],
+    year: '2016–2019',
+    highlight: false,
+  },
+  {
+    name: 'auto-tools',
+    description: {
+      en: 'Python automation toolkit featuring a Taiwan Railways (台鐵) ticket seat availability checker. Polls routes across multiple dates, filters by seat quantity, and sends macOS native notifications.',
+      zh: 'Python 自動化工具套件，內含台鐵座位查詢工具，可跨多日期查詢餘票、篩選座位數量，並透過 macOS 原生通知提醒。',
+    },
+    language: 'Python',
+    stars: 0,
+    url: 'https://github.com/Lung-Yu/auto-tools',
+    tags: ['Automation', 'Python', 'Web Scraping', 'macOS'],
+    year: '2026',
+    highlight: false,
+  },
+  {
+    name: 'File Monitor System',
+    description: {
+      en: 'System directory monitoring tool that detects unauthorised file modifications in real time. Suitable for monitoring live systems for hacker intrusions or malicious changes.',
+      zh: '即時偵測系統目錄中未授權檔案異動的監控工具，適用於監控線上系統的駭客入侵或惡意竄改行為。',
+    },
+    language: 'Python',
+    stars: 0,
+    url: 'https://github.com/Lung-Yu/File-Monitor',
+    tags: ['Security', 'Python', 'System Protection', 'File Integrity'],
+    year: '2020',
+    highlight: false,
+  },
+]
+
+export const languageColors: Record<string, string> = {
+  'C#':               '#178600',
+  'TypeScript':       '#3178c6',
+  'Python':           '#3572A5',
+  'HTML':             '#e34c26',
+  'JavaScript':       '#e8c84a',
+  'Jupyter Notebook': '#DA5B0B',
+  'C++':              '#f34b7d',
+  'Java':             '#b07219',
+  'Astro':            '#ff5d01',
+}
+
