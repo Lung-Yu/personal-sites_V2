@@ -3,7 +3,45 @@ import { Link } from 'react-router-dom'
 import { useState, type ReactNode } from 'react'
 import { profile, experience, education, certifications, skills, talks, type BL, type BLArr } from '../data/profile'
 import { useInView } from '../hooks/useInView'
+import { TECH_ICONS } from '../lib/techIcons'
 import '../styles/Resume.css'
+
+const MONTH_IDX: Record<string, number> = {
+  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
+}
+
+function parseDuration(periodEn: string, isZh: boolean): string {
+  const parts = periodEn.split(' — ')
+  if (parts.length !== 2) return ''
+  const parseDate = (s: string): { year: number; month: number } | null => {
+    const trimmed = s.trim()
+    if (trimmed === 'Present') {
+      const now = new Date()
+      return { year: now.getFullYear(), month: now.getMonth() }
+    }
+    const [mon, yr] = trimmed.split(' ')
+    const month = MONTH_IDX[mon]
+    const year = parseInt(yr)
+    if (month === undefined || isNaN(year)) return null
+    return { year, month }
+  }
+  const start = parseDate(parts[0])
+  const end = parseDate(parts[1])
+  if (!start || !end) return ''
+  const totalMonths = (end.year - start.year) * 12 + (end.month - start.month)
+  if (totalMonths <= 0) return ''
+  const years = Math.floor(totalMonths / 12)
+  const months = totalMonths % 12
+  if (isZh) {
+    if (years === 0) return `${months}個月`
+    if (months === 0) return `${years}年`
+    return `${years}年${months}個月`
+  }
+  if (years === 0) return `${months} mo`
+  if (months === 0) return `${years} yr`
+  return `${years} yr ${months} mo`
+}
 
 function useL() {
   const { i18n } = useTranslation()
@@ -35,8 +73,9 @@ function FadeSection({ children, className }: FadeSectionProps) {
 }
 
 export default function Resume() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const l = useL()
+  const isZh = i18n.language.startsWith('zh')
 
   const [resumeMode, setResumeMode] = useState(false)
   const [showTeamContext, setShowTeamContext] = useState(true)
@@ -93,7 +132,12 @@ export default function Resume() {
               <div key={idx} className="timeline-entry">
                 <div className="timeline-header">
                   <h3>{l(job.title)}</h3>
-                  <span className="period">{l(job.period)}</span>
+                  <span className="period">
+                    {l(job.period)}
+                    {typeof job.period === 'object' && (
+                      <span className="period-duration"> · {parseDuration(job.period.en, isZh)}</span>
+                    )}
+                  </span>
                 </div>
                 <div className="timeline-org">
                   <span>{job.company}</span>
@@ -110,9 +154,15 @@ export default function Resume() {
                 </ul>
                 {job.techStack && job.techStack.length > 0 && (
                   <div className="tech-stack">
-                    {job.techStack.map((tech, i) => (
-                      <span key={i} className="tech-tag">{tech}</span>
-                    ))}
+                    {job.techStack.map((tech, i) => {
+                      const entry = TECH_ICONS[tech]
+                      return (
+                        <span key={i} className={`tech-tag${entry ? ' has-icon' : ''}`}>
+                          {entry && <entry.Icon size={12} color={entry.color} />}
+                          {tech}
+                        </span>
+                      )
+                    })}
                   </div>
                 )}
               </div>
