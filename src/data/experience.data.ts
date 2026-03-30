@@ -8,6 +8,10 @@ export const experience: ExperienceEntry[] = [
       en: 'Gamania subsidiary · formerly 果核數位 (Digicentre)',
       zh: '遊戲橘子子公司 · 前身為果核數位',
     },
+    teamContext: {
+      en: 'Technical Manager of the Tech Development Division (team of 2–5), responsible for backend architecture, security engineering, and cloud infrastructure. Products: Polisana — an AI-native vulnerability management platform built in-house (microservices) — and an AI-powered security consultant system.',
+      zh: '技術開發部門技術經理，帶領 2~5 人工程團隊，負責後端架構設計、安全工程及雲端基礎設施。主要產品：Polisana — 自行研發的 AI-native 弱點管理平台（微服務架構）— 及 AI 資安顧問系統。',
+    },
     title: { en: 'Technical Manager', zh: '技術經理' },
     period: { en: 'Apr 2025 — Present', zh: '2025年4月 — 至今' },
     location: { en: 'New Taipei City, Taiwan', zh: '台灣，新北市' },
@@ -15,22 +19,25 @@ export const experience: ExperienceEntry[] = [
       en: [
         'Lead product ownership and set secure development standards across engineering teams.',
         'Conduct architecture security assessments and drive technical leadership for product development.',
-        'Migrated Polisana vulnerability management platform to GCP with IaC (Terraform), improving deployment reliability and scalability.',
+        'Built and operate Polisana, an AI-native vulnerability management platform developed entirely in-house using microservices architecture; evolved infrastructure from on-demand GKE to fully IaC-managed GCP deployment (Terraform), improving reliability and scalability.',,
         'Led Japan API integration project to successful v1.0.0 production launch, enforcing architecture review and security code review standards.',
         'Built an AI-powered security consultant using RAG pipelines and LLM integration, enabling automated security Q&A and knowledge retrieval.',
         'Independently completed R&D tax incentive filing for the department, delivering additional corporate tax savings.',
         'Led cross-departmental coordination to revise the company\'s ISMS software acquisition, development, and maintenance policy, aligning secure development standards across engineering, security, and management teams.',
+        'Hands-on: architected and developed backend microservices with Java Spring Boot, Hexagonal Architecture, CQRS, and Event Sourcing; independently built the AI security consultant end-to-end (Python, RAG, pgvector, Cloud Run); scaled Terraform IaC from 3 to 69 resources.',
       ],
       zh: [
         '主導產品規劃，制定跨工程團隊的安全開發標準。',
         '執行架構安全評估，推動產品開發的技術領導。',
-        '將 Polisana 弱點管理平台遷移至 GCP，採用 IaC（Terraform），提升部署可靠性與可擴展性。',
+        '自行開發並持續營運 Polisana AI-native 弱點管理平台（微服務架構）；基礎設施從 On-demand GKE 演進為完整 IaC 管理的 GCP 部署（Terraform），提升可靠性與可擴展性。',
         '主導日本 API 串接專案順利完成 1.0.0 上線，建立架構審查與安全碼審標準。',
         '以 RAG 流水線與 LLM 整合，獨力打造 AI 驅動資安顧問系統，實現自動化資安問答與知識檢索。',
         '獨立完成部門研發投資抵減申報，為公司創造額外稅務節省效益。',
         '主導跨部門協調，推動公司 ISMS「資通系統獲取、開發及維護管理辦法」修訂，整合工程、資安與管理團隊的安全開發規範。',
+        '親自動手：以 Java Spring Boot + Hexagonal Architecture + CQRS + Event Sourcing 設計並開發後端微服務；獨力完成 AI 資安顧問系統端對端（Python、RAG、pgvector、Cloud Run）；Terraform IaC 從 3 個資源擴展至 69 個。',
       ],
     },
+    techStack: ['Java', 'Spring Boot', 'Hexagonal Architecture', 'CQRS', 'Event Sourcing', 'KrakenD', 'GKE', 'ArgoCD', 'Kafka', 'KEDA', 'Terraform', 'OpenTelemetry', 'Python', 'RAG', 'pgvector', 'Keycloak OAuth2', 'Sealed Secrets', 'GitHub Copilot', 'Claude'],
   },
   {
     company: 'AI Network (全智網科技)',
@@ -46,12 +53,15 @@ export const experience: ExperienceEntry[] = [
       en: [
         'Design and deliver DevSecOps courses and secure coding training programmes.',
         'Develop curriculum bridging AI integration with secure software development practices.',
+        'Hands-on: developed course demo applications and lab environments using Java Spring Boot, React, and Docker.',
       ],
       zh: [
         '設計並講授 DevSecOps 課程及安全編碼訓練課程。',
         '開發結合 AI 整合與安全軟體開發實踐的教學課綱。',
+        '親自動手：以 Java Spring Boot、React 及 Docker 開發課程示範應用程式與實驗環境。',
       ],
     },
+    techStack: ['Java', 'Spring Boot', 'React', 'Docker', 'Burp Suite', 'NotebookLLM'],
   },
   {
     company: 'Gtalent Co., Ltd. (大數智能教育)',
@@ -67,12 +77,15 @@ export const experience: ExperienceEntry[] = [
       en: [
         'Deliver AI application and intelligent education course modules.',
         'Develop special-topic course materials on AI integration in software development.',
+        'Hands-on: developed AI-integrated demo applications and course materials using Java Spring Boot, React, and Docker.',
       ],
       zh: [
         '講授 AI 應用與智能教育相關課程模組。',
         '開發以 AI 融入軟體開發為主題的專題課程教材。',
+        '親自動手：以 Java Spring Boot、React 及 Docker 開發 AI 整合示範應用與課程教材。',
       ],
     },
+    techStack: ['Java', 'Spring Boot', 'React', 'Docker', 'NotebookLLM'],
   },
   {
     company: 'Digicentre Co., Ltd. (果核數位)',
@@ -80,26 +93,31 @@ export const experience: ExperienceEntry[] = [
     companyNote: {
       en: 'now Cloudforce / 雲力橘子 · Gamania subsidiary',
       zh: '現更名為雲力橘子，遊戲橘子子公司',
+    },
+    teamContext: {
+      en: 'Deputy Manager of the Tech Development Division, leading a team of 2–4 engineers; overseeing product development and DevSecOps practices. Products: Japan detection API integration service and a secure development workflow management platform (on-demand Kubernetes).',
+      zh: '技術開發二部副理，帶領 2~4 人工程團隊（持續擴編期），負責產品開發與 DevSecOps 管理。主要產品：日本檢測 API 串接服務、安全開發流程輔助管理平台（On-demand k8s）。',
     },
     title: { en: 'Deputy Manager, Tech Development II', zh: '副理，技術開發二部' },
     period: { en: 'Aug 2024 — Mar 2025', zh: '2024年8月 — 2025年3月' },
     location: { en: 'Taiwan', zh: '台灣' },
     highlights: {
       en: [
-        'Oversaw product management and DevSecOps optimisation across product lines.',
         'Integrated security tooling into CI/CD pipelines to automate vulnerability scanning and compliance checks.',
         'Resolved a long-standing vendor dispute through technical clarification and compromise, saving millions in potential costs.',
         'Completed CSSLP certification and mentored interns, building a structured technical knowledge transfer process.',
         'Recipient of the 2023 Gama Star Award for project excellence.',
+        'Hands-on: developed the secure development workflow management platform in C# .NET 8 with EF Core and Docker; led the Japan API project as the detection API provider, architecting and reviewing the App and source code scanning integration design.',,
       ],
       zh: [
-        '監管各產品線的產品管理與 DevSecOps 優化。',
         '將安全工具整合至 CI/CD 流水線，自動化弱點掃描與合規檢查。',
         '以技術澄清與折衷方案解決長期懸而未決的廠商爭議，節省數百萬元潛在費用。',
         '取得 CSSLP 認證，指導實習生並建立結構化的技術傳承機制。',
         '榮獲 2023 年 Gama Star 專案卓越獎。',
+        '親自動手：以 C# .NET 8 + EF Core 開發安全開發流程輔助管理平台（Docker 部署）；日本 API 專案中擔任檢測 API 提供方，主導 App 與原始碼檢測串接架構規劃與審查。',
       ],
     },
+    techStack: ['C#', '.NET 8', 'EF Core', 'Docker', 'GitLab CI', 'DevSecOps'],
   },
   {
     company: 'Digicentre Co., Ltd. (果核數位)',
@@ -107,6 +125,10 @@ export const experience: ExperienceEntry[] = [
     companyNote: {
       en: 'now Cloudforce / 雲力橘子 · Gamania subsidiary',
       zh: '現更名為雲力橘子，遊戲橘子子公司',
+    },
+    teamContext: {
+      en: 'Software Development Security unit (2–3 person team), responsible for application security consulting, source code review services, and in-house security tooling R&D. Delivered two independent platforms: ScanPortal (one-stop web-based source code scanning platform, sold to 2 enterprise clients) and a black/white-box automated scanning platform sold to a listed financial institution — integrating WebInspect and Fortify SCA via Jenkins for distributed scanning and resource orchestration, with approval workflow integration.',
+      zh: '軟體開發安全部門 2~3 人小組，負責應用程式安全顧問服務、原始碼檢測業務及內部安全工具研發。自主開發並交付兩套獨立平台：ScanPortal 一站式網頁原始碼檢測平台（已售出 2 家企業客戶）、以及售出 1 家金融上市櫃客戶的黑白箱自動化掃描平台 — 整合 WebInspect 與 Fortify SCA，透過 Jenkins 進行分散掃描與資源調控（Java Spring Boot、Flutter、自動化腳本），並整合客戶簽核流程。',
     },
     title: { en: 'Deputy Manager, Software Development Security', zh: '副理，軟體開發安全' },
     period: { en: 'Sep 2021 — Jul 2024', zh: '2021年9月 — 2024年7月' },
@@ -117,18 +139,25 @@ export const experience: ExperienceEntry[] = [
         'Developed automation tools reducing team vulnerability-handling volume by 51%; built a self-service application security testing platform that eliminated 80% of repetitive manual operations, deployed to production for enterprise clients.',
         'Streamlined white-box security consulting SOP to achieve ~2× throughput improvement; led DevSecOps adoption engagements for 7+ enterprise clients across the financial and technology sectors.',
         'Served as the primary technical spokesperson within a Micro Focus MSSP Gold Partner team, representing the organisation at client-facing presentations and public tech sessions.',
+        'Hands-on: personally built ScanPortal (full-stack web platform, sold to 2 enterprise clients); co-developed a financial-sector black/white-box automated scanning platform (Java Spring Boot, Flutter, Jenkins, WebInspect, Fortify SCA, automation scripts) with approval workflow and CI/CD integration, sold to a listed financial institution.',,
       ],
       zh: [
         '設計企業級 DevSecOps 流程，將安全性整合至完整 SDLC 中。',
         '開發自動化工具，將團隊弱點處理量降低 51%；建立自助式應用程式安全檢測平台，消除 80% 的重複性人工作業，已正式供企業客戶使用。',
         '優化白箱安全顧問 SOP，效率提升約 2 倍；協助 7 家以上金融與科技產業企業客戶成功導入 DevSecOps。',
         '以 Micro Focus MSSP 金牌夥伴團隊主要技術代表身份，代表組織出席客戶簡報與公開技術分享活動。',
+        '親自動手：建置 ScanPortal 全端平台（已售出 2 家企業客戶）；團隊共同開發金融業黑白箱自動化掃描平台（Java Spring Boot、Flutter、Jenkins、WebInspect、Fortify SCA、自動化腳本），整合客戶簽核流程與 CI/CD，售出 1 家金融上市櫃客戶。',
       ],
     },
+    techStack: ['Java', 'Spring Boot', 'Flutter', 'Python', 'Jenkins', 'Fortify SCA', 'WebInspect', 'GitLab CI', 'Docker', 'GCP', 'Terraform'],
   },
   {
     company: 'PwC Taiwan',
     companyZh: '資誠聯合會計師事務所',
+    teamContext: {
+      en: 'Financial cybersecurity consulting team of 2–5, specialising in security assessments, penetration testing, and compliance audits for banking and insurance clients.',
+      zh: '2~5 人金融資安顧問小組，專責銀行及保險業客戶的安全評估、滲透測試與合規稽核。',
+    },
     title: { en: 'Security Consultant', zh: '資安顧問' },
     period: { en: 'Sep 2020 — Sep 2021', zh: '2020年9月 — 2021年9月' },
     location: { en: 'Taipei, Taiwan', zh: '台灣，台北市' },
@@ -137,13 +166,16 @@ export const experience: ExperienceEntry[] = [
         'Conducted financial sector security assessments including penetration testing, vulnerability analysis, and compliance audits.',
         'Performed malware analysis, packet capture analysis, and load/stress testing for banking institutions.',
         'Delivered risk assessment reports and remediation recommendations to enterprise clients.',
+        'Hands-on: developed Python scripts for automated report generation and data parsing; built Linux CIS benchmark checking tools for configuration analysis and compliance validation.',
       ],
       zh: [
         '執行金融業資安評估，包含滲透測試、弱點分析與合規稽核。',
         '對銀行機構進行惡意程式分析、封包擷取分析及壓力測試。',
         '向企業客戶提交風險評估報告與改善建議。',
+        '親自動手：以 Python 開發自動化報告產生與資料解析腳本；開發 Linux CIS 基準檢查工具，用於系統組態分析與合規驗證。',
       ],
     },
+    techStack: ['Python', 'Bash', 'Burp Suite', 'Wireshark', 'testssl', 'Kali Linux'],
   },
 ]
 

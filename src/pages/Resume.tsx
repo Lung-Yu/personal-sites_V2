@@ -39,6 +39,7 @@ export default function Resume() {
   const l = useL()
 
   const [resumeMode, setResumeMode] = useState(false)
+  const [showTeamContext, setShowTeamContext] = useState(true)
   const displayCerts = resumeMode ? certifications.filter(c => c.resume) : certifications
   const displayTalks = resumeMode ? talks.filter(t => t.resume) : talks
 
@@ -71,6 +72,13 @@ export default function Resume() {
                 onClick={() => setResumeMode(true)}
               >{t('resume.modeResume')}</button>
             </div>
+            <button
+              className={`mode-toggle-btn team-context-toggle${showTeamContext ? ' active' : ''}`}
+              onClick={() => setShowTeamContext(v => !v)}
+              title="Toggle team context paragraphs"
+            >
+              {showTeamContext ? '👥 團隊概述 ✓' : '👥 團隊概述'}
+            </button>
             <button className="btn btn-secondary" onClick={() => window.print()}>
               <PrintIcon /> {t('resume.printBtn')}
             </button>
@@ -94,9 +102,19 @@ export default function Resume() {
                 {job.companyNote && !resumeMode && (
                   <p className="company-note">{l(job.companyNote)}</p>
                 )}
+                {job.teamContext && showTeamContext && (
+                  <p className="team-context">{l(job.teamContext)}</p>
+                )}
                 <ul>
                   {l(job.highlights).map((h, i) => <li key={i}>{h}</li>)}
                 </ul>
+                {job.techStack && job.techStack.length > 0 && (
+                  <div className="tech-stack">
+                    {job.techStack.map((tech, i) => (
+                      <span key={i} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>

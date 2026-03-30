@@ -36,10 +36,12 @@ export interface ExperienceEntry {
   company: string
   companyZh: string
   companyNote?: BL
+  teamContext?: BL
   title: BL
   period: BL
   location: BL
   highlights: BLArr
+  techStack?: string[]
 }
 
 export interface EducationEntry {

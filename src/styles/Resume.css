@@ -141,6 +141,48 @@
   margin-bottom: 6px;
 }
 
+.team-context {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--accent);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.tech-tag {
+  font-size: 11px;
+  font-family: var(--mono);
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.team-context-toggle {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.team-context-toggle.active {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .timeline-org .org-badge {
   font-size: 11px;
   background: var(--accent-light);
@@ -466,6 +508,9 @@
   .timeline-entry ul li { font-size: 12px; }
   .timeline-org { font-size: 12px; }
   .company-note { font-size: 11px; }
+  .team-context { font-size: 12px; padding-left: 8px; }
+  .tech-tag { font-size: 10px; padding: 1px 6px; }
+  .team-context-toggle { display: none !important; }
 
   /* Prevent entries from splitting across pages */
   .timeline-entry { break-inside: avoid; page-break-inside: avoid; }
