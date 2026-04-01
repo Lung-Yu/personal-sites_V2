@@ -19,7 +19,8 @@ export const experience: ExperienceEntry[] = [
       en: [
         'Lead product ownership and set secure development standards across engineering teams.',
         'Conduct architecture security assessments and drive technical leadership for product development.',
-        'Built and operate Polisana, an AI-native vulnerability management platform developed entirely in-house using microservices architecture; evolved infrastructure from on-demand GKE to fully IaC-managed GCP deployment (Terraform), improving reliability and scalability.',,
+        'Built and operate Polisana, an AI-native vulnerability management platform developed entirely in-house using microservices architecture; evolved infrastructure from on-demand GKE to fully IaC-managed GCP deployment (Terraform), improving reliability and scalability.',
+        'Delivered Phase 3 (Stage 2) of a multi-year black/white-box automated scanning engagement for a listed financial institution — final milestone of a 3-year continuous project — going live on schedule in September 2025.',
         'Led Japan API integration project to successful v1.0.0 production launch, enforcing architecture review and security code review standards.',
         'Built an AI-powered security consultant using RAG pipelines and LLM integration, enabling automated security Q&A and knowledge retrieval.',
         'Independently completed R&D tax incentive filing for the department, delivering additional corporate tax savings.',
@@ -30,6 +31,7 @@ export const experience: ExperienceEntry[] = [
         '主導產品規劃，制定跨工程團隊的安全開發標準。',
         '執行架構安全評估，推動產品開發的技術領導。',
         '自行開發並持續營運 Polisana AI-native 弱點管理平台（微服務架構）；基礎設施從 On-demand GKE 演進為完整 IaC 管理的 GCP 部署（Terraform），提升可靠性與可擴展性。',
+        '完成金融上市公司黑白箱自動化掃描系統三年合作的最終里程碑（第三階段二期），2025 年 9 月如期上線交付。',
         '主導日本 API 串接專案順利完成 1.0.0 上線，建立架構審查與安全碼審標準。',
         '以 RAG 流水線與 LLM 整合，獨力打造 AI 驅動資安顧問系統，實現自動化資安問答與知識檢索。',
         '獨立完成部門研發投資抵減申報，為公司創造額外稅務節省效益。',
@@ -107,7 +109,7 @@ export const experience: ExperienceEntry[] = [
         'Resolved a long-standing vendor dispute through technical clarification and compromise, saving millions in potential costs.',
         'Completed CSSLP certification and mentored interns, building a structured technical knowledge transfer process.',
         'Recipient of the 2023 Gama Star Award for project excellence.',
-        'Hands-on: developed the secure development workflow management platform in C# .NET 8 with EF Core and Docker; led the Japan API project as the detection API provider, architecting and reviewing the App and source code scanning integration design.',,
+        'Hands-on: developed the secure development workflow management platform in C# .NET 8 with EF Core and Docker; led the Japan API project as the detection API provider, architecting and reviewing the App and source code scanning integration design.',
       ],
       zh: [
         '將安全工具整合至 CI/CD 流水線，自動化弱點掃描與合規檢查。',
@@ -139,7 +141,7 @@ export const experience: ExperienceEntry[] = [
         'Developed automation tools reducing team vulnerability-handling volume by 51%; built a self-service application security testing platform that eliminated 80% of repetitive manual operations, deployed to production for enterprise clients.',
         'Streamlined white-box security consulting SOP to achieve ~2× throughput improvement; led DevSecOps adoption engagements for 7+ enterprise clients across the financial and technology sectors.',
         'Served as the primary technical spokesperson within a Micro Focus MSSP Gold Partner team, representing the organisation at client-facing presentations and public tech sessions.',
-        'Hands-on: personally built ScanPortal (full-stack web platform, sold to 2 enterprise clients); co-developed a financial-sector black/white-box automated scanning platform (Java Spring Boot, Flutter, Jenkins, WebInspect, Fortify SCA, automation scripts) with approval workflow and CI/CD integration, sold to a listed financial institution.',,
+        'Hands-on: personally built ScanPortal (full-stack web platform, sold to 2 enterprise clients); co-developed a financial-sector black/white-box automated scanning platform (Java Spring Boot, Flutter, Jenkins, WebInspect, Fortify SCA, automation scripts) with approval workflow and CI/CD integration, sold to a listed financial institution.',
       ],
       zh: [
         '設計企業級 DevSecOps 流程，將安全性整合至完整 SDLC 中。',

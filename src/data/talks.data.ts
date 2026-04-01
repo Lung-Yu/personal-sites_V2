@@ -30,7 +30,7 @@ export const talks: Talk[] = [
       zh: 'DevSecOps 與敏捷整合自動化安全測試',
     },
     event: 'CyberRes 2025',
-    date: { en: 'April 2025', zh: '2025年4月' },
+    date: { en: 'April 17, 2025', zh: '2025年4月17日' },
     location: 'Nangang Exhibition Center',
     slides: 'https://cybersec.ithome.com.tw/2025/session-page/3607',
     video: '',
@@ -52,11 +52,11 @@ export const talks: Talk[] = [
       en: 'DevSecOps & AI: Opportunities and Challenges of a Double-Edged Sword',
       zh: 'DevSecOps & AI：雙面刃的機遇與挑戰',
     },
-    event: 'CISA Conference',
+    event: 'CISA Digital Application Week 2024',
     date: { en: 'August 2024', zh: '2024年8月' },
     location: 'Live Stream',
     slides: '',
-    video: '',
+    video: 'https://www.youtube.com/watch?v=vFeDcm1HMBs',
   },
   {
     title: {
@@ -64,10 +64,14 @@ export const talks: Talk[] = [
       zh: 'DevOps + Sec：強力後盾還是麻煩製造者？',
     },
     event: 'DevOpsDays Taipei 2024',
-    date: { en: 'July 2024', zh: '2024年7月' },
+    date: { en: 'July 10, 2024', zh: '2024年7月10日' },
     location: 'Bottle Cap Factory',
     slides: 'https://devopsdays.tw/2024/session-page/3022',
     video: '',
+    note: {
+      en: 'Audience rating: 4.47 / 5 (top score 4.85)',
+      zh: '聽眾評分：4.47 / 5（本屆最高分 4.85）',
+    },
     resume: true,
   },
   {

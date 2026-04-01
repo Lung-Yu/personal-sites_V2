@@ -248,6 +248,9 @@ export default function Resume() {
                     </a>
                   )}
                 </div>
+                {talk.note && (
+                  <div className="talk-note">{l(talk.note)}</div>
+                )}
               </div>
             ))}
           </div>

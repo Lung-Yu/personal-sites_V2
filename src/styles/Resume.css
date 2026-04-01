@@ -450,6 +450,13 @@
 
 .talk-link:hover { opacity: 0.75; text-decoration: none; }
 
+.talk-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-style: italic;
+}
+
 .talks-invite-cta {
   display: inline-block;
   margin-top: 18px;

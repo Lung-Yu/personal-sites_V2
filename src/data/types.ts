@@ -77,6 +77,7 @@ export interface Talk {
   location?: string
   slides: string
   video: string
+  note?: BL
   resume?: boolean
 }
 
