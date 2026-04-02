@@ -1,5 +1,9 @@
 import type { SkillGroup, SkillChip, ChipColors, ConsultingService } from './types'
 
+// ── Skills ────────────────────────────────────────────────────────────────────
+// Derived from experience.data.ts techStack[], projects.data.ts tags[],
+// and certifications. Add/remove items as expertise evolves.
+
 export const skills: SkillGroup[] = [
   {
     category: { en: 'Security', zh: '資訊安全' },
@@ -7,19 +11,25 @@ export const skills: SkillGroup[] = [
     items: {
       en: [
         'Security Architecture & Governance',
+        'SAST / DAST / SCA (Fortify · WebInspect · Snyk · SonarQube)',
+        'Vulnerability Management & Risk Assessment',
+        'Application Security Testing & Code Review',
         'Penetration Testing (CEH)',
-        'Vulnerability Assessment',
-        'Incident Response & Risk Management',
-        'ISO 27001 Lead Auditor',
-        'Compliance Auditing',
+        'ISO 27001:2022 Lead Auditor',
+        'ISMS Policy & Compliance',
+        'Incident Response & Threat Analysis',
+        'SBOM (CycloneDX · SPDX)',
       ],
       zh: [
         '資安架構與治理',
+        'SAST / DAST / SCA（Fortify · WebInspect · Snyk · SonarQube）',
+        '弱點管理與風險評估',
+        '應用程式安全測試與碼審',
         '滲透測試（CEH）',
-        '弱點評估',
-        '事件應變與風險管理',
-        'ISO 27001 主導稽核員',
-        '合規稽核',
+        'ISO 27001:2022 主導稽核員',
+        'ISMS 政策與合規',
+        '事件應變與威脅分析',
+        'SBOM（CycloneDX · SPDX）',
       ],
     },
   },
@@ -29,7 +39,8 @@ export const skills: SkillGroup[] = [
     items: {
       en: [
         'RAG Systems & LLM Integration',
-        'Google Gemini API',
+        'Google Gemini · Vertex AI · pgvector',
+        'Prompt Engineering & AI Workflow Automation',
         'Machine Learning & Deep Learning',
         'Image Processing & Computer Vision',
         'Audio Signal Processing',
@@ -37,7 +48,8 @@ export const skills: SkillGroup[] = [
       ],
       zh: [
         'RAG 系統與 LLM 整合',
-        'Google Gemini API',
+        'Google Gemini · Vertex AI · pgvector',
+        'Prompt 工程與 AI 工作流程自動化',
         '機器學習與深度學習',
         '影像處理與電腦視覺',
         '音訊訊號處理',
@@ -46,65 +58,101 @@ export const skills: SkillGroup[] = [
     },
   },
   {
-    category: { en: 'Development', zh: '開發' },
+    category: { en: 'Full-Stack Development', zh: '全端開發' },
     color: '#0284c7',
     items: {
       en: [
-        'Python · TypeScript · C# · Java · C++',
-        'React',
-        'RESTful API Design',
-        'Docker · Kubernetes · Nginx',
-        'CI/CD Pipeline Implementation',
+        'Java · Spring Boot (Hexagonal Architecture · CQRS · Event Sourcing)',
+        'Python · FastAPI',
+        'C# · .NET 8 · EF Core',
+        'TypeScript · React · Vite',
+        'Flutter',
+        'gRPC · Microservices · RESTful API Design',
+        'Chrome Extension Development',
       ],
       zh: [
-        'Python · TypeScript · C# · Java · C++',
-        'React',
-        'RESTful API 設計',
-        'Docker · Kubernetes · Nginx',
-        'CI/CD 流水線建置',
+        'Java · Spring Boot（Hexagonal Architecture · CQRS · Event Sourcing）',
+        'Python · FastAPI',
+        'C# · .NET 8 · EF Core',
+        'TypeScript · React · Vite',
+        'Flutter',
+        'gRPC · 微服務 · RESTful API 設計',
+        'Chrome 擴充功能開發',
       ],
     },
   },
   {
-    category: { en: 'DevSecOps & Infra', zh: 'DevSecOps 與基礎設施' },
+    category: { en: 'DevSecOps & Cloud', zh: 'DevSecOps 與雲端基礎設施' },
     color: '#059669',
     items: {
       en: [
-        'DevSecOps Process Design',
-        'Security Automation',
-        'Container Management (Docker / K8s)',
-        'Cloud & On-Premises Architecture',
-        'GitHub Actions · SAST/DAST Integration',
-        'Monitoring & Logging Management',
+        'DevSecOps Process Design & Implementation',
+        'Terraform IaC',
+        'GCP (Cloud Run · GKE · Cloud Build · Artifact Registry)',
+        'Docker · Kubernetes · ArgoCD · KrakenD',
+        'GitLab CI · Jenkins · GitHub Actions',
+        'Kafka · KEDA · OpenTelemetry',
+        'Keycloak OAuth2 · Sealed Secrets',
+        'CI/CD Security Gate Integration',
       ],
       zh: [
-        'DevSecOps 流程設計',
-        '安全自動化',
-        '容器管理（Docker / K8s）',
-        '雲端與地端架構',
-        'GitHub Actions · SAST/DAST 整合',
-        '監控與日誌管理',
+        'DevSecOps 流程設計與落地',
+        'Terraform IaC',
+        'GCP（Cloud Run · GKE · Cloud Build · Artifact Registry）',
+        'Docker · Kubernetes · ArgoCD · KrakenD',
+        'GitLab CI · Jenkins · GitHub Actions',
+        'Kafka · KEDA · OpenTelemetry',
+        'Keycloak OAuth2 · Sealed Secrets',
+        'CI/CD 安全關卡整合',
+      ],
+    },
+  },
+  {
+    category: { en: 'Training & Leadership', zh: '培訓與技術領導' },
+    color: '#b45309',
+    items: {
+      en: [
+        'Technical Team Leadership (2–5 engineers)',
+        'DevSecOps Curriculum Design & Delivery',
+        'Secure Coding Training',
+        'Architecture Review & Standards Setting',
+        'Mentoring & Technical Knowledge Transfer',
+        'Public Speaking (DevOpsDays · CyberRes · CISA · HWDC)',
+      ],
+      zh: [
+        '技術團隊領導（2~5 人）',
+        'DevSecOps 課程設計與講授',
+        '安全編碼培訓',
+        '架構審查與標準制定',
+        '輔導與技術傳承',
+        '技術演講（DevOpsDays · CyberRes · CISA · HWDC）',
       ],
     },
   },
 ]
 
+// ── Homepage skill chips ───────────────────────────────────────────────────────
+// Shown as quick-scan tags on the homepage hero. Keep to ~15 items max.
 export const skillChips: SkillChip[] = [
+  // Languages
+  { label: 'Java', cat: 'lang' },
   { label: 'Python', cat: 'lang' },
   { label: 'TypeScript', cat: 'lang' },
   { label: 'C#', cat: 'lang' },
-  { label: 'Java', cat: 'lang' },
-  { label: 'C++', cat: 'lang' },
-  { label: 'AI / ML', cat: 'ai' },
+  // AI
   { label: 'RAG', cat: 'ai' },
   { label: 'LLM', cat: 'ai' },
-  { label: 'Cybersecurity', cat: 'sec' },
+  { label: 'Gemini', cat: 'ai' },
+  // Security
   { label: 'CISSP', cat: 'sec' },
   { label: 'CSSLP', cat: 'sec' },
   { label: 'ISO 27001', cat: 'sec' },
+  { label: 'DevSecOps', cat: 'sec' },
+  // Infra
+  { label: 'GCP', cat: 'infra' },
+  { label: 'Terraform', cat: 'infra' },
   { label: 'Docker', cat: 'infra' },
-  { label: 'DevSecOps', cat: 'infra' },
-  { label: 'React', cat: 'infra' },
+  { label: 'Kubernetes', cat: 'infra' },
 ]
 
 export const chipColors: ChipColors = {
@@ -189,4 +237,3 @@ export const consulting: ConsultingService[] = [
     },
   },
 ]
-
