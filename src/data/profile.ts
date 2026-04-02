@@ -38,10 +38,10 @@ export const profile: ProfileData = {
   location: 'Taipei, Taiwan',
   email: 'workfile975@gmail.com',
   bio: {
-    en: `Cybersecurity expert and full-stack developer with 10+ years of experience in information security and software development. Specialises in integrating security into the development process to create safer, more stable software systems.
+    en: `Cybersecurity expert and full-stack developer with 12+ years of experience in information security and software development. Specialises in integrating security into the development process to create safer, more stable software systems.
 
 Conference speaker at DevOpsDays Taipei, CyberRes, and CISA. Holds CISSP, CSSLP, ISO 27001 Lead Auditor, and CEH certifications. Currently Technical Manager at Cloudforce and part-time instructor teaching DevSecOps.`,
-    zh: `擁有 10 年以上資訊安全與軟體開發經驗的資安專家與全端開發者，專注於將安全性融入開發流程，打造更安全穩定的軟體系統。
+    zh: `擁有 12 年以上資訊安全與軟體開發經驗的資安專家與全端開發者，專注於將安全性融入開發流程，打造更安全穩定的軟體系統。
 
 曾於 DevOpsDays Taipei、CyberRes 及 CISA 等研討會演講。持有 CISSP、CSSLP、ISO 27001 主導稽核員及 CEH 等國際認證。目前擔任 Cloudforce 技術經理，並兼任 DevSecOps 課程講師。`,
   },

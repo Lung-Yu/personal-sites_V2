@@ -97,7 +97,7 @@ export default function Home() {
         <div className="container">
           <div className="stats-row">
             <div className="stat-card">
-              <div className="stat-number">10+</div>
+              <div className="stat-number">12+</div>
               <div className="stat-label">{t('home.statsYears')}</div>
             </div>
             <div className="stat-card">
