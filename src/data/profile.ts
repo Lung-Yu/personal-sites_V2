@@ -28,8 +28,8 @@ export const profile: ProfileData = {
     alias: 'tygrus',
   },
   title: {
-    en: 'Technical Manager · Cybersecurity Expert & Full-Stack Developer',
-    zh: '技術經理 · 資安專家與全端開發者',
+    en: 'DevSecOps Engineer · Cybersecurity Expert & Full-Stack Developer',
+    zh: 'DevSecOps 工程師 · 資安專家與全端開發者',
   },
   subtitle: {
     en: 'Security Architecture · DevSecOps · AI/ML · Full-Stack Development',
