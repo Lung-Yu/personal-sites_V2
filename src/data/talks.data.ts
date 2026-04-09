@@ -105,7 +105,7 @@ export const talks: Talk[] = [
     date: { en: 'May 2023', zh: '2023年5月' },
     location: 'Nangang Exhibition Center',
     slides: 'https://cyber.ithome.com.tw/2023/session-page/1858',
-    video: '',
+    video: 'https://www.youtube.com/watch?v=abVqAyUvpAc',
   },
   {
     title: {
