@@ -22,8 +22,8 @@ export default function Intro() {
   return (
     <div className="intro-overlay" aria-hidden="true" role="presentation">
       <div className="intro-line" />
-      <div className="intro-name">蔡龍佑</div>
-      <div className="intro-alias">Lung-Yu Tsai</div>
+      <div className="intro-name">tygrus</div>
+      <div className="intro-alias">Lung-Yu Tsai · 蔡龍佑</div>
       <div className="intro-line" />
     </div>
   )

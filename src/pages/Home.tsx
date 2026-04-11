@@ -60,9 +60,9 @@ export default function Home() {
               </div>
 
               <h1>
-                <span className="gradient">{profile.name.zh}</span>
+                <span className="gradient">{profile.name.alias}</span>
               </h1>
-              <p className="en-name">{profile.name.en} · {profile.name.alias}</p>
+              <p className="en-name">{profile.name.zh} · {profile.name.en}</p>
 
               <div className="title-row">
                 <span className={`job-title${isDone ? ' typed' : ''}`}>
@@ -102,9 +102,7 @@ export default function Home() {
         </div>
 
         {/* Decorative serif watermark in background */}
-        <div className="hero-watermark" aria-hidden="true">
-          {i18n.language.startsWith('zh') ? '龍佑' : 'tygrus'}
-        </div>
+        <div className="hero-watermark" aria-hidden="true">tygrus</div>
       </section>
 
       <div className="home-body">
