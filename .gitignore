@@ -8,3 +8,4 @@ public/og.png
 _ref/
 
 .venv/
+*.skill
