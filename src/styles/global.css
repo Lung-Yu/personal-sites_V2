@@ -6,9 +6,9 @@
   --text:         #f0ede8;
   --text2:        #c8c4bc;
   --muted:        #9a968f;
-  --accent:       #9d8ec8;
-  --accent-light: rgba(157, 142, 200, 0.12);
-  --accent-hover: #b4a8d8;
+  --accent:       #c8a96e;
+  --accent-light: rgba(200, 169, 110, 0.10);
+  --accent-hover: #dbbe86;
   --border:       rgba(255, 255, 255, 0.08);
   --border-solid: #2e2f33;
 
@@ -166,7 +166,7 @@ a:focus-visible {
   .cursor-ring {
     width: 28px;
     height: 28px;
-    border: 1.5px solid rgba(157, 142, 200, 0.45);
+    border: 1.5px solid rgba(200, 169, 110, 0.35);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;

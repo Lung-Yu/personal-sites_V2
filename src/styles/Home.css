@@ -16,7 +16,7 @@
   position: absolute;
   inset: -25%;
   background:
-    radial-gradient(ellipse 70% 55% at 65% 38%, rgba(157,142,200,.10) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 65% 38%, rgba(200,169,110,.10) 0%, transparent 55%),
     radial-gradient(ellipse 45% 65% at 15% 72%, rgba(120,80,160,.07) 0%, transparent 52%),
     radial-gradient(ellipse 55% 45% at 82% 78%, rgba(60,120,200,.06) 0%, transparent 48%);
   animation: heroBreath 14s ease-in-out infinite alternate;
@@ -106,7 +106,7 @@
 }
 
 .hero h1 .gradient {
-  background: linear-gradient(110deg, #f0ede8 0%, var(--accent) 60%, #c4b8e8 100%);
+  background: linear-gradient(110deg, #f0ede8 0%, #d4ccbc 50%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -207,13 +207,13 @@
 .btn-primary {
   background: var(--accent);
   color: #111518;
-  box-shadow: 0 2px 12px rgba(157,142,200,.25);
+  box-shadow: 0 2px 12px rgba(200,169,110,.25);
 }
 .btn-primary:hover {
   background: var(--accent-hover);
   text-decoration: none;
   color: #111518;
-  box-shadow: 0 4px 20px rgba(157,142,200,.35);
+  box-shadow: 0 4px 20px rgba(200,169,110,.35);
   transform: translateY(-2px);
 }
 
@@ -237,13 +237,13 @@
   height: 200px;
   border-radius: 50%;
   padding: 2px;
-  background: linear-gradient(135deg, var(--accent) 0%, rgba(157,142,200,0.2) 100%);
-  box-shadow: 0 0 0 1px rgba(157,142,200,.15), 0 20px 60px rgba(0,0,0,.5);
+  background: var(--bg3);
+  box-shadow: 0 0 0 1px rgba(200,169,110,.2), 0 20px 60px rgba(0,0,0,.5);
   transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .hero-avatar-wrap:hover {
-  box-shadow: 0 0 0 1px rgba(157,142,200,.35), 0 24px 64px rgba(0,0,0,.55);
+  box-shadow: 0 0 0 1px rgba(200,169,110,.35), 0 24px 64px rgba(0,0,0,.55);
   transform: translateY(-4px);
 }
 
@@ -341,7 +341,7 @@
 }
 
 .stat-card:hover {
-  border-color: rgba(157,142,200,.3);
+  border-color: rgba(200,169,110,.3);
   transform: translateY(-3px);
 }
 
@@ -350,7 +350,7 @@
   font-size: 40px;
   font-weight: 300;
   font-style: italic;
-  color: var(--accent);
+  color: var(--text);
   letter-spacing: -0.02em;
   line-height: 1;
 }
@@ -411,7 +411,7 @@
 }
 
 .achievement-badge:hover {
-  border-color: rgba(157,142,200,.3);
+  border-color: rgba(200,169,110,.3);
   transform: translateY(-1px);
 }
 
@@ -441,15 +441,16 @@
 
 .talk-preview-item:hover {
   background: var(--bg3);
-  border-color: rgba(157,142,200,.35);
+  border-color: rgba(200,169,110,.35);
   transform: translateX(3px);
 }
 
 .talk-preview-event {
   font-size: 10px;
   font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-light);
+  color: var(--muted);
+  background: var(--bg3);
+  border: 1px solid var(--border-solid);
   padding: 3px 8px;
   border-radius: 4px;
   white-space: nowrap;
@@ -523,7 +524,7 @@
 
 .home-project-card:hover {
   background: var(--bg3);
-  border-color: rgba(157,142,200,.35);
+  border-color: rgba(200,169,110,.35);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
   text-decoration: none;
@@ -608,8 +609,8 @@
 .cta-strip {
   margin-top: 56px;
   padding: 28px 32px;
-  background: linear-gradient(110deg, var(--bg2) 0%, rgba(157,142,200,.06) 100%);
-  border: 1px solid rgba(157,142,200,.2);
+  background: var(--bg2);
+  border: 1px solid var(--border-solid);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
