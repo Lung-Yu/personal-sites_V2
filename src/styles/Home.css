@@ -24,6 +24,14 @@
   will-change: transform;
 }
 
+/* Light mode: warmer, slightly more opaque blobs on the parchment bg */
+[data-theme="light"] .hero::before {
+  background:
+    radial-gradient(ellipse 70% 55% at 65% 38%, rgba(154,111,48,.12) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 65% at 15% 72%, rgba(120,80,160,.06) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 45% at 82% 78%, rgba(60,120,200,.05) 0%, transparent 48%);
+}
+
 /* Bottom vignette to ground the hero */
 .hero::after {
   content: '';
@@ -110,6 +118,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Light mode: flip gradient to dark-to-amber so it's visible on parchment bg */
+[data-theme="light"] .hero h1 .gradient {
+  background: linear-gradient(110deg, var(--text) 0%, var(--text2) 55%, var(--accent) 100%);
 }
 
 /* ── English name ── */
