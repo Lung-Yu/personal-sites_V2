@@ -120,9 +120,14 @@
   background-clip: text;
 }
 
-/* Light mode: flip gradient to dark-to-amber so it's visible on parchment bg */
+/* Light mode: flip gradient to dark-to-amber so it's visible on parchment bg.
+   Must re-declare all background-clip properties — browsers won't cascade
+   them correctly when only `background` is overridden at higher specificity. */
 [data-theme="light"] .hero h1 .gradient {
   background: linear-gradient(110deg, var(--text) 0%, var(--text2) 55%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* ── English name ── */
