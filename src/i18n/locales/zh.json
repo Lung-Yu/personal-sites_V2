@@ -28,7 +28,8 @@
     "printBtn": "列印 / 儲存 PDF",
     "talksCta": "邀請演講 →",
     "modeCV": "完整 CV",
-    "modeResume": "精簡履歷"
+    "modeResume": "精簡履歷",
+    "teamOverview": "團隊概述"
   },
   "projects": {
     "title": "專案作品",
