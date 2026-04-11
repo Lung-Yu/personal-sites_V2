@@ -1,6 +1,17 @@
+import { type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { projects, languageColors, type BL, type ProjectLink } from '../data/profile'
+import { useInView } from '../hooks/useInView'
 import '../styles/Projects.css'
+
+function FadeSection({ children, className }: { children: ReactNode; className?: string }) {
+  const [ref, inView] = useInView()
+  return (
+    <div ref={ref} className={`fade-up${inView ? ' visible' : ''}${className ? ` ${className}` : ''}`}>
+      {children}
+    </div>
+  )
+}
 
 function useL() {
   const { i18n } = useTranslation()
@@ -40,6 +51,7 @@ export default function Projects() {
         </div>
 
         {/* Featured */}
+        <FadeSection>
         <p className="section-label">{t('projects.featured')}</p>
         <div className="projects-featured">
           {featured.map((p) => (
@@ -65,8 +77,10 @@ export default function Projects() {
             </div>
           ))}
         </div>
+        </FadeSection>
 
         {/* Others */}
+        <FadeSection>
         <div className="projects-grid-section">
           <h2>{t('projects.more')}</h2>
           <div className="projects-grid">
@@ -91,6 +105,7 @@ export default function Projects() {
             ))}
           </div>
         </div>
+        </FadeSection>
       </div>
     </div>
   )

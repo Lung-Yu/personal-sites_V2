@@ -116,7 +116,7 @@ export default function Resume() {
               onClick={() => setShowTeamContext(v => !v)}
               title="Toggle team context paragraphs"
             >
-              {showTeamContext ? '👥 團隊概述 ✓' : '👥 團隊概述'}
+              {showTeamContext ? `👥 ${t('resume.teamOverview')} ✓` : `👥 ${t('resume.teamOverview')}`}
             </button>
             <button className="btn btn-secondary" onClick={() => window.print()}>
               <PrintIcon /> {t('resume.printBtn')}

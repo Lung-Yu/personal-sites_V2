@@ -1,14 +1,39 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { type ReactNode } from 'react'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
 import {
   profile, skillChips, chipColors, achievements, talks, projects, languageColors,
   certifications,
   type BL, type BLArr,
 } from '../data/profile'
 import { useInView } from '../hooks/useInView'
+import { useTypewriter } from '../hooks/useTypewriter'
 import '../styles/Home.css'
 import '../styles/Projects.css'
+
+/** Counts from 0 → target when scrolled into view */
+function CountUp({ to, suffix = '', duration = 1300 }: { to: number; suffix?: string; duration?: number }) {
+  const [ref, inView] = useInView()
+  const [n, setN]     = useState(0)
+  const started       = useRef(false)
+
+  useEffect(() => {
+    if (!inView || started.current) return
+    started.current = true
+    let t0 = 0, raf = 0
+    const tick = (t: number) => {
+      if (!t0) t0 = t
+      const p     = Math.min((t - t0) / duration, 1)
+      const eased = 1 - Math.pow(1 - p, 3)   // ease-out cubic
+      setN(Math.round(eased * to))
+      if (p < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView, to, duration])
+
+  return <span ref={ref}>{n}{suffix}</span>
+}
 
 function useL() {
   const { i18n } = useTranslation()
@@ -40,12 +65,52 @@ function FadeSection({ children, className }: FadeSectionProps) {
 }
 
 export default function Home() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const l = useL()
+
+  const titleText  = l(profile.title) as string
+  const typedTitle = useTypewriter(titleText, 42, 3000)
+  const isDone     = typedTitle.length >= titleText.length
+
+  // Hero mouse parallax
+  const heroRef   = useRef<HTMLElement>(null)
+  const titleRef  = useRef<HTMLHeadingElement>(null)
+  const avatarRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero) return
+    let raf = 0
+    let tx = 0, ty = 0   // target
+    let cx = 0, cy = 0   // current (lerped)
+
+    const onMove = (e: MouseEvent) => {
+      const { left, top, width, height } = hero.getBoundingClientRect()
+      tx = ((e.clientX - left) / width  - 0.5) * 2
+      ty = ((e.clientY - top)  / height - 0.5) * 2
+    }
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t
+
+    const tick = () => {
+      cx = lerp(cx, tx, 0.07)
+      cy = lerp(cy, ty, 0.07)
+      titleRef.current && (titleRef.current.style.transform  = `translate(${cx * 7}px, ${cy * 4}px)`)
+      avatarRef.current && (avatarRef.current.style.transform = `translate(${cx * -12}px, ${cy * -7}px)`)
+      raf = requestAnimationFrame(tick)
+    }
+
+    hero.addEventListener('mousemove', onMove)
+    raf = requestAnimationFrame(tick)
+    return () => {
+      hero.removeEventListener('mousemove', onMove)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
 
   return (
     <>
-      <section className="hero">
+      <section className="hero" ref={heroRef}>
         <div className="container hero-content">
           <div className="hero-layout">
             <div className="hero-text">
@@ -54,16 +119,20 @@ export default function Home() {
                 <span>{t('home.status')}</span>
               </div>
 
-              <h1>
-                <span className="gradient">{profile.name.zh}</span>
+              <h1 ref={titleRef}>
+                <span className="gradient">{profile.name.alias}</span>
               </h1>
-              <p className="en-name">{profile.name.en} · {profile.name.alias}</p>
+              <p className="en-name">{profile.name.zh} · {profile.name.en}</p>
 
               <div className="title-row">
-                <span className="job-title">{l(profile.title)}</span>
-                <span className="title-sep">·</span>
+                <span className={`job-title${isDone ? ' typed' : ''}`}>
+                  {typedTitle || '\u00A0'}
+                </span>
+              </div>
+
+              <div className="title-row" style={{ marginTop: '-16px' }}>
                 <span className="location">
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C2.3 4.339 2 5.764 2 7c0 1.452.415 2.808 1.052 4.096C4.368 13.48 6.045 15.165 7 16c.417-.368.875-.768 1.329-1.183A17.47 17.47 0 0 0 9.895 13c.641-.937 1.14-1.929 1.521-2.904.38-.974.584-1.95.584-2.596 0-2.647-1.78-4.79-4-4.79C8.35.214 8.174.21 8 .21V0Zm0 6a2 2 0 1 1 0 4A2 2 0 0 1 8 6Z"/>
                   </svg>
                   {profile.location}
@@ -82,7 +151,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hero-avatar-wrap">
+            <div className="hero-avatar-wrap" ref={avatarRef}>
               <img
                 src={`${import.meta.env.BASE_URL}images/avatar.png`}
                 alt="蔡龍佑 Lung-Yu Tsai — profile photo"
@@ -91,21 +160,24 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Decorative serif watermark in background */}
+        <div className="hero-watermark" aria-hidden="true">tygrus</div>
       </section>
 
       <div className="home-body">
         <div className="container">
           <div className="stats-row">
             <div className="stat-card">
-              <div className="stat-number">12+</div>
+              <div className="stat-number"><CountUp to={12} suffix="+" /></div>
               <div className="stat-label">{t('home.statsYears')}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">{certifications.length}</div>
+              <div className="stat-number"><CountUp to={certifications.length} /></div>
               <div className="stat-label">{t('home.statsCerts')}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">{talks.length}</div>
+              <div className="stat-number"><CountUp to={talks.length} /></div>
               <div className="stat-label">{t('home.statsTalks')}</div>
             </div>
           </div>
@@ -113,13 +185,16 @@ export default function Home() {
           <FadeSection className="home-section">
             <h2 className="section-label">{t('home.sectionSkills')}</h2>
             <div className="skill-chips">
-              {skillChips.map((chip) => {
+              {skillChips.map((chip, i) => {
                 const c = chipColors[chip.cat]
                 return (
                   <span
                     key={chip.label}
                     className="skill-chip"
-                    style={{ background: c.bg, borderColor: c.border, color: c.text }}
+                    style={{
+                      background: c.bg, borderColor: c.border, color: c.text,
+                      animationDelay: `${i * 30}ms`,
+                    }}
                   >
                     {chip.label}
                   </span>

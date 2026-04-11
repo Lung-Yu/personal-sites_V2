@@ -1,41 +1,58 @@
 .blog-page {
-  padding: 48px 0 96px;
+  padding: 80px 0 120px;
 }
 
 /* ── Header ── */
 .blog-header {
-  margin-bottom: 40px;
-  padding: 32px;
-  background: linear-gradient(135deg, #faf5ff 0%, #f0f7ff 100%);
-  border: 1px solid #e9d5ff;
+  margin-bottom: 56px;
+  padding: 36px 32px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
 }
 
-[data-theme="dark"] .blog-header {
-  background: linear-gradient(135deg, #1a1033 0%, #0f1d33 100%);
-  border-color: var(--border);
+.blog-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: var(--text);
 }
 
-.blog-header h1 {
-  font-size: 26px;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
+.blog-header .subtitle {
+  font-size: 14px;
+  color: var(--muted);
 }
 
 /* ── Section ── */
 .blog-section {
-  margin-bottom: 48px;
+  margin-bottom: 64px;
 }
 
 .blog-section-title {
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
   color: var(--muted);
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.blog-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 /* ── Card link wrapper ── */
@@ -44,11 +61,10 @@
   text-decoration: none;
   color: inherit;
   margin-bottom: 12px;
+  transition: transform 0.22s ease;
 }
 
-.writing-card-link--no-url {
-  cursor: default;
-}
+.writing-card-link--no-url { cursor: default; }
 
 .writings-list {
   display: flex;
@@ -60,19 +76,20 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px 20px;
-  background: var(--bg);
+  background: var(--bg2);
   box-shadow: var(--shadow);
-  transition: box-shadow var(--transition), transform var(--transition);
+  transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
 }
 
 .writing-card-link:not(.writing-card-link--no-url):hover .writing-card {
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  border-color: rgba(200,169,110,.3);
+  background: var(--bg3);
 }
 
 .writing-card--featured {
-  border-left: 3px solid var(--accent);
-  background: linear-gradient(to right, var(--accent-light), var(--bg));
+  border-left: 2px solid var(--accent);
   margin-bottom: 12px;
 }
 
@@ -95,26 +112,24 @@
 
 .writing-type {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   padding: 2px 8px;
   border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.writing-type--article  { background: #eff6ff; color: #1d4ed8; }
-.writing-type--talk     { background: #faf5ff; color: #7c3aed; }
-.writing-type--course   { background: #f0fdf4; color: #15803d; }
-.writing-type--thread   { background: #fff7ed; color: #c2410c; }
-
-[data-theme="dark"] .writing-type--article { background: #1f3a5f; color: #93c5fd; }
-[data-theme="dark"] .writing-type--talk    { background: #2e1a4f; color: #c4b5fd; }
-[data-theme="dark"] .writing-type--course  { background: #14532d; color: #86efac; }
-[data-theme="dark"] .writing-type--thread  { background: #431407; color: #fdba74; }
+/* Semantic type colours — intentionally distinct */
+.writing-type--article { background: rgba(147,197,253,.15); color: #93c5fd; }
+.writing-type--talk    { background: rgba(196,181,253,.15); color: #c4b5fd; }
+.writing-type--course  { background: rgba(134,239,172,.15); color: #86efac; }
+.writing-type--thread  { background: rgba(253,186,116,.15); color: #fdba74; }
 
 .writing-platform {
   font-size: 11px;
   color: var(--muted);
-  background: var(--bg2);
-  border: 1px solid var(--border);
+  background: var(--bg3);
+  border: 1px solid var(--border-solid);
   padding: 2px 7px;
   border-radius: 4px;
 }
@@ -134,7 +149,7 @@
 /* ── Content ── */
 .writing-title {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text);
   margin-bottom: 6px;
   line-height: 1.4;
@@ -164,8 +179,13 @@
 
 .writing-read {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--accent);
+  transition: color 0.18s ease;
+}
+
+.writing-card-link:hover .writing-read {
+  color: var(--accent-hover);
 }
 
 /* ── Coming Soon ── */
@@ -174,31 +194,25 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 64px 32px;
+  padding: 80px 32px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--bg);
+  background: var(--bg2);
   box-shadow: var(--shadow);
 }
 
 .blog-coming-badge {
   display: inline-block;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 3px 10px;
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
   border-radius: 20px;
-  background: #eff6ff;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid rgba(200,169,110,.25);
   margin-bottom: 20px;
-}
-
-[data-theme="dark"] .blog-coming-badge {
-  background: #1f3a5f;
-  color: #93c5fd;
-  border-color: #1e40af;
 }
 
 .blog-coming-icon {
@@ -208,9 +222,11 @@
 }
 
 .blog-coming-title {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--serif);
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.01em;
   color: var(--text);
   margin-bottom: 12px;
 }
@@ -218,7 +234,7 @@
 .blog-coming-desc {
   font-size: 14px;
   color: var(--text2);
-  line-height: 1.7;
+  line-height: 1.75;
   max-width: 520px;
   margin-bottom: 36px;
 }
@@ -232,10 +248,10 @@
 }
 
 .blog-coming-topics-label {
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: var(--muted);
   margin-bottom: 14px;
 }

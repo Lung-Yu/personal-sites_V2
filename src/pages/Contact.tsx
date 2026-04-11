@@ -1,7 +1,17 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { consulting, profile, type BL, type BLArr } from '../data/profile'
+import { useInView } from '../hooks/useInView'
 import '../styles/Contact.css'
+
+function FadeSection({ children, className }: { children: ReactNode; className?: string }) {
+  const [ref, inView] = useInView()
+  return (
+    <div ref={ref} className={`fade-up${inView ? ' visible' : ''}${className ? ` ${className}` : ''}`}>
+      {children}
+    </div>
+  )
+}
 
 function useL() {
   const { i18n } = useTranslation()
@@ -53,6 +63,7 @@ export default function Contact() {
         </div>
 
         {/* Consulting Services */}
+        <FadeSection>
         <section className="contact-section">
           <p className="contact-section-title">{t('contact.servicesTitle')}</p>
           <div className="consulting-grid">
@@ -70,8 +81,10 @@ export default function Contact() {
             ))}
           </div>
         </section>
+        </FadeSection>
 
         {/* Get in Touch */}
+        <FadeSection>
         <section className="contact-section">
           <p className="contact-section-title">{t('contact.getInTouch')}</p>
           <div className="contact-reach">
@@ -154,6 +167,7 @@ export default function Contact() {
             </div>
           </div>
         </section>
+        </FadeSection>
 
       </div>
     </div>

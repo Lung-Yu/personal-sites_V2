@@ -28,7 +28,8 @@
     "printBtn": "Print / Save PDF",
     "talksCta": "Invite me to speak →",
     "modeCV": "Full CV",
-    "modeResume": "1-Page Resume"
+    "modeResume": "1-Page Resume",
+    "teamOverview": "Team Overview"
   },
   "projects": {
     "title": "Projects",

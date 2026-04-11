@@ -6,8 +6,8 @@ export function useTheme(): { theme: Theme; toggle: () => void } {
   const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem('theme')
     if (stored === 'light' || stored === 'dark') return stored
-    // Phase 2: honour OS dark-mode preference when no stored value
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    // Dark editorial branch: default to dark
+    return 'dark'
   })
 
   useEffect(() => {
