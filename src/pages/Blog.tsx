@@ -1,5 +1,16 @@
+import { type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useInView } from '../hooks/useInView'
 import '../styles/Blog.css'
+
+function FadeSection({ children }: { children: ReactNode }) {
+  const [ref, inView] = useInView()
+  return (
+    <div ref={ref} className={`fade-up${inView ? ' visible' : ''}`}>
+      {children}
+    </div>
+  )
+}
 
 export default function Blog() {
   const { t } = useTranslation()
@@ -15,6 +26,7 @@ export default function Blog() {
           <p className="subtitle">{t('blog.subtitle')}</p>
         </div>
 
+        <FadeSection>
         <div className="blog-coming-soon">
           <span className="blog-coming-badge">{t('blog.comingSoonBadge')}</span>
           <div className="blog-coming-icon">✏️</div>
@@ -33,6 +45,7 @@ export default function Blog() {
             </ul>
           </div>
         </div>
+        </FadeSection>
 
       </div>
     </div>

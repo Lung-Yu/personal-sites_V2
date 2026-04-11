@@ -1,5 +1,5 @@
 .blog-post-page {
-  padding: 48px 0 96px;
+  padding: 80px 0 120px;
 }
 
 /* ── Back link ── */
@@ -35,13 +35,14 @@
 
 .blog-post-type {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   padding: 3px 10px;
-  border-radius: 20px;
-  background: var(--accent-light);
-  color: var(--accent);
+  border-radius: 4px;
+  background: var(--bg3);
+  color: var(--muted);
+  border: 1px solid var(--border-solid);
 }
 
 .blog-post-platform {
@@ -57,11 +58,13 @@
 }
 
 .blog-post-title {
-  font-size: clamp(22px, 4vw, 32px);
-  font-weight: 800;
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 300;
+  font-style: italic;
   letter-spacing: -0.02em;
   color: var(--text);
-  line-height: 1.25;
+  line-height: 1.2;
   margin-bottom: 16px;
 }
 
