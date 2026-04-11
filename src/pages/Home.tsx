@@ -7,6 +7,7 @@ import {
   type BL, type BLArr,
 } from '../data/profile'
 import { useInView } from '../hooks/useInView'
+import { useTypewriter } from '../hooks/useTypewriter'
 import '../styles/Home.css'
 import '../styles/Projects.css'
 
@@ -40,8 +41,12 @@ function FadeSection({ children, className }: FadeSectionProps) {
 }
 
 export default function Home() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const l = useL()
+
+  const titleText = l(profile.title) as string
+  const typedTitle = useTypewriter(titleText, 42, 3000)
+  const isDone = typedTitle.length >= titleText.length
 
   return (
     <>
@@ -60,10 +65,14 @@ export default function Home() {
               <p className="en-name">{profile.name.en} · {profile.name.alias}</p>
 
               <div className="title-row">
-                <span className="job-title">{l(profile.title)}</span>
-                <span className="title-sep">·</span>
+                <span className={`job-title${isDone ? ' typed' : ''}`}>
+                  {typedTitle || '\u00A0'}
+                </span>
+              </div>
+
+              <div className="title-row" style={{ marginTop: '-16px' }}>
                 <span className="location">
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C2.3 4.339 2 5.764 2 7c0 1.452.415 2.808 1.052 4.096C4.368 13.48 6.045 15.165 7 16c.417-.368.875-.768 1.329-1.183A17.47 17.47 0 0 0 9.895 13c.641-.937 1.14-1.929 1.521-2.904.38-.974.584-1.95.584-2.596 0-2.647-1.78-4.79-4-4.79C8.35.214 8.174.21 8 .21V0Zm0 6a2 2 0 1 1 0 4A2 2 0 0 1 8 6Z"/>
                   </svg>
                   {profile.location}
@@ -90,6 +99,11 @@ export default function Home() {
               />
             </div>
           </div>
+        </div>
+
+        {/* Decorative serif watermark in background */}
+        <div className="hero-watermark" aria-hidden="true">
+          {i18n.language.startsWith('zh') ? '龍佑' : 'tygrus'}
         </div>
       </section>
 
