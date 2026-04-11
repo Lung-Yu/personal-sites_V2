@@ -44,7 +44,7 @@ export const talks: Talk[] = [
     event: 'OpenText & Cloudforce Joint Tech Session',
     date: { en: 'September 2024', zh: '2024年9月' },
     location: 'Taiwan',
-    slides: '',
+    slides: '/personal-sites_V2/slides/常見之軟體與企業的安全威脅分析_0925.pdf',
     video: '',
   },
   {
@@ -55,7 +55,7 @@ export const talks: Talk[] = [
     event: 'CISA Digital Application Week 2024',
     date: { en: 'August 2024', zh: '2024年8月' },
     location: 'Live Stream',
-    slides: '',
+    slides: '/personal-sites_V2/slides/果核數位_DevSecOps 與 AI：雙面刃的挑戰與機遇.pdf',
     video: 'https://www.youtube.com/watch?v=vFeDcm1HMBs',
   },
   {
