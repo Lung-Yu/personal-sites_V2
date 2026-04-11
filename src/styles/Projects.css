@@ -327,3 +327,9 @@
   border-radius: 4px;
   padding: 2px 7px;
 }
+
+/* ── Touch devices: disable translateY hover effects ── */
+@media (hover: none) {
+  .project-featured-card:hover,
+  .project-card:hover { transform: none; }
+}
