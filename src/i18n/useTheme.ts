@@ -11,8 +11,11 @@ export function useTheme(): { theme: Theme; toggle: () => void } {
   })
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
+    const html = document.documentElement
+    html.setAttribute('data-theme', theme)
     localStorage.setItem('theme', theme)
+    // Enable transitions only after first mount so initial render doesn't flash
+    requestAnimationFrame(() => html.classList.add('theme-ready'))
   }, [theme])
 
   const toggle = () => setTheme((t) => (t === 'light' ? 'dark' : 'light'))

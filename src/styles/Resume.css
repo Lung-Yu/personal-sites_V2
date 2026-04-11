@@ -522,7 +522,7 @@
 }
 
 .mode-toggle-btn:not(.active):hover {
-  background: var(--surface);
+  background: var(--bg3);
   color: var(--text);
 }
 
