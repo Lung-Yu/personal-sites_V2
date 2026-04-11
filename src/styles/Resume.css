@@ -583,3 +583,9 @@
   /* Period badge */
   .timeline-header .period { background: none; border: 1px solid #ccc; }
 }
+
+/* ── Touch devices: disable translateY/X hover effects ── */
+@media (hover: none) {
+  .timeline-entry:hover,
+  .cert-card:hover { transform: none; }
+}

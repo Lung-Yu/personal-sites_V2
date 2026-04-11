@@ -78,6 +78,10 @@ export default function Home() {
   const avatarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Skip parallax on touch / coarse-pointer devices — mousemove won't fire
+    // and the rAF loop would run for nothing
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+
     const hero = heroRef.current
     if (!hero) return
     let raf = 0

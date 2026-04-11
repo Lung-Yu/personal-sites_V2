@@ -258,3 +258,8 @@
   height: 1px;
   background: var(--border);
 }
+
+/* ── Touch devices: disable translateY hover effects ── */
+@media (hover: none) {
+  .consulting-card:hover { transform: none; }
+}

@@ -282,3 +282,8 @@
   background: var(--accent);
   margin-top: 5px;
 }
+
+/* ── Touch devices: disable translateY hover effects ── */
+@media (hover: none) {
+  .writing-card-link:not(.writing-card-link--no-url):hover .writing-card { transform: none; }
+}

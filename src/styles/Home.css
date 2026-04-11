@@ -365,7 +365,11 @@
 }
 
 @media (max-width: 480px) {
-  .stats-row { grid-template-columns: 1fr; }
+  /* Keep 3 columns but tighten up on small screens */
+  .stats-row { gap: 8px; }
+  .stat-card { padding: 16px 10px; }
+  .stat-card .stat-number { font-size: 28px; }
+  .stat-card .stat-label { font-size: 10px; letter-spacing: 0.05em; }
 }
 
 /* ── Skill chips ── */
@@ -664,4 +668,19 @@
 
 @media (max-width: 520px) {
   .cta-strip { flex-direction: column; text-align: center; }
+}
+
+/* ── Touch devices: disable translateY hover effects ─────────────────────────
+   On coarse/touch screens, :hover is "sticky" after a tap — movement-based
+   effects look broken. We keep colour/border changes but reset transforms.
+   ─────────────────────────────────────────────────────────────────────────── */
+@media (hover: none) {
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .hero-avatar-wrap:hover,
+  .stat-card:hover,
+  .skill-chip:hover,
+  .talk-preview-item:hover,
+  .home-project-card:hover,
+  .view-all-link:hover { transform: none; }
 }
