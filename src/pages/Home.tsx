@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { type ReactNode } from 'react'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
 import {
   profile, skillChips, chipColors, achievements, talks, projects, languageColors,
   certifications,
@@ -10,6 +10,30 @@ import { useInView } from '../hooks/useInView'
 import { useTypewriter } from '../hooks/useTypewriter'
 import '../styles/Home.css'
 import '../styles/Projects.css'
+
+/** Counts from 0 → target when scrolled into view */
+function CountUp({ to, suffix = '', duration = 1300 }: { to: number; suffix?: string; duration?: number }) {
+  const [ref, inView] = useInView()
+  const [n, setN]     = useState(0)
+  const started       = useRef(false)
+
+  useEffect(() => {
+    if (!inView || started.current) return
+    started.current = true
+    let t0 = 0, raf = 0
+    const tick = (t: number) => {
+      if (!t0) t0 = t
+      const p     = Math.min((t - t0) / duration, 1)
+      const eased = 1 - Math.pow(1 - p, 3)   // ease-out cubic
+      setN(Math.round(eased * to))
+      if (p < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView, to, duration])
+
+  return <span ref={ref}>{n}{suffix}</span>
+}
 
 function useL() {
   const { i18n } = useTranslation()
@@ -44,13 +68,49 @@ export default function Home() {
   const { t, i18n } = useTranslation()
   const l = useL()
 
-  const titleText = l(profile.title) as string
+  const titleText  = l(profile.title) as string
   const typedTitle = useTypewriter(titleText, 42, 3000)
-  const isDone = typedTitle.length >= titleText.length
+  const isDone     = typedTitle.length >= titleText.length
+
+  // Hero mouse parallax
+  const heroRef   = useRef<HTMLElement>(null)
+  const titleRef  = useRef<HTMLHeadingElement>(null)
+  const avatarRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero) return
+    let raf = 0
+    let tx = 0, ty = 0   // target
+    let cx = 0, cy = 0   // current (lerped)
+
+    const onMove = (e: MouseEvent) => {
+      const { left, top, width, height } = hero.getBoundingClientRect()
+      tx = ((e.clientX - left) / width  - 0.5) * 2
+      ty = ((e.clientY - top)  / height - 0.5) * 2
+    }
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t
+
+    const tick = () => {
+      cx = lerp(cx, tx, 0.07)
+      cy = lerp(cy, ty, 0.07)
+      titleRef.current && (titleRef.current.style.transform  = `translate(${cx * 7}px, ${cy * 4}px)`)
+      avatarRef.current && (avatarRef.current.style.transform = `translate(${cx * -12}px, ${cy * -7}px)`)
+      raf = requestAnimationFrame(tick)
+    }
+
+    hero.addEventListener('mousemove', onMove)
+    raf = requestAnimationFrame(tick)
+    return () => {
+      hero.removeEventListener('mousemove', onMove)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
 
   return (
     <>
-      <section className="hero">
+      <section className="hero" ref={heroRef}>
         <div className="container hero-content">
           <div className="hero-layout">
             <div className="hero-text">
@@ -59,7 +119,7 @@ export default function Home() {
                 <span>{t('home.status')}</span>
               </div>
 
-              <h1>
+              <h1 ref={titleRef}>
                 <span className="gradient">{profile.name.alias}</span>
               </h1>
               <p className="en-name">{profile.name.zh} · {profile.name.en}</p>
@@ -91,7 +151,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hero-avatar-wrap">
+            <div className="hero-avatar-wrap" ref={avatarRef}>
               <img
                 src={`${import.meta.env.BASE_URL}images/avatar.png`}
                 alt="蔡龍佑 Lung-Yu Tsai — profile photo"
@@ -109,15 +169,15 @@ export default function Home() {
         <div className="container">
           <div className="stats-row">
             <div className="stat-card">
-              <div className="stat-number">12+</div>
+              <div className="stat-number"><CountUp to={12} suffix="+" /></div>
               <div className="stat-label">{t('home.statsYears')}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">{certifications.length}</div>
+              <div className="stat-number"><CountUp to={certifications.length} /></div>
               <div className="stat-label">{t('home.statsCerts')}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">{talks.length}</div>
+              <div className="stat-number"><CountUp to={talks.length} /></div>
               <div className="stat-label">{t('home.statsTalks')}</div>
             </div>
           </div>
@@ -125,13 +185,16 @@ export default function Home() {
           <FadeSection className="home-section">
             <h2 className="section-label">{t('home.sectionSkills')}</h2>
             <div className="skill-chips">
-              {skillChips.map((chip) => {
+              {skillChips.map((chip, i) => {
                 const c = chipColors[chip.cat]
                 return (
                   <span
                     key={chip.label}
                     className="skill-chip"
-                    style={{ background: c.bg, borderColor: c.border, color: c.text }}
+                    style={{
+                      background: c.bg, borderColor: c.border, color: c.text,
+                      animationDelay: `${i * 30}ms`,
+                    }}
                   >
                     {chip.label}
                   </span>

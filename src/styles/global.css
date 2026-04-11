@@ -188,6 +188,19 @@ a:focus-visible {
   }
 }
 
+/* ── Scroll progress bar ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 100%);
+  z-index: 200;
+  pointer-events: none;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 8px rgba(200, 169, 110, 0.4);
+}
+
 /* ── Print ── */
 @media print {
   nav, footer, .cursor-dot, .cursor-ring, .intro-overlay { display: none !important; }

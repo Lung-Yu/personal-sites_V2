@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Intro from './components/Intro'
 import Cursor from './components/Cursor'
+import ScrollProgress from './components/ScrollProgress'
 import Home from './pages/Home'
 import Resume from './pages/Resume'
 import Projects from './pages/Projects'
@@ -27,6 +28,7 @@ export default function App() {
     <BrowserRouter basename="/personal-sites_V2">
       <Intro />
       <Cursor />
+      <ScrollProgress />
       {/* Phase 4: skip-to-content link for keyboard / screen-reader users */}
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <LangSync />

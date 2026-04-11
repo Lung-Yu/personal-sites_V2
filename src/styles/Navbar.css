@@ -51,10 +51,10 @@ nav {
 }
 
 .nav-brand .alias {
-  color: var(--muted);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.04em;
 }
 
 /* ── Nav links ── */

@@ -18,8 +18,7 @@ export default function Navbar() {
       <div className="nav-inner">
         <NavLink to="/" className="nav-brand" onClick={close}>
           <span className="dot">T</span>
-          <span className="zh">{profile.name.zh}</span>
-          <span className="alias">· {profile.name.alias}</span>
+          <span className="alias">{profile.name.alias}</span>
         </NavLink>
 
         <div className="nav-right">
