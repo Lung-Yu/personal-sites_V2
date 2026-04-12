@@ -524,7 +524,12 @@
 }
 
 .achievement-badge .icon {
-  font-size: 16px;
+  font-size: 11px;
+  color: var(--accent);
+  opacity: 0.75;
+  font-style: normal;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 /* ── Talks preview ── */
