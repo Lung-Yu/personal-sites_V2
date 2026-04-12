@@ -169,6 +169,8 @@ export default function Home() {
         <div className="hero-watermark" aria-hidden="true">tygrus</div>
       </section>
 
+      <WaveSep />
+
       <div className="home-body">
         <div className="container">
           <div className="stats-row">
@@ -286,6 +288,22 @@ export default function Home() {
         </div>
       </div>
     </>
+  )
+}
+
+function WaveSep() {
+  return (
+    <div className="wave-sep" aria-hidden="true">
+      <svg viewBox="0 0 820 48" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0,24 C80,8 160,40 240,24 C320,8 400,40 480,24 C560,8 640,40 720,24 C760,16 790,28 820,24"
+          fill="none"
+          className="wave-sep-path"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
+    </div>
   )
 }
 
