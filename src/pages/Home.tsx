@@ -73,42 +73,64 @@ export default function Home() {
   const typedTitle = useTypewriter(titleText, 42, 3000)
   const isDone     = typedTitle.length >= titleText.length
 
-  // Hero mouse parallax
-  const heroRef   = useRef<HTMLElement>(null)
-  const titleRef  = useRef<HTMLHeadingElement>(null)
-  const avatarRef = useRef<HTMLDivElement>(null)
+  // Hero parallax — refs
+  const heroRef      = useRef<HTMLElement>(null)
+  const titleRef     = useRef<HTMLHeadingElement>(null)
+  const avatarRef    = useRef<HTMLDivElement>(null)
+  const watermarkRef = useRef<HTMLDivElement>(null)
 
+  // Layer 1 — Watermark scroll drift (all devices, respects reduced-motion)
   useEffect(() => {
-    // Skip parallax on touch / coarse-pointer devices — mousemove won't fire
-    // and the rAF loop would run for nothing
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const wm = watermarkRef.current
+    if (!wm) return
+    const onScroll = () => {
+      const y = window.scrollY
+      wm.style.transform = `translateY(${-y * 0.35}px) rotate(${y * 0.008}deg)`
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Layer 2 — Mouse parallax + scroll depth (fine pointer only)
+  useEffect(() => {
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const hero = heroRef.current
     if (!hero) return
     let raf = 0
-    let tx = 0, ty = 0   // target
-    let cx = 0, cy = 0   // current (lerped)
+    let tx = 0, ty = 0     // mouse target
+    let cx = 0, cy = 0     // lerped current
+    const sy = { v: 0 }    // scroll — plain object to avoid extra ref
 
     const onMove = (e: MouseEvent) => {
       const { left, top, width, height } = hero.getBoundingClientRect()
       tx = ((e.clientX - left) / width  - 0.5) * 2
       ty = ((e.clientY - top)  / height - 0.5) * 2
     }
+    const onScroll = () => { sy.v = window.scrollY }
 
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
     const tick = () => {
       cx = lerp(cx, tx, 0.07)
       cy = lerp(cy, ty, 0.07)
-      titleRef.current && (titleRef.current.style.transform  = `translate(${cx * 7}px, ${cy * 4}px)`)
-      avatarRef.current && (avatarRef.current.style.transform = `translate(${cx * -12}px, ${cy * -7}px)`)
+      // title drifts with mouse + rises slightly on scroll
+      titleRef.current && (titleRef.current.style.transform =
+        `translate(${cx * 7}px, ${cy * 4 - sy.v * 0.12}px)`)
+      // avatar drifts opposite + floats at slower scroll rate
+      avatarRef.current && (avatarRef.current.style.transform =
+        `translate(${cx * -12}px, ${cy * -7 - sy.v * 0.07}px)`)
       raf = requestAnimationFrame(tick)
     }
 
     hero.addEventListener('mousemove', onMove)
+    window.addEventListener('scroll', onScroll, { passive: true })
     raf = requestAnimationFrame(tick)
     return () => {
       hero.removeEventListener('mousemove', onMove)
+      window.removeEventListener('scroll', onScroll)
       cancelAnimationFrame(raf)
     }
   }, [])
@@ -167,7 +189,7 @@ export default function Home() {
         </div>
 
         {/* Decorative serif watermark in background */}
-        <div className="hero-watermark" aria-hidden="true">tygrus</div>
+        <div className="hero-watermark" ref={watermarkRef} aria-hidden="true">tygrus</div>
       </section>
 
       <WaveSep />
