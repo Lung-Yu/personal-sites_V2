@@ -594,16 +594,19 @@
 }
 
 .talk-link-sm {
-  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
   text-decoration: none;
-  opacity: 0.55;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  opacity: 0.6;
+  transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease;
 }
 
 .talk-link-sm:hover {
   opacity: 1;
+  color: var(--accent);
   text-decoration: none;
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
 @media (max-width: 600px) {
