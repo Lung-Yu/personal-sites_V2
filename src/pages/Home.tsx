@@ -8,6 +8,7 @@ import {
 } from '../data/profile'
 import { useInView } from '../hooks/useInView'
 import { useTypewriter } from '../hooks/useTypewriter'
+import { use3DHover } from '../hooks/use3DHover'
 import '../styles/Home.css'
 import '../styles/Projects.css'
 
@@ -238,30 +239,7 @@ export default function Home() {
             <h2 className="section-label">{t('home.sectionProjects')}</h2>
             <div className="home-projects-grid">
               {projects.filter((p) => p.highlight).slice(0, 3).map((p) => (
-                <a
-                  key={p.name}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="home-project-card"
-                >
-                  <div className="home-project-name">{p.name}</div>
-                  <p className="home-project-desc">{l(p.description)}</p>
-                  <div className="home-project-footer">
-                    <span className="home-project-lang">
-                      <span
-                        className="lang-dot"
-                        style={{ background: languageColors[p.language] || '#aaa' }}
-                      />
-                      {p.language}
-                    </span>
-                    <div className="home-project-tags">
-                      {p.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="project-tag">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </a>
+                <HomeProjectCard key={p.name} p={p} />
               ))}
             </div>
             <Link to="/projects" className="view-all-link">
@@ -288,6 +266,38 @@ export default function Home() {
         </div>
       </div>
     </>
+  )
+}
+
+// ── Home project card with 3D hover ──────────────────────────────────────────
+interface HomeProjectCardProps { p: typeof projects[number] }
+function HomeProjectCard({ p }: HomeProjectCardProps) {
+  const l = useL()
+  const { ref, onMouseMove, onMouseLeave } = use3DHover<HTMLAnchorElement>(8)
+  return (
+    <a
+      ref={ref}
+      href={p.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="home-project-card"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="home-project-name">{p.name}</div>
+      <p className="home-project-desc">{l(p.description)}</p>
+      <div className="home-project-footer">
+        <span className="home-project-lang">
+          <span className="lang-dot" style={{ background: languageColors[p.language] || '#aaa' }} />
+          {p.language}
+        </span>
+        <div className="home-project-tags">
+          {p.tags.slice(0, 3).map((tag) => (
+            <span key={tag} className="project-tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </a>
   )
 }
 

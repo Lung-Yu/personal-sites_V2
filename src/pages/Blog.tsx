@@ -29,7 +29,7 @@ export default function Blog() {
         <FadeSection>
         <div className="blog-coming-soon">
           <span className="blog-coming-badge">{t('blog.comingSoonBadge')}</span>
-          <div className="blog-coming-icon">✏️</div>
+          <div className="blog-coming-icon">◉</div>
           <h2 className="blog-coming-title">{t('blog.comingSoonTitle')}</h2>
           <p className="blog-coming-desc">{t('blog.comingSoonDesc')}</p>
 

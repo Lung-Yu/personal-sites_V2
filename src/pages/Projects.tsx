@@ -2,6 +2,7 @@ import { type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { projects, languageColors, type BL, type ProjectLink } from '../data/profile'
 import { useInView } from '../hooks/useInView'
+import { use3DHover } from '../hooks/use3DHover'
 import '../styles/Projects.css'
 
 function FadeSection({ children, className }: { children: ReactNode; className?: string }) {
@@ -27,12 +28,12 @@ function useL() {
 }
 
 const LINK_META: Record<string, { icon: string; defaultLabel: BL }> = {
-  github:  { icon: '⌥', defaultLabel: { en: 'GitHub',  zh: 'GitHub'  } },
+  github:  { icon: '◆', defaultLabel: { en: 'GitHub',  zh: 'GitHub'  } },
   demo:    { icon: '▶', defaultLabel: { en: 'Demo',    zh: 'Demo'    } },
-  video:   { icon: '🎬', defaultLabel: { en: 'Video',   zh: '影片'    } },
-  article: { icon: '📄', defaultLabel: { en: 'Article', zh: '文章'    } },
-  slides:  { icon: '📊', defaultLabel: { en: 'Slides',  zh: '簡報'    } },
-  site:    { icon: '🌐', defaultLabel: { en: 'Site',    zh: '網站'    } },
+  video:   { icon: '▷', defaultLabel: { en: 'Video',   zh: '影片'    } },
+  article: { icon: '◻', defaultLabel: { en: 'Article', zh: '文章'    } },
+  slides:  { icon: '▤', defaultLabel: { en: 'Slides',  zh: '簡報'    } },
+  site:    { icon: '◎', defaultLabel: { en: 'Site',    zh: '網站'    } },
 }
 
 const featured = projects.filter((p) => p.highlight)
@@ -55,26 +56,7 @@ export default function Projects() {
         <p className="section-label">{t('projects.featured')}</p>
         <div className="projects-featured">
           {featured.map((p) => (
-            <div key={p.name} className="project-featured-card">
-              <div className="project-featured-top">
-                <div className="project-featured-name">
-                  <RepoIcon />
-                  {p.name}
-                </div>
-                <span className="highlight-badge">{t('projects.featured')}</span>
-              </div>
-              <p className="project-featured-desc">{l(p.description)}</p>
-              <div className="project-tags" style={{ marginBottom: 10 }}>
-                {p.tags.map((tag) => (
-                  <span key={tag} className="project-tag">{tag}</span>
-                ))}
-              </div>
-              <div className="project-footer">
-                <LangIndicator lang={p.language} />
-                {p.stars > 0 && <Stars count={p.stars} />}
-                <ProjectLinks links={buildLinks(p.url, p.links)} l={l} />
-              </div>
-            </div>
+            <FeaturedCard key={p.name} p={p} featuredLabel={t('projects.featured')} l={l} />
           ))}
         </div>
         </FadeSection>
@@ -85,27 +67,55 @@ export default function Projects() {
           <h2>{t('projects.more')}</h2>
           <div className="projects-grid">
             {others.map((p) => (
-              <div key={p.name} className="project-card">
-                <div className="project-card-name">
-                  <RepoIcon />
-                  {p.name}
-                </div>
-                <p className="project-card-desc">{l(p.description)}</p>
-                <div className="project-tags">
-                  {p.tags.map((tag) => (
-                    <span key={tag} className="project-tag">{tag}</span>
-                  ))}
-                </div>
-                <div className="project-footer">
-                  <LangIndicator lang={p.language} />
-                  {p.stars > 0 && <Stars count={p.stars} />}
-                  <ProjectLinks links={buildLinks(p.url, p.links)} l={l} />
-                </div>
-              </div>
+              <GridCard key={p.name} p={p} l={l} />
             ))}
           </div>
         </div>
         </FadeSection>
+      </div>
+    </div>
+  )
+}
+
+// ── Card components with 3D hover ────────────────────────────────────────────
+type Project = typeof projects[number]
+
+interface FeaturedCardProps { p: Project; featuredLabel: string; l: (o: BL) => string }
+function FeaturedCard({ p, featuredLabel, l }: FeaturedCardProps) {
+  const { ref, onMouseMove, onMouseLeave } = use3DHover<HTMLDivElement>(6)
+  return (
+    <div ref={ref} className="project-featured-card" onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
+      <div className="project-featured-top">
+        <div className="project-featured-name"><RepoIcon />{p.name}</div>
+        <span className="highlight-badge">{featuredLabel}</span>
+      </div>
+      <p className="project-featured-desc">{l(p.description)}</p>
+      <div className="project-tags" style={{ marginBottom: 10 }}>
+        {p.tags.map((tag) => <span key={tag} className="project-tag">{tag}</span>)}
+      </div>
+      <div className="project-footer">
+        <LangIndicator lang={p.language} />
+        {p.stars > 0 && <Stars count={p.stars} />}
+        <ProjectLinks links={buildLinks(p.url, p.links)} l={l} />
+      </div>
+    </div>
+  )
+}
+
+interface GridCardProps { p: Project; l: (o: BL) => string }
+function GridCard({ p, l }: GridCardProps) {
+  const { ref, onMouseMove, onMouseLeave } = use3DHover<HTMLDivElement>(10)
+  return (
+    <div ref={ref} className="project-card" onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
+      <div className="project-card-name"><RepoIcon />{p.name}</div>
+      <p className="project-card-desc">{l(p.description)}</p>
+      <div className="project-tags">
+        {p.tags.map((tag) => <span key={tag} className="project-tag">{tag}</span>)}
+      </div>
+      <div className="project-footer">
+        <LangIndicator lang={p.language} />
+        {p.stars > 0 && <Stars count={p.stars} />}
+        <ProjectLinks links={buildLinks(p.url, p.links)} l={l} />
       </div>
     </div>
   )

@@ -120,10 +120,17 @@
 }
 
 /* Semantic type colours — intentionally distinct */
+/* Dark mode: light tints on dark bg */
 .writing-type--article { background: rgba(147,197,253,.15); color: #93c5fd; }
 .writing-type--talk    { background: rgba(196,181,253,.15); color: #c4b5fd; }
 .writing-type--course  { background: rgba(134,239,172,.15); color: #86efac; }
 .writing-type--thread  { background: rgba(253,186,116,.15); color: #fdba74; }
+
+/* Light mode: deeper tints on warm-white bg for readable contrast */
+[data-theme="light"] .writing-type--article { background: rgba(37,99,235,.10);  color: #1d4ed8; }
+[data-theme="light"] .writing-type--talk    { background: rgba(109,40,217,.10); color: #6d28d9; }
+[data-theme="light"] .writing-type--course  { background: rgba(22,101,52,.10);  color: #15803d; }
+[data-theme="light"] .writing-type--thread  { background: rgba(194,65,12,.10);  color: #c2410c; }
 
 .writing-platform {
   font-size: 11px;
@@ -216,9 +223,11 @@
 }
 
 .blog-coming-icon {
-  font-size: 40px;
+  font-size: 32px;
   margin-bottom: 16px;
   line-height: 1;
+  color: var(--accent);
+  opacity: 0.6;
 }
 
 .blog-coming-title {
