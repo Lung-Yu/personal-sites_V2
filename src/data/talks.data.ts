@@ -76,8 +76,8 @@ export const talks: Talk[] = [
   },
   {
     title: {
-      en: 'Security Requirements That Need to be Addressed',
-      zh: '需要被重視的安全需求',
+      en: 'The Unstated Security Requirements',
+      zh: '那些沒有被說出口的資安需求',
     },
     event: 'OpenText & Digicentre Joint Tech Session',
     date: { en: 'October 2023', zh: '2023年10月' },
