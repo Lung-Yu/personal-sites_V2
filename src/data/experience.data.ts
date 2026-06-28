@@ -9,8 +9,8 @@ export const experience: ExperienceEntry[] = [
       zh: '遊戲橘子子公司 · 前身為果核數位',
     },
     teamContext: {
-      en: 'Technical Manager of the Tech Development Division (team of 2–5), responsible for backend architecture, security engineering, and cloud infrastructure. Products: Polisana — an AI-native vulnerability management platform built in-house (microservices) — and an AI-powered security consultant system.',
-      zh: '技術開發部門技術經理，帶領 2~5 人工程團隊，負責後端架構設計、安全工程及雲端基礎設施。主要產品：Polisana — 自行研發的 AI-native 弱點管理平台（微服務架構）— 及 AI 資安顧問系統。',
+      en: 'Technical Manager, now in AI Team (since May 2026); previously led the Tech Development Division (team of 2–5). Responsible for backend architecture, security engineering, cloud infrastructure, and AI product development. Products: Polisana — an AI-native vulnerability management platform built in-house (microservices) — and an AI-powered security consultant system.',
+      zh: '技術經理，現轉任 AI Team（2026年5月起）；前期帶領技術開發部門 2~5 人工程團隊，負責後端架構設計、安全工程、雲端基礎設施及 AI 產品開發。主要產品：Polisana — 自行研發的 AI-native 弱點管理平台（微服務架構）— 及 AI 資安顧問系統。',
     },
     title: { en: 'Technical Manager', zh: '技術經理' },
     period: { en: 'Apr 2025 — Present', zh: '2025年4月 — 至今' },
@@ -73,7 +73,7 @@ export const experience: ExperienceEntry[] = [
       zh: '數位人才培訓與媒合平台',
     },
     title: { en: 'Instructor', zh: '講師' },
-    period: { en: 'Nov 2025 — Present', zh: '2025年11月 — 至今' },
+    period: { en: 'Nov 2025 — Jun 2026', zh: '2025年11月 — 2026年6月' },
     location: { en: 'Taiwan', zh: '台灣' },
     highlights: {
       en: [

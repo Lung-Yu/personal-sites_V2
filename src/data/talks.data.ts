@@ -3,6 +3,18 @@ import type { Talk } from './types'
 export const talks: Talk[] = [
   {
     title: {
+      en: 'DevSecOps Transformation in the AI Era: Reshaping and Practicing Secure Development',
+      zh: 'AI 時代的 DevSecOps 變革：安全開發流程的重塑與實踐',
+    },
+    event: 'DevOpsDays Taipei 2026',
+    date: { en: 'June 26, 2026', zh: '2026年6月26日' },
+    location: 'Taipei',
+    slides: 'https://devopsdays.tw/2026/session/4746',
+    video: '',
+    resume: true,
+  },
+  {
+    title: {
       en: 'SSDLC in the AI Era',
       zh: 'AI 時代的 SSDLC',
     },

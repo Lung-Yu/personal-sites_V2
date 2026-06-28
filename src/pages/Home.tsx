@@ -8,6 +8,7 @@ import {
 } from '../data/profile'
 import { useInView } from '../hooks/useInView'
 import { useTypewriter } from '../hooks/useTypewriter'
+import { use3DHover } from '../hooks/use3DHover'
 import '../styles/Home.css'
 import '../styles/Projects.css'
 
@@ -72,42 +73,64 @@ export default function Home() {
   const typedTitle = useTypewriter(titleText, 42, 3000)
   const isDone     = typedTitle.length >= titleText.length
 
-  // Hero mouse parallax
-  const heroRef   = useRef<HTMLElement>(null)
-  const titleRef  = useRef<HTMLHeadingElement>(null)
-  const avatarRef = useRef<HTMLDivElement>(null)
+  // Hero parallax — refs
+  const heroRef      = useRef<HTMLElement>(null)
+  const titleRef     = useRef<HTMLHeadingElement>(null)
+  const avatarRef    = useRef<HTMLDivElement>(null)
+  const watermarkRef = useRef<HTMLDivElement>(null)
 
+  // Layer 1 — Watermark scroll drift (all devices, respects reduced-motion)
   useEffect(() => {
-    // Skip parallax on touch / coarse-pointer devices — mousemove won't fire
-    // and the rAF loop would run for nothing
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const wm = watermarkRef.current
+    if (!wm) return
+    const onScroll = () => {
+      const y = window.scrollY
+      wm.style.transform = `translateY(${-y * 0.35}px) rotate(${y * 0.008}deg)`
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Layer 2 — Mouse parallax + scroll depth (fine pointer only)
+  useEffect(() => {
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const hero = heroRef.current
     if (!hero) return
     let raf = 0
-    let tx = 0, ty = 0   // target
-    let cx = 0, cy = 0   // current (lerped)
+    let tx = 0, ty = 0     // mouse target
+    let cx = 0, cy = 0     // lerped current
+    const sy = { v: 0 }    // scroll — plain object to avoid extra ref
 
     const onMove = (e: MouseEvent) => {
       const { left, top, width, height } = hero.getBoundingClientRect()
       tx = ((e.clientX - left) / width  - 0.5) * 2
       ty = ((e.clientY - top)  / height - 0.5) * 2
     }
+    const onScroll = () => { sy.v = window.scrollY }
 
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
     const tick = () => {
       cx = lerp(cx, tx, 0.07)
       cy = lerp(cy, ty, 0.07)
-      titleRef.current && (titleRef.current.style.transform  = `translate(${cx * 7}px, ${cy * 4}px)`)
-      avatarRef.current && (avatarRef.current.style.transform = `translate(${cx * -12}px, ${cy * -7}px)`)
+      // title drifts with mouse + rises slightly on scroll
+      titleRef.current && (titleRef.current.style.transform =
+        `translate(${cx * 7}px, ${cy * 4 - sy.v * 0.12}px)`)
+      // avatar drifts opposite + floats at slower scroll rate
+      avatarRef.current && (avatarRef.current.style.transform =
+        `translate(${cx * -12}px, ${cy * -7 - sy.v * 0.07}px)`)
       raf = requestAnimationFrame(tick)
     }
 
     hero.addEventListener('mousemove', onMove)
+    window.addEventListener('scroll', onScroll, { passive: true })
     raf = requestAnimationFrame(tick)
     return () => {
       hero.removeEventListener('mousemove', onMove)
+      window.removeEventListener('scroll', onScroll)
       cancelAnimationFrame(raf)
     }
   }, [])
@@ -166,8 +189,10 @@ export default function Home() {
         </div>
 
         {/* Decorative serif watermark in background */}
-        <div className="hero-watermark" aria-hidden="true">tygrus</div>
+        <div className="hero-watermark" ref={watermarkRef} aria-hidden="true">tygrus</div>
       </section>
+
+      <WaveSep />
 
       <div className="home-body">
         <div className="container">
@@ -218,12 +243,12 @@ export default function Home() {
                     <span className="talk-preview-date">{l(talk.date)}</span>
                     {talk.slides && (
                       <a href={talk.slides} target="_blank" rel="noopener noreferrer" className="talk-link-sm" aria-label="View slides">
-                        📊
+                        <SlidesIcon />
                       </a>
                     )}
                     {talk.video && (
                       <a href={talk.video} target="_blank" rel="noopener noreferrer" className="talk-link-sm" aria-label="Watch video">
-                        ▶
+                        <PlayIcon />
                       </a>
                     )}
                   </div>
@@ -236,30 +261,7 @@ export default function Home() {
             <h2 className="section-label">{t('home.sectionProjects')}</h2>
             <div className="home-projects-grid">
               {projects.filter((p) => p.highlight).slice(0, 3).map((p) => (
-                <a
-                  key={p.name}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="home-project-card"
-                >
-                  <div className="home-project-name">{p.name}</div>
-                  <p className="home-project-desc">{l(p.description)}</p>
-                  <div className="home-project-footer">
-                    <span className="home-project-lang">
-                      <span
-                        className="lang-dot"
-                        style={{ background: languageColors[p.language] || '#aaa' }}
-                      />
-                      {p.language}
-                    </span>
-                    <div className="home-project-tags">
-                      {p.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="project-tag">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </a>
+                <HomeProjectCard key={p.name} p={p} />
               ))}
             </div>
             <Link to="/projects" className="view-all-link">
@@ -289,6 +291,54 @@ export default function Home() {
   )
 }
 
+// ── Home project card with 3D hover ──────────────────────────────────────────
+interface HomeProjectCardProps { p: typeof projects[number] }
+function HomeProjectCard({ p }: HomeProjectCardProps) {
+  const l = useL()
+  const { ref, onMouseMove, onMouseLeave } = use3DHover<HTMLAnchorElement>(8)
+  return (
+    <a
+      ref={ref}
+      href={p.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="home-project-card"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="home-project-name">{p.name}</div>
+      <p className="home-project-desc">{l(p.description)}</p>
+      <div className="home-project-footer">
+        <span className="home-project-lang">
+          <span className="lang-dot" style={{ background: languageColors[p.language] || '#aaa' }} />
+          {p.language}
+        </span>
+        <div className="home-project-tags">
+          {p.tags.slice(0, 3).map((tag) => (
+            <span key={tag} className="project-tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </a>
+  )
+}
+
+function WaveSep() {
+  return (
+    <div className="wave-sep" aria-hidden="true">
+      <svg viewBox="0 0 820 48" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0,24 C80,8 160,40 240,24 C320,8 400,40 480,24 C560,8 640,40 720,24 C760,16 790,28 820,24"
+          fill="none"
+          className="wave-sep-path"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
+    </div>
+  )
+}
+
 function GitHubIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -301,6 +351,28 @@ function LinkedInIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  )
+}
+
+function SlidesIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="2" width="14" height="10" rx="1.5" />
+      <line x1="8" y1="12" x2="8" y2="14.5" />
+      <line x1="5" y1="14.5" x2="11" y2="14.5" />
+      <line x1="4.5" y1="6" x2="4.5" y2="9" />
+      <line x1="7.5" y1="4.5" x2="7.5" y2="9" />
+      <line x1="10.5" y1="7" x2="10.5" y2="9" />
+    </svg>
+  )
+}
+
+function PlayIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="8" cy="8" r="6.5" />
+      <polygon points="6.5,5.5 11.5,8 6.5,10.5" fill="currentColor" stroke="none" />
     </svg>
   )
 }

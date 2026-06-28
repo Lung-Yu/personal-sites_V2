@@ -52,9 +52,9 @@ Conference speaker at DevOpsDays Taipei, CyberRes, CISA, and HWDC. Holds CISSP, 
 }
 
 export const achievements: Achievement[] = [
-  { icon: '🧊', label: { en: 'Arctic Code Vault Contributor', zh: 'Arctic 程式碼保存庫貢獻者' } },
-  { icon: '🦈', label: { en: 'Pull Shark', zh: 'Pull Shark' } },
-  { icon: '👥', label: { en: 'Pair Extraordinaire', zh: 'Pair Extraordinaire' } },
-  { icon: '🎯', label: { en: 'YOLO', zh: 'YOLO' } },
-  { icon: '⚡', label: { en: 'Quickdraw', zh: 'Quickdraw' } },
+  { icon: '◆', label: { en: 'Arctic Code Vault Contributor', zh: 'Arctic 程式碼保存庫貢獻者' } },
+  { icon: '▲', label: { en: 'Pull Shark', zh: 'Pull Shark' } },
+  { icon: '✦', label: { en: 'Pair Extraordinaire', zh: 'Pair Extraordinaire' } },
+  { icon: '◇', label: { en: 'YOLO', zh: 'YOLO' } },
+  { icon: '▸', label: { en: 'Quickdraw', zh: 'Quickdraw' } },
 ]
