@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Intro from './components/Intro'
 import Cursor from './components/Cursor'
 import ScrollProgress from './components/ScrollProgress'
+import InkWash from './components/InkWash'
 import Home from './pages/Home'
 import Resume from './pages/Resume'
 import Projects from './pages/Projects'
@@ -26,6 +27,7 @@ function LangSync(): null {
 export default function App() {
   return (
     <BrowserRouter basename="/personal-sites_V2">
+      <InkWash />
       <Intro />
       <Cursor />
       <ScrollProgress />

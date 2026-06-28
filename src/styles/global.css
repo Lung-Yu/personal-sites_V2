@@ -6,12 +6,11 @@
   --text:         #f0ede8;
   --text2:        #c8c4bc;
   --muted:        #9a968f;
-  --accent:              #c8a96e;
-  --accent-light:        rgba(200, 169, 110, 0.10);
-  --accent-hover:        #dbbe86;
-  --accent-hover-border: rgba(200, 169, 110, 0.35);
-  --border:              rgba(255, 255, 255, 0.08);
-  --border-solid:        #2e2f33;
+  --accent:       #b8a882;
+  --accent-light: rgba(184, 168, 130, 0.10);
+  --accent-hover: #cfc09a;
+  --border:       rgba(255, 255, 255, 0.08);
+  --border-solid: #2e2f33;
 
   --shadow:    0 1px 4px rgba(0,0,0,.4);
   --shadow-md: 0 4px 12px rgba(0,0,0,.45);
@@ -27,21 +26,19 @@
   --transition: 0.2s ease;
 }
 
-/* ── Light Mode (toggle) ── */
+/* ── Light Mode — 水墨宣紙風 ── */
 [data-theme="light"] {
-  --bg:           #fafaf8;
-  --bg2:          #f3f0eb;
-  --bg3:          #ebe7e0;
+  --bg:           #f5f1e8;
+  --bg2:          #ede8de;
+  --bg3:          #e4ddd2;
   --text:         #1a1917;
   --text2:        #3a3830;
   --muted:        #7a756e;
-  --accent:       #9a6f30;
-  --accent-light: rgba(154, 111, 48, 0.10);
-  --accent-hover: #7a5520;
-  /* Hover borders use the light-mode amber instead of dark-mode gold */
-  --accent-hover-border: rgba(154, 111, 48, 0.35);
-  --border:       rgba(0, 0, 0, 0.08);
-  --border-solid: #ddd8d0;
+  --accent:       #1c1a18;
+  --accent-light: rgba(28, 26, 24, 0.08);
+  --accent-hover: #3a3632;
+  --border:       rgba(0, 0, 0, 0.10);
+  --border-solid: #d8d2c8;
 
   --shadow:    0 1px 3px rgba(0,0,0,.07);
   --shadow-md: 0 4px 6px rgba(0,0,0,.08);
@@ -55,7 +52,15 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: var(--bg); /* bg 放在 html 讓 ink-wash fixed 層可以透出 */
+}
+
+/* light mode: body 透明，讓 .ink-wash fixed 層可見 */
+[data-theme="light"] body {
+  background: transparent;
+}
 
 /* Smooth theme crossfade — applied after first render to avoid flash */
 html.theme-ready body,
@@ -186,7 +191,7 @@ a:focus-visible {
   .cursor-ring {
     width: 28px;
     height: 28px;
-    border: 1.5px solid rgba(200, 169, 110, 0.35);
+    border: 1.5px solid rgba(184, 168, 130, 0.30);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
@@ -218,7 +223,7 @@ a:focus-visible {
   z-index: 200;
   pointer-events: none;
   transition: width 0.08s linear;
-  box-shadow: 0 0 8px rgba(200, 169, 110, 0.4);
+  box-shadow: 0 0 8px rgba(184, 168, 130, 0.30);
 }
 
 /* ── Print ── */

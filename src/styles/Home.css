@@ -16,7 +16,7 @@
   position: absolute;
   inset: -25%;
   background:
-    radial-gradient(ellipse 70% 55% at 65% 38%, rgba(200,169,110,.10) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 65% 38%, rgba(184,168,130,.10) 0%, transparent 55%),
     radial-gradient(ellipse 45% 65% at 15% 72%, rgba(120,80,160,.07) 0%, transparent 52%),
     radial-gradient(ellipse 55% 45% at 82% 78%, rgba(60,120,200,.06) 0%, transparent 48%);
   animation: heroBreath 14s ease-in-out infinite alternate;
@@ -184,6 +184,14 @@
   100% { background-position: -280% center; }
 }
 
+/* light mode: 背景近白，梯度改用墨色深淺層次 */
+[data-theme="light"] .hero h1 .gradient {
+  background: linear-gradient(110deg, #4a4440 0%, #1c1a18 55%, #3e3a36 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ── English name ── */
 .hero .en-name {
   font-family: var(--font);
@@ -279,14 +287,21 @@
 .btn-primary {
   background: var(--accent);
   color: #111518;
-  box-shadow: 0 2px 12px rgba(200,169,110,.25);
+  box-shadow: 0 2px 12px rgba(184,168,130,.25);
 }
 .btn-primary:hover {
   background: var(--accent-hover);
   text-decoration: none;
   color: #111518;
-  box-shadow: 0 4px 20px rgba(200,169,110,.35);
+  box-shadow: 0 4px 20px rgba(184,168,130,.35);
   transform: translateY(-2px);
+}
+
+/* light mode: accent 是墨色（近黑），按鈕文字需反白 */
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .btn-primary:hover {
+  color: #f5f1e8;
+  box-shadow: 0 2px 8px rgba(26,22,20,.18);
 }
 
 .btn-secondary {
@@ -310,12 +325,12 @@
   border-radius: 50%;
   padding: 2px;
   background: var(--bg3);
-  box-shadow: 0 0 0 1px rgba(200,169,110,.2), 0 20px 60px rgba(0,0,0,.5);
+  box-shadow: 0 0 0 1px rgba(184,168,130,.2), 0 20px 60px rgba(0,0,0,.5);
   transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .hero-avatar-wrap:hover {
-  box-shadow: 0 0 0 1px rgba(200,169,110,.35), 0 24px 64px rgba(0,0,0,.55);
+  box-shadow: 0 0 0 1px rgba(184,168,130,.35), 0 24px 64px rgba(0,0,0,.55);
   transform: translateY(-4px);
 }
 
@@ -343,6 +358,11 @@
   user-select: none;
   white-space: nowrap;
   letter-spacing: -0.03em;
+}
+
+/* light mode: 改用墨色細痕，若隱若現 */
+[data-theme="light"] .hero-watermark {
+  color: rgba(26, 22, 20, 0.06);
 }
 
 /* ── Responsive ── */
@@ -433,7 +453,7 @@
 }
 
 .stat-card:hover {
-  border-color: rgba(200,169,110,.3);
+  border-color: rgba(184,168,130,.3);
   transform: translateY(-3px);
   box-shadow: 0 8px 28px rgba(200,169,110,.08), var(--shadow-md);
 }
@@ -488,6 +508,11 @@
   box-shadow: 0 4px 12px rgba(0,0,0,.3);
 }
 
+/* light mode: 降低飽和度，融入水墨宣紙調 */
+[data-theme="light"] .skill-chip {
+  filter: saturate(0.6) brightness(0.96);
+}
+
 @keyframes chipIn {
   from { opacity: 0; transform: translateY(10px) scale(0.92); }
   to   { opacity: 1; transform: none; }
@@ -519,7 +544,7 @@
 }
 
 .achievement-badge:hover {
-  border-color: rgba(200,169,110,.3);
+  border-color: rgba(184,168,130,.3);
   transform: translateY(-1px);
 }
 
@@ -554,7 +579,7 @@
 
 .talk-preview-item:hover {
   background: var(--bg3);
-  border-color: rgba(200,169,110,.35);
+  border-color: rgba(184,168,130,.35);
   transform: translateX(3px);
 }
 
@@ -664,7 +689,7 @@
 
 .home-project-card:hover {
   background: var(--bg3);
-  border-color: rgba(200,169,110,.35);
+  border-color: rgba(184,168,130,.35);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
   text-decoration: none;

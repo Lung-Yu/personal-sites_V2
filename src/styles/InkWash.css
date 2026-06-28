@@ -1,0 +1,113 @@
+/* ── 水墨畫背景層 — light mode only ── */
+.ink-wash {
+  display: none;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+[data-theme="light"] .ink-wash {
+  display: block;
+}
+
+.ink-wash svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── 竹：左側輕搖 ── */
+.iw-bamboo {
+  transform-origin: 80px 900px; /* 以竹根為搖擺支點 */
+  animation: iwBambooSway 12s ease-in-out infinite alternate;
+}
+.iw-bamboo-a { transform-origin: 60px 900px; animation: iwBambooSway 14s ease-in-out infinite alternate; }
+.iw-bamboo-b { transform-origin: 113px 900px; animation: iwBambooSway 11s ease-in-out infinite alternate 1.5s; }
+.iw-bamboo-c { transform-origin: 17px 900px; animation: iwBambooSway 16s ease-in-out infinite alternate 3s; }
+
+@keyframes iwBambooSway {
+  0%   { transform: rotate(-1.2deg); }
+  40%  { transform: rotate(0.8deg);  }
+  70%  { transform: rotate(-0.5deg); }
+  100% { transform: rotate(1.0deg);  }
+}
+
+/* ── 遠山：固定位置，微微浮動 ── */
+.iw-mountains {
+  animation: iwMountainFloat 20s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: bottom center;
+}
+
+@keyframes iwMountainFloat {
+  0%   { transform: translateY(0px);  opacity: 1;    }
+  50%  { transform: translateY(-6px); opacity: 0.88; }
+  100% { transform: translateY(2px);  opacity: 0.95; }
+}
+
+/* ══════════════════════════════════════
+   游魚動畫
+   ══════════════════════════════════════ */
+
+/* 魚 1：大魚，從左游到右，走中上路徑 */
+.iw-fish-1 {
+  animation: iwFish1 28s linear infinite;
+  opacity: 0;
+}
+
+@keyframes iwFish1 {
+  0%   { transform: translate(-160px, 260px) rotate(-4deg); opacity: 0;    }
+  4%   { opacity: 0.18; }
+  25%  { transform: translate(360px,  210px) rotate(3deg);  opacity: 0.18; }
+  50%  { transform: translate(720px,  260px) rotate(-3deg); opacity: 0.16; }
+  75%  { transform: translate(1080px, 220px) rotate(4deg);  opacity: 0.16; }
+  96%  { opacity: 0.18; }
+  100% { transform: translate(1600px, 255px) rotate(-2deg); opacity: 0;    }
+}
+
+/* 魚 2：中魚，從右游到左，走中下路徑，延遲 10s */
+.iw-fish-2 {
+  animation: iwFish2 34s linear infinite;
+  animation-delay: -10s;
+  opacity: 0;
+}
+
+@keyframes iwFish2 {
+  0%   { transform: translate(1600px, 560px) rotate(3deg);  opacity: 0;    }
+  4%   { opacity: 0.15; }
+  30%  { transform: translate(1100px, 520px) rotate(-2deg); opacity: 0.15; }
+  55%  { transform: translate(700px,  570px) rotate(2deg);  opacity: 0.14; }
+  80%  { transform: translate(300px,  530px) rotate(-3deg); opacity: 0.14; }
+  96%  { opacity: 0.15; }
+  100% { transform: translate(-160px, 555px) rotate(2deg);  opacity: 0;    }
+}
+
+/* 魚 3：小魚，從左游到右，走偏下路徑，延遲 18s */
+.iw-fish-3 {
+  animation: iwFish3 22s linear infinite;
+  animation-delay: -18s;
+  opacity: 0;
+}
+
+@keyframes iwFish3 {
+  0%   { transform: translate(-100px, 420px) rotate(-2deg); opacity: 0;    }
+  5%   { opacity: 0.14; }
+  30%  { transform: translate(380px,  390px) rotate(2deg);  opacity: 0.14; }
+  55%  { transform: translate(720px,  430px) rotate(-2deg); opacity: 0.13; }
+  80%  { transform: translate(1060px, 400px) rotate(2deg);  opacity: 0.13; }
+  95%  { opacity: 0.14; }
+  100% { transform: translate(1540px, 420px) rotate(-1deg); opacity: 0;    }
+}
+
+/* 尊重 reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .iw-fish-1, .iw-fish-2, .iw-fish-3,
+  .iw-mountains,
+  .iw-bamboo, .iw-bamboo-a, .iw-bamboo-b, .iw-bamboo-c {
+    animation: none;
+    opacity: 0.12;
+  }
+}
