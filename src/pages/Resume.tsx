@@ -121,6 +121,18 @@ export default function Resume() {
             <button className="btn btn-secondary" onClick={() => window.print()}>
               <PrintIcon /> {t('resume.printBtn')}
             </button>
+            <Link
+              to="/cv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+              title="Open one-page CV in new tab"
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" style={{ flexShrink: 0 }}>
+                <path d="M5.5 0a.5.5 0 0 0 0 1h5.793L.146 12.146a.5.5 0 0 0 .708.708L12 1.707V7.5a.5.5 0 0 0 1 0V.5a.5.5 0 0 0-.5-.5H5.5z"/>
+              </svg>
+              One-Page CV
+            </Link>
           </div>
         </div>
 
