@@ -29,6 +29,17 @@ export default function Navbar() {
             <li><NavLink to="/projects" onClick={close}>{t('nav.projects')}</NavLink></li>
             <li><NavLink to="/contact" onClick={close}>{t('nav.contact')}</NavLink></li>
             <li><NavLink to="/blog" onClick={close}>{t('nav.blog')}</NavLink></li>
+            <li>
+              <NavLink
+                to="/cv"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={close}
+                className="nav-cv-link"
+              >
+                CV ↗
+              </NavLink>
+            </li>
           </ul>
 
           {/* Controls: theme + lang + hamburger */}
