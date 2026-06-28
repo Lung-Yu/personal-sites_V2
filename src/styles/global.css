@@ -26,19 +26,19 @@
   --transition: 0.2s ease;
 }
 
-/* ── Light Mode (toggle) ── */
+/* ── Light Mode — 水墨宣紙風 ── */
 [data-theme="light"] {
-  --bg:           #fafaf8;
-  --bg2:          #f3f0eb;
-  --bg3:          #ebe7e0;
+  --bg:           #f5f1e8;
+  --bg2:          #ede8de;
+  --bg3:          #e4ddd2;
   --text:         #1a1917;
   --text2:        #3a3830;
   --muted:        #7a756e;
-  --accent:       #9a6f30;
-  --accent-light: rgba(154, 111, 48, 0.10);
-  --accent-hover: #7a5520;
-  --border:       rgba(0, 0, 0, 0.08);
-  --border-solid: #ddd8d0;
+  --accent:       #1c1a18;
+  --accent-light: rgba(28, 26, 24, 0.08);
+  --accent-hover: #3a3632;
+  --border:       rgba(0, 0, 0, 0.10);
+  --border-solid: #d8d2c8;
 
   --shadow:    0 1px 3px rgba(0,0,0,.07);
   --shadow-md: 0 4px 6px rgba(0,0,0,.08);
@@ -52,7 +52,15 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: var(--bg); /* bg 放在 html 讓 ink-wash fixed 層可以透出 */
+}
+
+/* light mode: body 透明，讓 .ink-wash fixed 層可見 */
+[data-theme="light"] body {
+  background: transparent;
+}
 
 body {
   font-family: var(--font);
