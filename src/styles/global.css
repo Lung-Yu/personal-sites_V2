@@ -6,9 +6,9 @@
   --text:         #f0ede8;
   --text2:        #c8c4bc;
   --muted:        #9a968f;
-  --accent:       #c8a96e;
-  --accent-light: rgba(200, 169, 110, 0.10);
-  --accent-hover: #dbbe86;
+  --accent:       #b8a882;
+  --accent-light: rgba(184, 168, 130, 0.10);
+  --accent-hover: #cfc09a;
   --border:       rgba(255, 255, 255, 0.08);
   --border-solid: #2e2f33;
 
@@ -174,7 +174,7 @@ a:focus-visible {
   .cursor-ring {
     width: 28px;
     height: 28px;
-    border: 1.5px solid rgba(200, 169, 110, 0.35);
+    border: 1.5px solid rgba(184, 168, 130, 0.30);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
@@ -206,7 +206,7 @@ a:focus-visible {
   z-index: 200;
   pointer-events: none;
   transition: width 0.08s linear;
-  box-shadow: 0 0 8px rgba(200, 169, 110, 0.4);
+  box-shadow: 0 0 8px rgba(184, 168, 130, 0.30);
 }
 
 /* ── Print ── */

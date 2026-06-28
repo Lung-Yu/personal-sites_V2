@@ -19,6 +19,22 @@
   height: 100%;
 }
 
+/* ── 竹：左側輕搖 ── */
+.iw-bamboo {
+  transform-origin: 80px 900px; /* 以竹根為搖擺支點 */
+  animation: iwBambooSway 12s ease-in-out infinite alternate;
+}
+.iw-bamboo-a { transform-origin: 60px 900px; animation: iwBambooSway 14s ease-in-out infinite alternate; }
+.iw-bamboo-b { transform-origin: 113px 900px; animation: iwBambooSway 11s ease-in-out infinite alternate 1.5s; }
+.iw-bamboo-c { transform-origin: 17px 900px; animation: iwBambooSway 16s ease-in-out infinite alternate 3s; }
+
+@keyframes iwBambooSway {
+  0%   { transform: rotate(-1.2deg); }
+  40%  { transform: rotate(0.8deg);  }
+  70%  { transform: rotate(-0.5deg); }
+  100% { transform: rotate(1.0deg);  }
+}
+
 /* ── 遠山：固定位置，微微浮動 ── */
 .iw-mountains {
   animation: iwMountainFloat 20s ease-in-out infinite alternate;
@@ -88,10 +104,9 @@
 
 /* 尊重 reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  .iw-fish-1,
-  .iw-fish-2,
-  .iw-fish-3,
-  .iw-mountains {
+  .iw-fish-1, .iw-fish-2, .iw-fish-3,
+  .iw-mountains,
+  .iw-bamboo, .iw-bamboo-a, .iw-bamboo-b, .iw-bamboo-c {
     animation: none;
     opacity: 0.12;
   }

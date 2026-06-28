@@ -26,6 +26,59 @@ export default function InkWash() {
         </defs>
 
         {/* ══════════════════════════════
+            竹 — 左側前景，三桿
+            ══════════════════════════════ */}
+        <g className="iw-bamboo" filter="url(#iw-brush)">
+
+          {/* 竹 A — 主桿，高且細 */}
+          <g className="iw-bamboo-a">
+            {/* 竹節段落由下往上 */}
+            <rect x="55" y="640" width="9" height="110" rx="4" fill="rgba(26,22,20,0.40)"/>
+            <ellipse cx="59.5" cy="640" rx="7" ry="3.5" fill="rgba(26,22,20,0.50)"/>
+            <rect x="56" y="510" width="8" height="132" rx="4" fill="rgba(26,22,20,0.38)"/>
+            <ellipse cx="60" cy="510" rx="6.5" ry="3" fill="rgba(26,22,20,0.48)"/>
+            <rect x="57" y="390" width="7" height="122" rx="3.5" fill="rgba(26,22,20,0.35)"/>
+            <ellipse cx="60.5" cy="390" rx="6" ry="3" fill="rgba(26,22,20,0.44)"/>
+            <rect x="58" y="280" width="6" height="112" rx="3" fill="rgba(26,22,20,0.30)"/>
+            <ellipse cx="61" cy="280" rx="5.5" ry="2.8" fill="rgba(26,22,20,0.40)"/>
+            <rect x="59" y="185" width="5.5" height="97" rx="2.5" fill="rgba(26,22,20,0.25)"/>
+            {/* 竹葉 — 各節點 */}
+            <path d="M 60,508 C 80,478 112,465 105,490 C 95,498 74,502 60,508 Z" fill="rgba(26,22,20,0.28)"/>
+            <path d="M 60,508 C 38,475 10,468 20,494 C 30,500 48,504 60,508 Z" fill="rgba(26,22,20,0.24)"/>
+            <path d="M 61,388 C 84,355 116,344 108,372 C 98,380 76,384 61,388 Z" fill="rgba(26,22,20,0.24)"/>
+            <path d="M 61,278 C 78,250 104,242 98,264 C 90,272 74,276 61,278 Z" fill="rgba(26,22,20,0.20)"/>
+            <path d="M 61,278 C 44,248 18,244 26,266 C 34,274 50,277 61,278 Z" fill="rgba(26,22,20,0.18)"/>
+          </g>
+
+          {/* 竹 B — 次桿，偏右稍矮 */}
+          <g className="iw-bamboo-b">
+            <rect x="110" y="720" width="7" height="90" rx="3.5" fill="rgba(26,22,20,0.32)"/>
+            <ellipse cx="113.5" cy="720" rx="5.5" ry="2.8" fill="rgba(26,22,20,0.42)"/>
+            <rect x="111" y="608" width="6.5" height="114" rx="3" fill="rgba(26,22,20,0.30)"/>
+            <ellipse cx="114" cy="608" rx="5.5" ry="2.6" fill="rgba(26,22,20,0.40)"/>
+            <rect x="112" y="502" width="6" height="108" rx="3" fill="rgba(26,22,20,0.27)"/>
+            <ellipse cx="115" cy="502" rx="5" ry="2.5" fill="rgba(26,22,20,0.36)"/>
+            <rect x="113" y="405" width="5.5" height="99" rx="2.5" fill="rgba(26,22,20,0.23)"/>
+            {/* 竹葉 */}
+            <path d="M 114,606 C 136,578 164,568 158,590 C 150,598 130,602 114,606 Z" fill="rgba(26,22,20,0.22)"/>
+            <path d="M 114,500 C 92,472 66,468 74,492 C 82,500 100,500 114,500 Z" fill="rgba(26,22,20,0.19)"/>
+            <path d="M 114,500 C 134,472 158,465 152,488 C 144,496 126,498 114,500 Z" fill="rgba(26,22,20,0.17)"/>
+          </g>
+
+          {/* 竹 C — 最左，半入框，最細 */}
+          <g className="iw-bamboo-c">
+            <rect x="14" y="680" width="6" height="100" rx="3" fill="rgba(26,22,20,0.28)"/>
+            <ellipse cx="17" cy="680" rx="5" ry="2.5" fill="rgba(26,22,20,0.36)"/>
+            <rect x="15" y="568" width="5.5" height="114" rx="2.5" fill="rgba(26,22,20,0.26)"/>
+            <ellipse cx="17.5" cy="568" rx="4.5" ry="2.2" fill="rgba(26,22,20,0.34)"/>
+            <rect x="16" y="462" width="5" height="108" rx="2.5" fill="rgba(26,22,20,0.22)"/>
+            {/* 竹葉 */}
+            <path d="M 17,566 C 36,540 58,534 53,555 C 46,562 28,564 17,566 Z" fill="rgba(26,22,20,0.18)"/>
+            <path d="M 17,566 C -2,540 -24,536 -18,558 C -10,566 4,566 17,566 Z" fill="rgba(26,22,20,0.15)"/>
+          </g>
+        </g>
+
+        {/* ══════════════════════════════
             遠山 — 三層，由淺至深
             ══════════════════════════════ */}
         <g className="iw-mountains" filter="url(#iw-mountain)">
