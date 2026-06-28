@@ -522,6 +522,67 @@
   .skill-chip { animation: none; }
 }
 
+/* ── Cert badges ── */
+.cert-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 14px 9px 12px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  cursor: default;
+}
+
+a.cert-badge {
+  cursor: pointer;
+}
+
+a.cert-badge:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.cert-badge svg:first-child {
+  color: var(--accent);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.cert-badge-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.cert-badge-issuer {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+a.cert-badge svg:last-child {
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  margin-left: 2px;
+}
+
+a.cert-badge:hover svg:last-child {
+  opacity: 0.7;
+}
+
 /* ── Achievements ── */
 .achievements-row {
   display: flex;

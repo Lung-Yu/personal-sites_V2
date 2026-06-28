@@ -239,6 +239,28 @@ export default function Home() {
           </FadeSection>
 
           <FadeSection className="home-section">
+            <h2 className="section-label">{t('home.sectionCerts')}</h2>
+            <div className="cert-badge-row">
+              {certifications.filter(c => c.resume).map((cert) => {
+                const href = cert.credentialUrl ?? cert.certificateUrl
+                const Tag = href ? 'a' : 'div'
+                const linkProps = href
+                  ? { href, target: '_blank', rel: 'noopener noreferrer' }
+                  : {}
+                return (
+                  <Tag key={cert.name} className="cert-badge" {...linkProps}>
+                    <ShieldIcon />
+                    <span className="cert-badge-name">{cert.name}</span>
+                    <span className="cert-badge-issuer">{cert.issuer}</span>
+                    {href && <ExternalLinkIcon />}
+                  </Tag>
+                )
+              })}
+            </div>
+            <Link to="/resume" className="view-all-link">{t('home.viewAllCerts')}</Link>
+          </FadeSection>
+
+          <FadeSection className="home-section">
             <h2 className="section-label">{t('home.sectionTalks')}</h2>
             <div className="talks-preview">
               {talks.map((talk, i) => (
@@ -379,6 +401,24 @@ function PlayIcon() {
     <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="8" cy="8" r="6.5" />
       <polygon points="6.5,5.5 11.5,8 6.5,10.5" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function ShieldIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M8 .5 1.5 3v4.5C1.5 11.3 4.4 14.5 8 15.5c3.6-1 6.5-4.2 6.5-8V3L8 .5zm0 6.75a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5zm-2.5 3.25 2.5-1.5 2.5 1.5-.65-2.8L12 6.85l-2.87-.25L8 4l-1.13 2.6L4 6.85l2.15 1.85L5.5 11.5z" />
+    </svg>
+  )
+}
+
+function ExternalLinkIcon() {
+  return (
+    <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9" />
+      <polyline points="10 2 14 2 14 6" />
+      <line x1="14" y1="2" x2="7" y2="9" />
     </svg>
   )
 }
