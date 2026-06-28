@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { useState, type ReactNode } from 'react'
 import { profile, experience, education, certifications, skills, talks, type BL, type BLArr } from '../data/profile'
@@ -84,6 +85,13 @@ export default function Resume() {
 
   return (
     <div className={`resume${resumeMode ? ' resume-mode' : ''}`}>
+      <Helmet>
+        <title>{isZh ? '履歷 · 蔡龍佑' : 'Resume · tygrus'}</title>
+        <meta name="description" content={isZh
+          ? '蔡龍佑完整履歷 — DevSecOps 技術經理、CISSP/CSSLP 持有人、資安顧問，超過 12 年資安與開發經驗。'
+          : 'Full resume of Lung-Yu Tsai — DevSecOps Technical Manager, CISSP/CSSLP holder, security consultant with 12+ years of experience.'
+        } />
+      </Helmet>
       <div className="container">
 
         {/* Header */}

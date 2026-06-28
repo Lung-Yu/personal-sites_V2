@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { consulting, profile, type BL, type BLArr } from '../data/profile'
 import { useInView } from '../hooks/useInView'
@@ -29,8 +30,9 @@ function useL() {
 }
 
 export default function Contact() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const l = useL()
+  const isZh = i18n.language.startsWith('zh')
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -55,6 +57,13 @@ export default function Contact() {
 
   return (
     <div className="contact-page">
+      <Helmet>
+        <title>{isZh ? '聯絡我 · 蔡龍佑' : 'Contact · tygrus'}</title>
+        <meta name="description" content={isZh
+          ? '聯絡蔡龍佑洽談 DevSecOps 顧問合作、企業內訓或演講邀約。'
+          : 'Get in touch with Lung-Yu Tsai for DevSecOps consulting, corporate training, or speaking invitations.'
+        } />
+      </Helmet>
       <div className="container">
 
         <div className="contact-header">

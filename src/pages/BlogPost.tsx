@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { getPost } from '../lib/posts'
 import { writings } from '../data/profile'
@@ -33,19 +33,6 @@ export default function BlogPost() {
   const resolvedTitle  = post ? l(post.title)  : legacyWriting ? l(legacyWriting.title  as BL) : undefined
   const resolvedTeaser = post ? l(post.teaser) : legacyWriting ? l(legacyWriting.teaser as BL) : undefined
 
-  useEffect(() => {
-    if (!resolvedTitle) return
-    const prev = document.title
-    document.title = `${resolvedTitle} · 蔡龍佑`
-    const metaDesc = document.querySelector('meta[name="description"]')
-    const prevDesc = metaDesc?.getAttribute('content') ?? ''
-    if (metaDesc && resolvedTeaser) metaDesc.setAttribute('content', resolvedTeaser)
-    return () => {
-      document.title = prev
-      if (metaDesc) metaDesc.setAttribute('content', prevDesc)
-    }
-  }, [resolvedTitle, resolvedTeaser])
-
   if (!post && !legacyWriting) {
     return (
       <div className="blog-post-page">
@@ -69,6 +56,10 @@ export default function BlogPost() {
 
   return (
     <div className="blog-post-page">
+      <Helmet>
+        <title>{`${title} · 蔡龍佑`}</title>
+        {teaser && <meta name="description" content={teaser} />}
+      </Helmet>
       <div className="container">
         <Link to="/blog" className="blog-post-back">← {t('blog.title')}</Link>
 

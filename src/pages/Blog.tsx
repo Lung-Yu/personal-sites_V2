@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { useInView } from '../hooks/useInView'
 import { posts } from '../lib/posts'
@@ -26,8 +27,9 @@ function FadeSection({ children }: { children: ReactNode }) {
 }
 
 export default function Blog() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const l = useL()
+  const isZh = i18n.language.startsWith('zh')
   const topics: string[] = t('blog.comingSoonTopics', { returnObjects: true }) as string[]
 
   const typeLabel = (type: string) => {
@@ -42,6 +44,13 @@ export default function Blog() {
 
   return (
     <div className="blog-page">
+      <Helmet>
+        <title>{isZh ? '文章 · 蔡龍佑' : 'Writing · tygrus'}</title>
+        <meta name="description" content={isZh
+          ? '蔡龍佑關於 DevSecOps、AI 應用與資安的技術文章、演講心得與課程筆記。'
+          : 'Technical articles, conference talk write-ups, and course notes on DevSecOps, AI, and cybersecurity by Lung-Yu Tsai.'
+        } />
+      </Helmet>
       <div className="container">
 
         <div className="blog-header">

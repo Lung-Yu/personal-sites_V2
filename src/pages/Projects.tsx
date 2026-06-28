@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { projects, languageColors, type BL, type ProjectLink } from '../data/profile'
 import { useInView } from '../hooks/useInView'
@@ -40,11 +41,19 @@ const featured = projects.filter((p) => p.highlight)
 const others = projects.filter((p) => !p.highlight)
 
 export default function Projects() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const l = useL()
+  const isZh = i18n.language.startsWith('zh')
 
   return (
     <div className="projects-page">
+      <Helmet>
+        <title>{isZh ? '專案 · 蔡龍佑' : 'Projects · tygrus'}</title>
+        <meta name="description" content={isZh
+          ? '蔡龍佑的開源工具、AI 實驗與資安研究專案。'
+          : 'Open-source tools, AI experiments, and security research by Lung-Yu Tsai.'
+        } />
+      </Helmet>
       <div className="container">
         <div className="projects-page-header">
           <h1>{t('projects.title')}</h1>

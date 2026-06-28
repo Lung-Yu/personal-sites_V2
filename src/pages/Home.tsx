@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 import {
@@ -135,8 +136,17 @@ export default function Home() {
     }
   }, [])
 
+  const isZh = i18n.language.startsWith('zh')
+
   return (
     <>
+      <Helmet>
+        <title>{isZh ? 'tygrus · 蔡龍佑 — DevSecOps & AI' : 'tygrus · Lung-Yu Tsai — DevSecOps & AI'}</title>
+        <meta name="description" content={isZh
+          ? '蔡龍佑（tygrus）— 技術經理、DevSecOps 專家、AI 建構者，CISSP/CSSLP 持有人，台北資安研討會講者。'
+          : 'tygrus (Lung-Yu Tsai) — Technical Manager, DevSecOps expert, AI builder, CISSP/CSSLP holder and conference speaker based in Taipei.'
+        } />
+      </Helmet>
       <section className="hero" ref={heroRef}>
         <div className="container hero-content">
           <div className="hero-layout">
