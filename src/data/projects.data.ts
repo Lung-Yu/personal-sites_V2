@@ -28,6 +28,19 @@ export const projects: Project[] = [
     highlight: true,
   },
   {
+    name: 'Multi-Agent Orchestration Platform',
+    description: {
+      en: 'Production-grade distributed AI agent runtime built on a Virtual Actor model. Go gateway (Gin) handles routing and auth; Python agents (FastAPI + Claude ReAct) execute tasks; Temporal orchestrates durable DAG workflows; Dapr manages state and service discovery; Redis priority mailbox enables agent preemption; gVisor sandboxes untrusted agent execution. Deployed on GCP with KEDA autoscaling and full OpenTelemetry observability.',
+      zh: '以 Virtual Actor 模型建構的生產級分散式 AI Agent 執行環境。Go gateway（Gin）負責路由與認證；Python agents（FastAPI + Claude ReAct）執行任務；Temporal 協調持久化 DAG 工作流程；Dapr 管理狀態與服務發現；Redis 優先佇列支援 Agent 搶佔；gVisor 沙箱隔離不受信任的 Agent 執行。部署於 GCP，以 KEDA 自動擴縮，全面 OpenTelemetry 可觀測。',
+    },
+    language: 'Go',
+    stars: 0,
+    url: '',
+    tags: ['Go', 'Python', 'Temporal', 'Dapr', 'gVisor', 'AI Agent', 'Microservices', 'GCP'],
+    year: '2025–2026',
+    highlight: true,
+  },
+  {
     name: 'Engineer Aptitude Assessment',
     description: {
       en: 'Professional skill evaluation platform for software engineers. 30 questions across 6 dimensions (Algorithm, Full-Stack, System Design, Performance, Security, DevOps). Radar chart output and seniority scoring from Entry to Staff level.',
