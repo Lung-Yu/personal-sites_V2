@@ -9,8 +9,8 @@ export const experience: ExperienceEntry[] = [
       zh: '遊戲橘子子公司 · 前身為果核數位',
     },
     teamContext: {
-      en: 'Technical Manager of the Tech Development Division (team of 2–5), responsible for backend architecture, security engineering, and cloud infrastructure. Products: Polisana — an AI-native vulnerability management platform built in-house (microservices) — and an AI-powered security consultant system.',
-      zh: '技術開發部門技術經理，帶領 2~5 人工程團隊，負責後端架構設計、安全工程及雲端基礎設施。主要產品：Polisana — 自行研發的 AI-native 弱點管理平台（微服務架構）— 及 AI 資安顧問系統。',
+      en: 'Technical Manager, now in AI Team (since May 2026); previously led the Tech Development Division (team of 2–5). Responsible for backend architecture, security engineering, cloud infrastructure, and AI product development. Products: Polisana — an AI-native vulnerability management platform built in-house (microservices) — and an AI-powered security consultant system.',
+      zh: '技術經理，現轉任 AI Team（2026年5月起）；前期帶領技術開發部門 2~5 人工程團隊，負責後端架構設計、安全工程、雲端基礎設施及 AI 產品開發。主要產品：Polisana — 自行研發的 AI-native 弱點管理平台（微服務架構）— 及 AI 資安顧問系統。',
     },
     title: { en: 'Technical Manager', zh: '技術經理' },
     period: { en: 'Apr 2025 — Present', zh: '2025年4月 — 至今' },
@@ -73,7 +73,7 @@ export const experience: ExperienceEntry[] = [
       zh: '數位人才培訓與媒合平台',
     },
     title: { en: 'Instructor', zh: '講師' },
-    period: { en: 'Nov 2025 — Present', zh: '2025年11月 — 至今' },
+    period: { en: 'Nov 2025 — Jun 2026', zh: '2025年11月 — 2026年6月' },
     location: { en: 'Taiwan', zh: '台灣' },
     highlights: {
       en: [
@@ -233,7 +233,7 @@ export const certifications: Certification[] = [
   { name: 'CEH',       issuer: 'EC-Council', year: '2020', expiryYear: '2026', certificateUrl: '/personal-sites_V2/certificates/ec-council/ECC-CEH-Certificate.pdf',                                                                                           desc: { en: 'Certified Ethical Hacker', zh: '認證道德駭客' }, resume: true },
   { name: 'iPAS',      issuer: 'iPAS',       year: '2021', certificateUrl: '/personal-sites_V2/certificates/ipas/ipas_engineer.pdf',                                                                                                               desc: { en: 'iPAS Cybersecurity Engineer — Junior', zh: 'iPAS 資安工程師-初級' } },
   { name: 'Google CCS', issuer: 'Google',    year: '2023',                                                                                                                                                                                           desc: { en: 'Google Cybersecurity Certification', zh: 'Google 網路安全認證' } },
-{ name: 'MCSD',      issuer: 'Microsoft',  year: '2017', certificateUrl: '/personal-sites_V2/certificates/microsoft/mcsd-web-applications.pdf',                                                                                               desc: { en: 'Microsoft Certified Solutions Developer — Web Applications', zh: 'Microsoft 認證解決方案開發人員 — Web 應用程式' } },
+{ name: 'MCSD',      issuer: 'Microsoft',  year: '2015', certificateUrl: '/personal-sites_V2/certificates/microsoft/mcsd-web-applications.pdf',                                                                                               desc: { en: 'Microsoft Certified Solutions Developer — Web Applications', zh: 'Microsoft 認證解決方案開發人員 — Web 應用程式' } },
   { name: 'OCPJWCD',   issuer: 'Oracle',     year: '2015', certificateUrl: '/personal-sites_V2/certificates/oracle/ocpjwcd.pdf',                                                                                                               desc: { en: 'Oracle Certified Professional Java Web Component Developer', zh: 'Oracle 認證 Java Web 元件開發專業人員' } },
   { name: 'OCJP',      issuer: 'Oracle',     year: '2015',                                                                                                                                                                                           desc: { en: 'Oracle Certified Java Programmer', zh: 'Oracle 認證 Java 程式設計師' } },
 ]
