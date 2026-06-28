@@ -1,5 +1,9 @@
 import '../styles/InkWash.css'
 
+/**
+ * 水墨畫裝飾層：遠山 + 游魚，僅在 light mode 顯示
+ * 風格：單色墨筆，極低不透明度，緩慢動態
+ */
 export default function InkWash() {
   return (
     <div className="ink-wash" aria-hidden="true">
@@ -9,141 +13,114 @@ export default function InkWash() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {/* 主墨團 filter — 強烈有機邊緣 */}
-          <filter id="iw-f-main" x="-35%" y="-35%" width="170%" height="170%">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.011 0.014"
-              numOctaves="5"
-              seed="3"
-              result="noise"
-            >
-              <animate
-                attributeName="baseFrequency"
-                values="0.009 0.012;0.014 0.018;0.010 0.013;0.009 0.012"
-                dur="20s"
-                repeatCount="indefinite"
-              />
-            </feTurbulence>
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="noise"
-              scale="70"
-              xChannelSelector="R"
-              yChannelSelector="G"
-              result="d"
-            />
-            <feGaussianBlur in="d" stdDeviation="32" />
+          {/* 墨暈 filter — 軟化邊緣模擬毛筆暈染 */}
+          <filter id="iw-brush" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2.5" />
           </filter>
-
-          {/* 中型 filter */}
-          <filter id="iw-f-mid" x="-50%" y="-50%" width="200%" height="200%">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.018 0.022"
-              numOctaves="4"
-              seed="7"
-              result="noise"
-            >
-              <animate
-                attributeName="baseFrequency"
-                values="0.015 0.019;0.022 0.028;0.017 0.021;0.015 0.019"
-                dur="14s"
-                repeatCount="indefinite"
-              />
-            </feTurbulence>
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="noise"
-              scale="45"
-              xChannelSelector="R"
-              yChannelSelector="G"
-              result="d"
-            />
-            <feGaussianBlur in="d" stdDeviation="20" />
+          <filter id="iw-brush-sm" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="1.2" />
           </filter>
-
-          {/* 小墨點 filter */}
-          <filter id="iw-f-sm" x="-100%" y="-100%" width="300%" height="300%">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.032"
-              numOctaves="3"
-              seed="12"
-              result="noise"
-            >
-              <animate
-                attributeName="baseFrequency"
-                values="0.028;0.038;0.031;0.028"
-                dur="9s"
-                repeatCount="indefinite"
-              />
-            </feTurbulence>
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="noise"
-              scale="28"
-              xChannelSelector="R"
-              yChannelSelector="G"
-              result="d"
-            />
-            <feGaussianBlur in="d" stdDeviation="12" />
+          <filter id="iw-mountain" x="-5%" y="-5%" width="110%" height="110%">
+            <feGaussianBlur stdDeviation="4" />
           </filter>
         </defs>
 
-        {/* ── 主潑墨 — 右中，頭像背後 ── */}
-        <ellipse
-          cx="1020" cy="400"
-          rx="310" ry="255"
-          fill="rgba(26,22,20,0.70)"
-          filter="url(#iw-f-main)"
-          className="iw-main"
-        />
+        {/* ══════════════════════════════
+            遠山 — 三層，由淺至深
+            ══════════════════════════════ */}
+        <g className="iw-mountains" filter="url(#iw-mountain)">
+          {/* 最遠層：淺淡剪影 */}
+          <path
+            d="M -50,820 C 80,680 180,620 300,650 C 420,620 520,560 640,580
+               C 760,555 860,540 980,565 C 1100,540 1220,570 1360,620 C 1440,640 1500,660 1550,820 Z"
+            fill="rgba(26,22,20,0.08)"
+          />
+          {/* 中層：稍深，山體感 */}
+          <path
+            d="M -50,870 C 60,760 150,710 260,730 C 370,710 480,670 580,680
+               C 700,660 820,650 950,670 C 1080,648 1200,670 1340,710 C 1420,730 1500,760 1550,870 Z"
+            fill="rgba(26,22,20,0.11)"
+          />
+          {/* 近層：最深，前景山腳 */}
+          <path
+            d="M -50,900 C 100,820 220,790 340,800 C 460,790 560,780 660,785
+               C 780,775 920,780 1060,795 C 1180,800 1320,820 1440,840 L 1550,900 Z"
+            fill="rgba(26,22,20,0.09)"
+          />
+        </g>
 
-        {/* ── 次墨 — 左下 ── */}
-        <ellipse
-          cx="280" cy="680"
-          rx="175" ry="130"
-          fill="rgba(26,22,20,0.36)"
-          filter="url(#iw-f-mid)"
-          className="iw-mid1"
-        />
+        {/* ══════════════════════════════
+            游魚 — 三尾，各自游行
+            ══════════════════════════════ */}
 
-        {/* ── 次墨 — 右下 ── */}
-        <ellipse
-          cx="1280" cy="760"
-          rx="130" ry="100"
-          fill="rgba(26,22,20,0.28)"
-          filter="url(#iw-f-mid)"
-          className="iw-mid2"
-        />
+        {/* ─ 魚 1：大，右游，中上區 ─ */}
+        <g className="iw-fish-1" filter="url(#iw-brush)">
+          {/* 身體 */}
+          <path
+            d="M 0,0 C 10,-18 35,-22 65,-14 C 90,-8 110,-2 118,0
+               C 110,2 90,8 65,14 C 35,22 10,18 0,0 Z"
+            fill="rgba(26,22,20,0.55)"
+          />
+          {/* 尾巴 */}
+          <path
+            d="M 0,0 C -12,-22 -26,-16 -20,0 C -26,16 -12,22 0,0 Z"
+            fill="rgba(26,22,20,0.45)"
+          />
+          {/* 背鰭 */}
+          <path
+            d="M 30,-13 C 38,-28 55,-25 58,-16 C 50,-13 38,-13 30,-13 Z"
+            fill="rgba(26,22,20,0.38)"
+          />
+          {/* 胸鰭 */}
+          <path
+            d="M 45,12 C 58,24 55,34 42,28 C 40,20 42,15 45,12 Z"
+            fill="rgba(26,22,20,0.32)"
+          />
+          {/* 眼 */}
+          <circle cx="95" cy="-4" r="3.5" fill="rgba(26,22,20,0.60)" />
+          <circle cx="96" cy="-5" r="1.2" fill="rgba(26,22,20,0.90)" />
+        </g>
 
-        {/* ── 小墨點 — 左上 ── */}
-        <ellipse
-          cx="200" cy="160"
-          rx="62" ry="48"
-          fill="rgba(26,22,20,0.18)"
-          filter="url(#iw-f-sm)"
-          className="iw-sm1"
-        />
+        {/* ─ 魚 2：中，左游（水平翻轉），中下區 ─ */}
+        <g className="iw-fish-2" filter="url(#iw-brush)">
+          {/* 身體（鏡像） */}
+          <path
+            d="M 0,0 C -10,-14 -28,-17 -50,-11 C -68,-6 -82,-1 -88,0
+               C -82,1 -68,6 -50,11 C -28,17 -10,14 0,0 Z"
+            fill="rgba(26,22,20,0.50)"
+          />
+          {/* 尾巴 */}
+          <path
+            d="M 0,0 C 10,-18 20,-12 16,0 C 20,12 10,18 0,0 Z"
+            fill="rgba(26,22,20,0.40)"
+          />
+          {/* 背鰭 */}
+          <path
+            d="M -22,-10 C -30,-22 -44,-20 -46,-12 C -38,-10 -30,-10 -22,-10 Z"
+            fill="rgba(26,22,20,0.34)"
+          />
+          {/* 眼 */}
+          <circle cx="-72" cy="-3" r="2.8" fill="rgba(26,22,20,0.58)" />
+          <circle cx="-73" cy="-4" r="1" fill="rgba(26,22,20,0.88)" />
+        </g>
 
-        {/* ── 小墨點 — 右上 ── */}
-        <ellipse
-          cx="1340" cy="130"
-          rx="50" ry="38"
-          fill="rgba(26,22,20,0.15)"
-          filter="url(#iw-f-sm)"
-          className="iw-sm2"
-        />
-
-        {/* ── 飛濺細點 — 中下 ── */}
-        <ellipse
-          cx="720" cy="830"
-          rx="42" ry="30"
-          fill="rgba(26,22,20,0.14)"
-          filter="url(#iw-f-sm)"
-          className="iw-sm3"
-        />
+        {/* ─ 魚 3：小，右游，獨立路徑 ─ */}
+        <g className="iw-fish-3" filter="url(#iw-brush-sm)">
+          <path
+            d="M 0,0 C 6,-11 20,-14 38,-9 C 52,-4 62,-1 66,0
+               C 62,1 52,4 38,9 C 20,14 6,11 0,0 Z"
+            fill="rgba(26,22,20,0.48)"
+          />
+          <path
+            d="M 0,0 C -8,-14 -16,-10 -12,0 C -16,10 -8,14 0,0 Z"
+            fill="rgba(26,22,20,0.38)"
+          />
+          <path
+            d="M 18,-8 C 22,-18 32,-16 34,-10 C 28,-8 22,-8 18,-8 Z"
+            fill="rgba(26,22,20,0.30)"
+          />
+          <circle cx="54" cy="-3" r="2.2" fill="rgba(26,22,20,0.55)" />
+        </g>
       </svg>
     </div>
   )
