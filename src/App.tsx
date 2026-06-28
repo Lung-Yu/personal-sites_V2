@@ -1,5 +1,5 @@
 import './i18n/index'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
@@ -10,12 +10,12 @@ import ScrollProgress from './components/ScrollProgress'
 import InkWash from './components/InkWash'
 import Home from './pages/Home'
 import Resume from './pages/Resume'
+import CV from './pages/CV'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 
-// Phase 5: sync document.documentElement.lang with i18n language on every change
 function LangSync(): null {
   const { i18n } = useTranslation()
   useEffect(() => {
@@ -24,14 +24,28 @@ function LangSync(): null {
   return null
 }
 
-export default function App() {
+// CV is a standalone clean page — no decorative layers, no navbar, no footer
+function AppShell() {
+  const { pathname } = useLocation()
+  const isCV = pathname === '/cv'
+
+  if (isCV) {
+    return (
+      <>
+        <LangSync />
+        <Routes>
+          <Route path="/cv" element={<CV />} />
+        </Routes>
+      </>
+    )
+  }
+
   return (
-    <BrowserRouter basename="/personal-sites_V2">
+    <>
       <InkWash />
       <Intro />
       <Cursor />
       <ScrollProgress />
-      {/* Phase 4: skip-to-content link for keyboard / screen-reader users */}
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <LangSync />
       <Navbar />
@@ -46,6 +60,14 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter basename="/personal-sites_V2">
+      <AppShell />
     </BrowserRouter>
   )
 }
